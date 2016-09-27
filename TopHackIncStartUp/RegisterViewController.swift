@@ -1,9 +1,8 @@
 //
 //  RegisterViewController.swift
-//  BackendlessLogin
+//  TopHackIncStartup
 //
-//  Created by Kevin Harris on 9/26/16.
-//  Copyright © 2016 Guild/SA. All rights reserved.
+//  Created on 9/4/16.
 //
 
 import UIKit

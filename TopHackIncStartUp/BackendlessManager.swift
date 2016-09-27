@@ -1,12 +1,13 @@
 //
 //  BackendlessManager.swift
-//  FoodTracker
+//  TopHackIncStartup
 //
-//  Created by Robert Martin on 9/22/16.
+//  Created by Robert Martin on 9/4/16.
 //  Copyright © 2016 Robert Martin. All rights reserved.
 //
 
 import Foundation
+import UIKit
 
 // The BackendlessManager class below is using the Singleton pattern.
 // A singleton class is a class which can be instantiated only once.
@@ -28,8 +29,8 @@ class BackendlessManager {
     //***ALL instances of CLass Meal must be changed to BackendlessMeal [DONE]
     
     let VERSION_NUM = "v1"
-    let APP_ID = "BB167472-BAE1-DCBC-FF4C-0E475BF35E00"
-    let SECRET_KEY = "CA8325C6-6AF9-E6C5-FF4D-E6ED01505D00"
+    let APP_ID = "C28E4E1C-8C05-7A6B-FF1F-47592CAFB000"
+    let SECRET_KEY = "BBC8AC53-232B-9DAD-FFC6-20AFCF7E7D00"
     
     let EMAIL = "test@gmail.com" // Doubles as User Name
     let PASSWORD = "password"

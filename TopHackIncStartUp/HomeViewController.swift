@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  //TopHackIncStartUp
 //
 //  Created by Robert Martin on 9/4/16.
@@ -7,7 +7,7 @@
 //TableView and custom TableviewCell Demo
 
 //TechCommunity tracker.. include website clickable link and date for events (or say year round)
-//Top Hackathons,Incubators,accelerators,bootcamps that Texas programmers should know about
+//Top Hackathons,Incubators,accelerators,bootcamps that programmers should know about
 
 import UIKit
 //homepage label needed..work on further increasing design as well
@@ -20,22 +20,54 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         
         var progName: String
         var progUrl: String
-        var progType: String      // this should be an enum type NOT a string
-        var areaLoc: String          // this should be an enum type NOT a string
+        var progType: ProgTypes
+        var areaLoc: AreaLoc
         var logo: String
         var rankings: Int
+        //var dateOrTimeFrame: TimeFrame
     }
+    
+    enum ProgTypes {
+        case accelerator
+        case hackathon
+        case bootcamp
+        case incubator
+        case startUpPitch
+        case networking
+        
+    }
+    
+    enum AreaLoc {
+        case worldwide
+        case dallas
+        case nationwide
+        case austin
+        case mountainview
+        case sanFran_NYC
+        case nYC
+        
+    }
+    
+    enum TimeFrame {
+        case yearly
+        case monthly
+        case weekly
+        case specificMonth
+        case specificDate
+        
+    }
+    
 
     let bestHackIncStartUp = [
-        hackIncStartUp(progName: "AngelHack", progUrl: "angelhack.com", progType: "hackathon", areaLoc: "Worldwide", logo: "angelHack", rankings: 7),
-        hackIncStartUp(progName: "StartUpWeekend", progUrl: "StartUpWeekend.org", progType: "hackathon", areaLoc: "Worldwide", logo: "startUpWeekend", rankings: 5),
-        hackIncStartUp(progName: "TechStars", progUrl: "techStars.com", progType: "accelerator", areaLoc: "Nationwide", logo: "techStars", rankings: 3),
-        hackIncStartUp(progName: "TechWildCatters", progUrl: "techwildcatters.com", progType: "accelerator", areaLoc: "Dallas", logo: "techWildcatters", rankings: 4),
-        hackIncStartUp(progName: "HealthWildcatters", progUrl: "healthwildcatters.com", progType: "accelerator", areaLoc: "Dallas", logo: "healthWildcatters1", rankings: 9),
-        hackIncStartUp(progName: "AngelPad", progUrl: "angelpad.com", progType: "accelerator", areaLoc: "San Fran/NYC", logo: "angelPad", rankings: 2),
-        hackIncStartUp(progName: "IronYard", progUrl: "theironYard.com", progType: "bootcamp", areaLoc: "Nationwide", logo: "ironYard", rankings: 6),
-        hackIncStartUp(progName: "Capital Factory", progUrl: "capitalfactory.com", progType: "accelerator", areaLoc: "Austin", logo: "capitalFactory", rankings: 8),
-        hackIncStartUp(progName: "Y Combinator", progUrl: "ycombinator.com", progType: "accelerator", areaLoc: "Mountainview", logo: "yCombinator", rankings: 1)
+        hackIncStartUp(progName: "AngelHack", progUrl: "angelhack.com", ProgTypes.hackathon, AreaLoc.Worldwide, logo: "angelHack", rankings: 7),
+        hackIncStartUp(progName: "StartUpWeekend", progUrl: "StartUpWeekend.org", ProgTypes.hackathon, AreaLoc.Worldwide, logo: "startUpWeekend", rankings: 5),
+        hackIncStartUp(progName: "TechStars", progUrl: "techStars.com", ProgTypes.accelerator, AreaLoc.Nationwide, logo: "techStars", rankings: 3),
+        hackIncStartUp(progName: "TechWildCatters", progUrl: "techwildcatters.com", ProgTypes.accelerator, AreaLoc.Dallas, logo: "techWildcatters", rankings: 4),
+        hackIncStartUp(progName: "HealthWildcatters", progUrl: "healthwildcatters.com", ProgTypes.accelerator, AreaLoc.Dallas, logo: "healthWildcatters1", rankings: 9),
+        hackIncStartUp(progName: "AngelPad", progUrl: "angelpad.com", ProgTypes.accelerator, AreaLoc.SanFran_NYC, logo: "angelPad", rankings: 2),
+        hackIncStartUp(progName: "IronYard", progUrl: "theironYard.com", ProgTypes.bootcamp, AreaLoc.Nationwide, logo: "ironYard", rankings: 6),
+        hackIncStartUp(progName: "Capital Factory", progUrl: "capitalfactory.com", ProgTypes.accelerator, AreaLoc.Austin, logo: "capitalFactory", rankings: 8),
+        hackIncStartUp(progName: "Y Combinator", progUrl: "ycombinator.com", ProgTypes.accelerator, AreaLoc.Mountainview, logo: "yCombinator", rankings: 1)
     ]
 
     override func viewDidLoad() {
