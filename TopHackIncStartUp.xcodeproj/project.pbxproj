@@ -9,12 +9,10 @@
 /* Begin PBXBuildFile section */
 		372C37D41D9B21EB00882ACC /* BackendlessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37CF1D9B21EB00882ACC /* BackendlessManager.swift */; };
 		372C37D51D9B21EB00882ACC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37D01D9B21EB00882ACC /* LoginViewController.swift */; };
-		372C37D61D9B21EB00882ACC /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37D11D9B21EB00882ACC /* MenuViewController.swift */; };
 		372C37D71D9B21EB00882ACC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37D21D9B21EB00882ACC /* RegisterViewController.swift */; };
 		372C37D81D9B21EB00882ACC /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37D31D9B21EB00882ACC /* Utility.swift */; };
-		372C37E01D9B221700882ACC /* BackendlessMeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37DA1D9B221700882ACC /* BackendlessMeal.swift */; };
-		372C37E11D9B221700882ACC /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37DB1D9B221700882ACC /* Meal.swift */; };
-		372C37E21D9B221700882ACC /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37DC1D9B221700882ACC /* MealTableViewCell.swift */; };
+		372C37E01D9B221700882ACC /* BackendlessTopHack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37DA1D9B221700882ACC /* BackendlessTopHack.swift */; };
+		372C37E11D9B221700882ACC /* HackIncStartUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37DB1D9B221700882ACC /* HackIncStartUp.swift */; };
 		372C37E31D9B221700882ACC /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37DD1D9B221700882ACC /* MealTableViewController.swift */; };
 		372C37E41D9B221700882ACC /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37DE1D9B221700882ACC /* MealViewController.swift */; };
 		372C37E51D9B221700882ACC /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37DF1D9B221700882ACC /* RatingControl.swift */; };
@@ -24,17 +22,17 @@
 		37F72F691D7BF6D00059FCD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37F72F681D7BF6D00059FCD2 /* Assets.xcassets */; };
 		37F72F6C1D7BF6D00059FCD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37F72F6A1D7BF6D00059FCD2 /* LaunchScreen.storyboard */; };
 		37F72FD61D7E40B70059FCD2 /* TopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F72FD51D7E40B70059FCD2 /* TopCell.swift */; };
+		B3603098274C263A097931EB /* Pods_TopHackIncStartUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDB8E819DB77AB2F7F389AE /* Pods_TopHackIncStartUp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2338D68D71C8869AD95DA8E4 /* Pods-TopHackIncStartUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopHackIncStartUp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TopHackIncStartUp/Pods-TopHackIncStartUp.debug.xcconfig"; sourceTree = "<group>"; };
 		372C37CF1D9B21EB00882ACC /* BackendlessManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendlessManager.swift; sourceTree = "<group>"; };
 		372C37D01D9B21EB00882ACC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		372C37D11D9B21EB00882ACC /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		372C37D21D9B21EB00882ACC /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		372C37D31D9B21EB00882ACC /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
-		372C37DA1D9B221700882ACC /* BackendlessMeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendlessMeal.swift; sourceTree = "<group>"; };
-		372C37DB1D9B221700882ACC /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
-		372C37DC1D9B221700882ACC /* MealTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
+		372C37DA1D9B221700882ACC /* BackendlessTopHack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendlessTopHack.swift; sourceTree = "<group>"; };
+		372C37DB1D9B221700882ACC /* HackIncStartUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackIncStartUp.swift; sourceTree = "<group>"; };
 		372C37DD1D9B221700882ACC /* MealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
 		372C37DE1D9B221700882ACC /* MealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
 		372C37DF1D9B221700882ACC /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
@@ -46,6 +44,8 @@
 		37F72F6B1D7BF6D00059FCD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37F72F6D1D7BF6D00059FCD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37F72FD51D7E40B70059FCD2 /* TopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopCell.swift; sourceTree = "<group>"; };
+		BDDB8E819DB77AB2F7F389AE /* Pods_TopHackIncStartUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopHackIncStartUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56E2788548D4403358F606E /* Pods-TopHackIncStartUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopHackIncStartUp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopHackIncStartUp/Pods-TopHackIncStartUp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,18 +53,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3603098274C263A097931EB /* Pods_TopHackIncStartUp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32180A769ED64D81709E8119 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BDDB8E819DB77AB2F7F389AE /* Pods_TopHackIncStartUp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		372C37D91D9B21F800882ACC /* meal files */ = {
 			isa = PBXGroup;
 			children = (
-				372C37DA1D9B221700882ACC /* BackendlessMeal.swift */,
-				372C37DB1D9B221700882ACC /* Meal.swift */,
-				372C37DC1D9B221700882ACC /* MealTableViewCell.swift */,
 				372C37DD1D9B221700882ACC /* MealTableViewController.swift */,
 				372C37DE1D9B221700882ACC /* MealViewController.swift */,
 				372C37DF1D9B221700882ACC /* RatingControl.swift */,
@@ -77,6 +83,8 @@
 			children = (
 				37F72F601D7BF6D00059FCD2 /* TopHackIncStartUp */,
 				37F72F5F1D7BF6D00059FCD2 /* Products */,
+				3CAD38C7540BF15061551B74 /* Pods */,
+				32180A769ED64D81709E8119 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,21 +99,31 @@
 		37F72F601D7BF6D00059FCD2 /* TopHackIncStartUp */ = {
 			isa = PBXGroup;
 			children = (
-				372C37D91D9B21F800882ACC /* meal files */,
 				37F72F611D7BF6D00059FCD2 /* AppDelegate.swift */,
-				372C37CF1D9B21EB00882ACC /* BackendlessManager.swift */,
 				372C37D01D9B21EB00882ACC /* LoginViewController.swift */,
-				372C37D11D9B21EB00882ACC /* MenuViewController.swift */,
 				372C37D21D9B21EB00882ACC /* RegisterViewController.swift */,
-				372C37D31D9B21EB00882ACC /* Utility.swift */,
 				37F72F631D7BF6D00059FCD2 /* HomeViewController.swift */,
+				372C37D31D9B21EB00882ACC /* Utility.swift */,
 				37F72FD51D7E40B70059FCD2 /* TopCell.swift */,
+				372C37DB1D9B221700882ACC /* HackIncStartUp.swift */,
+				372C37DA1D9B221700882ACC /* BackendlessTopHack.swift */,
 				37F72F651D7BF6D00059FCD2 /* Main.storyboard */,
+				372C37CF1D9B21EB00882ACC /* BackendlessManager.swift */,
+				372C37D91D9B21F800882ACC /* meal files */,
 				37F72F681D7BF6D00059FCD2 /* Assets.xcassets */,
 				37F72F6A1D7BF6D00059FCD2 /* LaunchScreen.storyboard */,
 				37F72F6D1D7BF6D00059FCD2 /* Info.plist */,
 			);
 			path = TopHackIncStartUp;
+			sourceTree = "<group>";
+		};
+		3CAD38C7540BF15061551B74 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2338D68D71C8869AD95DA8E4 /* Pods-TopHackIncStartUp.debug.xcconfig */,
+				E56E2788548D4403358F606E /* Pods-TopHackIncStartUp.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,9 +133,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 37F72F701D7BF6D00059FCD2 /* Build configuration list for PBXNativeTarget "TopHackIncStartUp" */;
 			buildPhases = (
+				81D04D2D4FE0FCB5351DE999 /* [CP] Check Pods Manifest.lock */,
 				37F72F5A1D7BF6D00059FCD2 /* Sources */,
 				37F72F5B1D7BF6D00059FCD2 /* Frameworks */,
 				37F72F5C1D7BF6D00059FCD2 /* Resources */,
+				C76AEF52B732DA8A0FEB3959 /* [CP] Embed Pods Frameworks */,
+				8A5894848E7CA1C4383581B8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -140,6 +161,7 @@
 				TargetAttributes = {
 					37F72F5D1D7BF6D00059FCD2 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 24SMK2L74Z;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -175,16 +197,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		81D04D2D4FE0FCB5351DE999 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8A5894848E7CA1C4383581B8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TopHackIncStartUp/Pods-TopHackIncStartUp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C76AEF52B732DA8A0FEB3959 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TopHackIncStartUp/Pods-TopHackIncStartUp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		37F72F5A1D7BF6D00059FCD2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				372C37E51D9B221700882ACC /* RatingControl.swift in Sources */,
-				372C37E11D9B221700882ACC /* Meal.swift in Sources */,
-				372C37E21D9B221700882ACC /* MealTableViewCell.swift in Sources */,
+				372C37E11D9B221700882ACC /* HackIncStartUp.swift in Sources */,
 				37F72F641D7BF6D00059FCD2 /* HomeViewController.swift in Sources */,
-				372C37D61D9B21EB00882ACC /* MenuViewController.swift in Sources */,
 				372C37D71D9B21EB00882ACC /* RegisterViewController.swift in Sources */,
 				372C37D41D9B21EB00882ACC /* BackendlessManager.swift in Sources */,
 				372C37D81D9B21EB00882ACC /* Utility.swift in Sources */,
@@ -193,7 +261,7 @@
 				372C37E41D9B221700882ACC /* MealViewController.swift in Sources */,
 				37F72FD61D7E40B70059FCD2 /* TopCell.swift in Sources */,
 				372C37E31D9B221700882ACC /* MealTableViewController.swift in Sources */,
-				372C37E01D9B221700882ACC /* BackendlessMeal.swift in Sources */,
+				372C37E01D9B221700882ACC /* BackendlessTopHack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +330,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "${PODS_ROOT}/Headers/Public/Backendless/Backendless-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -303,6 +372,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "${PODS_ROOT}/Headers/Public/Backendless/Backendless-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -311,8 +381,10 @@
 		};
 		37F72F711D7BF6D00059FCD2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2338D68D71C8869AD95DA8E4 /* Pods-TopHackIncStartUp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 24SMK2L74Z;
 				INFOPLIST_FILE = TopHackIncStartUp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.QuaereVeritatem.TopHackIncStartUp;
@@ -323,8 +395,10 @@
 		};
 		37F72F721D7BF6D00059FCD2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E56E2788548D4403358F606E /* Pods-TopHackIncStartUp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 24SMK2L74Z;
 				INFOPLIST_FILE = TopHackIncStartUp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.QuaereVeritatem.TopHackIncStartUp;

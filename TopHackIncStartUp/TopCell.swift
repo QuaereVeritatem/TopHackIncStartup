@@ -2,7 +2,7 @@
 //  TopCell.swift
 //  TopHackIncStartUp
 //
-//  Created by Robert Martin on 9/5/16.
+//  Created by Robert Martin on 9/4/16.
 //  Copyright © 2016 Robert Martin. All rights reserved.
 //
 

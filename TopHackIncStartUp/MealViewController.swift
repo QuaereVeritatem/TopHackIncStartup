@@ -27,7 +27,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
      This value is either passed by `MealTableViewController` in `prepareForSegue(_:sender:)`
      or constructed as part of adding a new meal.
      */
-    var meal: Meal? //class Meal is called 'MealData' in other foodtracker
+    var meal: HackIncStartUp? //class Meal is called 'MealData' in other foodtracker
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
                 photoImageView.image = meal.photo
             }
             
-            ratingControl.rating = meal.rating
+          
         }
         
         // Enable the Save button only if the text field has a valid Meal name.
@@ -111,13 +111,12 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         
         if meal == nil {
             
-            meal = Meal(name: name, photo: photo, rating: rating)
+            meal = HackIncStartUp(name: name, photo: photo)
 
         } else {
             
             meal?.name = name
             meal?.photo = photo
-            meal?.rating = rating
           
         }
         
@@ -184,34 +183,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
 
 
 
-    // This method lets you configure a view controller before it's presented.
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if saveButton === (sender as! UIBarButtonItem) {
-            //if it’s nil, the nil coalescing operator then returns the empty string ("") instead.
-            let name = nameTextField.text ?? ""
-            let photo = photoImageView.image
-            let rating = ratingControl.rating
-            
-// TODO: Fix
-            let photoUrl = "https://guildsa.org/wp-content/uploads/2016/09/meal1.png"
-            
-            // Set the meal to be passed to MealTableViewController after the unwind segue.
-            if meal == nil {
-
-            meal = Meal(name: name, photo: photo, rating: rating)
-                
-            meal?.photoUrl = photoUrl
-                
-            } else {
-                
-                meal?.name = name
-                meal?.photo = photo
-                meal?.rating = rating
-                meal?.photoUrl = photoUrl
-            }
-        }
-    } */
+ 
     
     // MARK: Actions
 

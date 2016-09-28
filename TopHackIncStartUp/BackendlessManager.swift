@@ -26,7 +26,7 @@ class BackendlessManager {
     
     let backendless = Backendless.sharedInstance()!
     
-    //***ALL instances of CLass Meal must be changed to BackendlessMeal [DONE]
+    //***ALL instances of CLass Meal must be changed to BackendlessTopHack [DONE]
     
     let VERSION_NUM = "v1"
     let APP_ID = "C28E4E1C-8C05-7A6B-FF1F-47592CAFB000"
@@ -156,20 +156,21 @@ class BackendlessManager {
         )
     }
     
+    //************************** get rid of all meal refernces and data *****************
+    
     func saveTestData() {
         
-        let newMeal = BackendlessMeal()
+        let newMeal = BackendlessTopHack()
         newMeal.name = "Test Meal #1"
         newMeal.photoUrl = "https://guildsa.org/wp-content/uploads/2016/09/meal1.png"
-        newMeal.rating = 5
         
         backendless.data.save( newMeal,
                                
                                response: { (entity: Any?) -> Void in
                                 
-                                let meal = entity as! BackendlessMeal
+                                let meal = entity as! BackendlessTopHack
                                 
-                                print("Meal: \(meal.objectId!), name: \(meal.name), photoUrl: \"\(meal.photoUrl!)\", rating: \"\(meal.rating)\"")
+                                print("Meal: \(meal.objectId!), name: \(meal.name), photoUrl: \"\(meal.photoUrl!)")
             },
                                
                                error: { (fault: Fault?) -> Void in
@@ -180,7 +181,7 @@ class BackendlessManager {
     
     func loadTestData() {
         
-        let dataStore = backendless.persistenceService.of(BackendlessMeal.ofClass())
+        let dataStore = backendless.persistenceService.of(BackendlessTopHack.ofClass())
         
         dataStore?.find(
             
@@ -191,9 +192,9 @@ class BackendlessManager {
                 
                 for meal in (meals?.data)! {
                     
-                    let meal = meal as! BackendlessMeal
+                    let meal = meal as! BackendlessTopHack
                     
-                    print("Meal: \(meal.objectId!), name: \(meal.name), photoUrl: \"\(meal.photoUrl!)\", rating: \"\(meal.rating)\"")
+                    print("Meal: \(meal.objectId!), name: \(meal.name), photoUrl: \"\(meal.photoUrl!)\"")
                 }
             },
             
@@ -203,7 +204,7 @@ class BackendlessManager {
         )
     }
     
-    func savePhotoAndThumbnail(mealToSave: BackendlessMeal, photo: UIImage, completion: @escaping () -> (), error: @escaping () -> ()) {
+    func savePhotoAndThumbnail(mealToSave: BackendlessTopHack, photo: UIImage, completion: @escaping () -> (), error: @escaping () -> ()) {
         
         //
         // Upload the thumbnail image first...
@@ -263,7 +264,7 @@ class BackendlessManager {
         })
     }
     
-   func saveMeal(mealData: Meal, completion: @escaping () -> (), error: @escaping () -> ()) {
+   func saveMeal(mealData: HackIncStartUp, completion: @escaping () -> (), error: @escaping () -> ()) {
         
         if mealData.objectId == nil {
             
@@ -271,9 +272,8 @@ class BackendlessManager {
             // Create a new Meal along with a photo and thumbnail image.
             //
             
-            let mealToSave = BackendlessMeal()
+            let mealToSave = BackendlessTopHack()
             mealToSave.name = mealData.name
-            mealToSave.rating = mealData.rating
             
             savePhotoAndThumbnail(mealToSave: mealToSave, photo: mealData.photo!,
                                                        
@@ -284,9 +284,9 @@ class BackendlessManager {
 
                        response: { (entity: Any?) -> Void in
 
-                            let meal = entity as! BackendlessMeal
+                            let meal = entity as! BackendlessTopHack
 
-                            print("Meal: \(meal.objectId!), name: \(meal.name), photoUrl: \"\(meal.photoUrl!)\", rating: \"\(meal.rating)\"")
+                            print("Meal: \(meal.objectId!), name: \(meal.name), photoUrl: \"\(meal.photoUrl!)\"")
 
                             mealData.objectId = meal.objectId
                             mealData.photoUrl = meal.photoUrl
@@ -313,20 +313,20 @@ class BackendlessManager {
             // thumbnail image with a new one.
             //
             
-            let mealToSave = BackendlessMeal()
+            let mealToSave = BackendlessTopHack()
             
             savePhotoAndThumbnail(mealToSave: mealToSave, photo: mealData.photo!,
                                                        
                completion: {
 
-                    let dataStore = self.backendless.persistenceService.of(BackendlessMeal.ofClass())
+                    let dataStore = self.backendless.persistenceService.of(BackendlessTopHack.ofClass())
 
                     dataStore?.findID(mealData.objectId,
                                       
                         response: { (meal: Any?) -> Void in
                             
                             // We found the Meal to update.
-                            let meal = meal as! BackendlessMeal
+                            let meal = meal as! BackendlessTopHack
                             
                             // Cache old URLs for removal!
                             let oldPhotoUrl = meal.photoUrl!
@@ -334,7 +334,6 @@ class BackendlessManager {
                             
                             // Update the Meal with the new data.
                             meal.name = mealData.name
-                            meal.rating = mealData.rating
                             meal.photoUrl = mealToSave.photoUrl
                             meal.thumbnailUrl = mealToSave.thumbnailUrl
                             
@@ -343,9 +342,9 @@ class BackendlessManager {
                                                    
                                 response: { (entity: Any?) -> Void in
                                     
-                                    let meal = entity as! BackendlessMeal
+                                    let meal = entity as! BackendlessTopHack
                                     
-                                    print("Meal: \(meal.objectId!), name: \(meal.name), photoUrl: \"\(meal.photoUrl!)\", rating: \"\(meal.rating)\"")
+                                    print("Meal: \(meal.objectId!), name: \(meal.name), photoUrl: \"\(meal.photoUrl!)\"")
                                     
                                     // Update the mealData used by the UI with the new URLS!
                                     mealData.photoUrl = meal.photoUrl
@@ -381,27 +380,26 @@ class BackendlessManager {
             // Update the Meal data but keep the existing photo and thumbnail image.
             //
             
-            let dataStore = backendless.persistenceService.of(BackendlessMeal.ofClass())
+            let dataStore = backendless.persistenceService.of(BackendlessTopHack.ofClass())
 
             dataStore?.findID(mealData.objectId,
                               
                 response: { (meal: Any?) -> Void in
                     
                     // We found the Meal to update.
-                    let meal = meal as! BackendlessMeal
+                    let meal = meal as! BackendlessTopHack
                     
                     // Update the Meal with the new data
                     meal.name = mealData.name
-                    meal.rating = mealData.rating
                     
                     // Save the updated Meal.
                     self.backendless.data.save( meal,
                                            
                         response: { (entity: Any?) -> Void in
                             
-                            let meal = entity as! BackendlessMeal
+                            let meal = entity as! BackendlessTopHack
                             
-                            print("Meal: \(meal.objectId!), name: \(meal.name), photoUrl: \"\(meal.photoUrl!)\", rating: \"\(meal.rating)\"")
+                            print("Meal: \(meal.objectId!), name: \(meal.name), photoUrl: \"\(meal.photoUrl!)\"")
                             
                             completion()
                         },
@@ -420,9 +418,9 @@ class BackendlessManager {
         }
     }
     
-    func loadMeals(completion: @escaping ([Meal]) -> ()) {
+    func loadMeals(completion: @escaping ([HackIncStartUp]) -> ()) {
         
-        let dataStore = backendless.persistenceService.of(BackendlessMeal.ofClass())
+        let dataStore = backendless.persistenceService.of(BackendlessTopHack.ofClass())
         
         let dataQuery = BackendlessDataQuery()
         // Only get the Meals that belong to our logged in user!
@@ -435,15 +433,15 @@ class BackendlessManager {
                             print("Find attempt on all Meals has completed without error!")
                             print("Number of Meals found = \((meals?.data.count)!)")
                             
-                            var mealData = [Meal]()
+                            var mealData = [HackIncStartUp]()
                             
                             for meal in (meals?.data)! {
                                 
-                                let meal = meal as! BackendlessMeal
+                                let meal = meal as! BackendlessTopHack
                                 
-                                print("Meal: \(meal.objectId!), name: \(meal.name), photoUrl: \"\(meal.photoUrl!)\", rating: \"\(meal.rating)\"")
+                                print("Meal: \(meal.objectId!), name: \(meal.name), photoUrl: \"\(meal.photoUrl!)\"")
                                 
-                                let newMealData = Meal(name: meal.name!, photo: nil, rating: meal.rating)
+                                let newMealData = HackIncStartUp(name: meal.name!, photo: nil)
                                 
                                 if let newMealData = newMealData {
                                     
@@ -466,11 +464,11 @@ class BackendlessManager {
     }
     
     
-    func removeMeal(mealToRemove: Meal, completion: @escaping () -> (), error: @escaping () -> ()) {
+    func removeMeal(mealToRemove: HackIncStartUp, completion: @escaping () -> (), error: @escaping () -> ()) {
         //dont delete something until it was removed from the database first!
         print("Remove Meal: \(mealToRemove.objectId!)")
         
-        let dataStore = backendless.persistenceService.of(BackendlessMeal.ofClass())
+        let dataStore = backendless.persistenceService.of(BackendlessTopHack.ofClass())
         
         _ = dataStore?.removeID(mealToRemove.objectId, response: { (result: NSNumber?) -> Void in
                                     

@@ -15,7 +15,7 @@ class MealTableViewController: UITableViewController {
     //class Meal is same as MealData on other foodtracker
     //class BackendlessMeal is the same as Meal on other foodtracker 
     
-    var meals = [Meal]()
+    var meals = [HackIncStartUp]()
     
     let backendless = Backendless.sharedInstance()!
     
@@ -50,13 +50,13 @@ class MealTableViewController: UITableViewController {
     func loadSampleMeals() {
         
         let photo1 = UIImage(named: "meal1")!
-        let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4)!
+        let meal1 = HackIncStartUp(name: "Caprese Salad", photo: photo1)!
         
         let photo2 = UIImage(named: "meal2")!
-        let meal2 = Meal(name: "Chicken and Potatoes", photo: photo2, rating: 5)!
+        let meal2 = HackIncStartUp(name: "Chicken and Potatoes", photo: photo2)!
         
         let photo3 = UIImage(named: "meal3")!
-        let meal3 = Meal(name: "Pasta with Meatballs", photo: photo3, rating: 3)!
+        let meal3 = HackIncStartUp(name: "Pasta with Meatballs", photo: photo3)!
         
         meals += [meal1, meal2, meal3]
     }
@@ -80,23 +80,23 @@ class MealTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
         // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "MealTableViewCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MealTableViewCell
+        let cellIdentifier = "TopCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TopCell
         
         // Fetches the appropriate meal for the data source layout.
         let meal = meals[(indexPath as NSIndexPath).row]
 
         cell.nameLabel.text = meal.name
         
-        cell.photoImageView.image = nil
+        cell.IncAccHackPic.image = nil
         
         if BackendlessManager.sharedInstance.isUserLoggedIn() && meal.thumbnailUrl != nil {
             loadImageFromUrl(cell: cell, thumbnailUrl: meal.thumbnailUrl!)
         } else {
-            cell.photoImageView.image = meal.photo
+            cell.IncAccHackPic.image = meal.photo
         }
         
-        cell.ratingControl.rating = meal.rating
+      
         
 
 
@@ -172,7 +172,7 @@ class MealTableViewController: UITableViewController {
             let mealDetailViewController = segue.destination as! MealViewController
             
             // Get the cell that generated this segue.
-            if let selectedMealCell = sender as? MealTableViewCell {
+            if let selectedMealCell = sender as? TopCell{
                 
                 let indexPath = tableView.indexPath(for: selectedMealCell)!
                 let selectedMeal = meals[(indexPath as NSIndexPath).row]
@@ -208,7 +208,7 @@ class MealTableViewController: UITableViewController {
 
     // MARK: NSCoding
     
-    func loadImageFromUrl(cell: MealTableViewCell, thumbnailUrl: String) {
+    func loadImageFromUrl(cell: TopCell, thumbnailUrl: String) {
         
         let url = URL(string: thumbnailUrl)!
         
@@ -226,7 +226,7 @@ class MealTableViewController: UITableViewController {
                         
                         // We got the image data! Use it to create a UIImage for our cell's
                         // UIImageView. Then, stop the activity spinner.
-                        cell.photoImageView.image = UIImage(data: data)
+                        cell.IncAccHackPic.image = UIImage(data: data)
                         //cell.activityIndicator.stopAnimating()
                     }
                     
@@ -277,7 +277,7 @@ class MealTableViewController: UITableViewController {
     
     func saveMealsToArchiver() {
         
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: Meal.ArchiveURL.path)
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: HackIncStartUp.ArchiveURL.path)
         
         if !isSuccessfulSave {
             print("Failed to save meals...")
@@ -285,10 +285,10 @@ class MealTableViewController: UITableViewController {
     }
 
     
-    func loadMealsFromArchiver() -> [Meal]? {
+    func loadMealsFromArchiver() -> [HackIncStartUp]? {
         
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Meal
-            .ArchiveURL.path) as? [Meal]
+        return NSKeyedUnarchiver.unarchiveObject(withFile: HackIncStartUp
+            .ArchiveURL.path) as? [HackIncStartUp]
     }
 
     
