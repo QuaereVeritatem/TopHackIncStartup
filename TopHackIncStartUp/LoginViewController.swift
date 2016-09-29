@@ -28,6 +28,17 @@ class LoginViewController: UIViewController {
                 Utility.showAlert(viewController: self, title: "Backendless Error", message: "To use this sample you must register with Backendless, create an app, and replace the APP_ID and SECRET_KEY in this sample's BackendlessManager class with the values from your app's settings.")
             }
         }
+        
+       /* //settings for frosted glass -meant for modal alerts : (
+         var settings = Modal.Settings()
+         settings.backgroundColor = .whiteColor()
+         settings.shadowType = .Hover
+         settings.shadowRadius = CGFloat(5)
+         settings.shadowOffset = CGSize(width: 0, height: 0)
+         settings.shadowOpacity = 0.1
+         settings.overlayBlurStyle = .ExtraLight
+ */
+        
     }
     
     func textFieldChanged(textField: UITextField) {

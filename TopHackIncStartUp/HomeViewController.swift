@@ -16,6 +16,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var myTableView: UITableView!
     
+    
     struct hackIncStartUp {
         
         var name: String
@@ -58,17 +59,26 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     
 
     let bestHackIncStartUp = [
-        hackIncStartUp(name: "AngelHack", progUrl: "angelhack.com", progType: ProgTypes.hackathon, areaLoc: AreaLoc.Worldwide, logo: "angelHack", dateOrTimeFrame: TimeFrame.monthly),
-        hackIncStartUp(name: "StartUpWeekend", progUrl: "StartUpWeekend.org", progType: ProgTypes.hackathon, areaLoc: AreaLoc.Worldwide, logo: "startUpWeekend", dateOrTimeFrame: TimeFrame.monthly),
-        hackIncStartUp(name: "TechStars", progUrl: "techStars.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Nationwide, logo: "techStars", dateOrTimeFrame: TimeFrame.specificMonth),
-        hackIncStartUp(name: "TechWildCatters", progUrl: "techwildcatters.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Dallas, logo: "techWildcatters", dateOrTimeFrame: TimeFrame.monthly),
-        hackIncStartUp(name: "HealthWildcatters", progUrl: "healthwildcatters.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Dallas, logo: "healthWildcatters1", dateOrTimeFrame: TimeFrame.specificDate),
-        hackIncStartUp(name: "AngelPad", progUrl: "angelpad.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.SanFran_NYC, logo: "angelPad", dateOrTimeFrame: TimeFrame.specificMonth),
-        hackIncStartUp(name: "IronYard", progUrl: "theironYard.com", progType: ProgTypes.bootcamp, areaLoc: AreaLoc.Nationwide, logo: "ironYard", dateOrTimeFrame: TimeFrame.monthly),
-        hackIncStartUp(name: "Capital Factory", progUrl: "capitalfactory.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Austin, logo: "capitalFactory", dateOrTimeFrame: TimeFrame.specificDate),
-        hackIncStartUp(name: "Y Combinator", progUrl: "ycombinator.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Mountainview, logo: "yCombinator", dateOrTimeFrame: TimeFrame.yearly)
+        hackIncStartUp(name: "AngelHack", progUrl: "http://angelhack.com", progType: ProgTypes.hackathon, areaLoc: AreaLoc.Worldwide, logo: "angelHack", dateOrTimeFrame: TimeFrame.monthly),
+        hackIncStartUp(name: "StartUpWeekend", progUrl: "https://StartUpWeekend.org", progType: ProgTypes.hackathon, areaLoc: AreaLoc.Worldwide, logo: "startUpWeekend", dateOrTimeFrame: TimeFrame.monthly),
+        hackIncStartUp(name: "TechStars", progUrl: "http://techStars.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Nationwide, logo: "techStars", dateOrTimeFrame: TimeFrame.specificMonth),
+        hackIncStartUp(name: "TechWildCatters", progUrl: "http://techwildcatters.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Dallas, logo: "techWildcatters", dateOrTimeFrame: TimeFrame.monthly),
+        hackIncStartUp(name: "HealthWildcatters", progUrl: "http://healthwildcatters.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Dallas, logo: "healthWildcatters1", dateOrTimeFrame: TimeFrame.specificDate),
+        hackIncStartUp(name: "AngelPad", progUrl: "https://angelpad.org", progType: ProgTypes.accelerator, areaLoc: AreaLoc.SanFran_NYC, logo: "angelPad", dateOrTimeFrame: TimeFrame.specificMonth),
+        hackIncStartUp(name: "IronYard", progUrl: "https://theironYard.com", progType: ProgTypes.bootcamp, areaLoc: AreaLoc.Nationwide, logo: "ironYard", dateOrTimeFrame: TimeFrame.monthly),
+        hackIncStartUp(name: "Capital Factory", progUrl: "https://capitalfactory.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Austin, logo: "capitalFactory", dateOrTimeFrame: TimeFrame.specificDate),
+        hackIncStartUp(name: "Y Combinator", progUrl: "https://ycombinator.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Mountainview, logo: "yCombinator", dateOrTimeFrame: TimeFrame.yearly)
     ]
 
+    @IBAction func addEvents(_ sender: UIBarButtonItem) {
+    }
+    
+    @IBAction func editCurrentEvents(_ sender: UIBarButtonItem) {
+    }
+    
+    
+
+    //delete this 
     @IBAction func LogOutBtn(_ sender: UIButton) {
         print( "logoutBtn called!" )
         
@@ -76,6 +86,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
             
             completion: {
                 self.performSegue(withIdentifier: "gotoLoginFromMenu", sender: sender)
+                //self.dismiss(animated: true, completion: nil)
             },
             
             error: { message in
@@ -99,13 +110,31 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! TopCell
+        
         cell.nameLabel.text = bestHackIncStartUp[(indexPath as NSIndexPath).row].name
-        cell.urlLabel.text = bestHackIncStartUp[(indexPath as NSIndexPath).row].progUrl
         cell.progType.text = String(describing: bestHackIncStartUp[(indexPath as NSIndexPath).row].progType)
         cell.locationLabel.text = String(describing: bestHackIncStartUp[(indexPath as NSIndexPath).row].areaLoc)
         cell.rankingLabel.text = String(describing: bestHackIncStartUp[(indexPath as NSIndexPath).row].dateOrTimeFrame)
         cell.IncAccHackPic.image = UIImage(named: bestHackIncStartUp[(indexPath as NSIndexPath).row].logo)
+        
+        let row = (indexPath as NSIndexPath).row
+        let fullUrl = bestHackIncStartUp[row].progUrl
+        cell.websiteUrl = fullUrl
+        
+        var shortUrl: String = ""
+        
+        // If the URL has "http://" or "https://" in it - remove it!
+        if fullUrl.lowercased().range(of: "http://") != nil {
+            shortUrl = fullUrl.replacingOccurrences(of: "http://", with: "")
+        } else if fullUrl.lowercased().range(of: "https://") != nil {
+            shortUrl = fullUrl.replacingOccurrences(of: "https://", with: "")
+        }
+
+
+        //cell.websiteUrl = fullUrl
+        
         return cell
     }
     

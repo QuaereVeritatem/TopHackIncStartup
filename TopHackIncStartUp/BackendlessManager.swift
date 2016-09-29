@@ -80,9 +80,9 @@ class BackendlessManager {
                 completion()
                 },
                                             
-                                            error: { (fault: Fault?) -> Void in
-                                                print("User failed to log out: \(fault)")
-                                                error((fault?.message)!)
+                error: { (fault: Fault?) -> Void in
+                print("User failed to log out: \(fault)")
+                error((fault?.message)!)
             })
             
         } else {

@@ -11,17 +11,27 @@ import UIKit
 
 class TopCell: UITableViewCell {
     
+    var websiteUrl: String?
+    
     @IBOutlet weak var IncAccHackPic: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
-    
-    @IBOutlet weak var urlLabel: UILabel!
     
     @IBOutlet weak var progType: UILabel!
     
     @IBOutlet weak var locationLabel: UILabel!
     
     @IBOutlet weak var rankingLabel: UILabel!
+    
+    @IBAction func websiteLink(_ sender: UIButton) {
+        
+        // Since MyTableViewCell can safely call openURL() - we'll just do it here.
+        if let url = URL(string: websiteUrl!) {
+            UIApplication.shared.openURL(url)
+        }
+
+        
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,5 +43,8 @@ class TopCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
+    
+
+    
     
 }
