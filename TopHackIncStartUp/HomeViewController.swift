@@ -131,9 +131,8 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         } else if fullUrl.lowercased().range(of: "https://") != nil {
             shortUrl = fullUrl.replacingOccurrences(of: "https://", with: "")
         }
-
-
-        //cell.websiteUrl = fullUrl
+        
+        cell.websiteBtn.setTitle(shortUrl, for: UIControlState())
         
         return cell
     }

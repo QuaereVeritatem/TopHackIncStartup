@@ -23,7 +23,10 @@ class TopCell: UITableViewCell {
     
     @IBOutlet weak var rankingLabel: UILabel!
     
-    @IBAction func websiteLink(_ sender: UIButton) {
+    
+    @IBOutlet weak var websiteBtn: UIButton!
+    
+    @IBAction func loadWebsite(_ sender: UIButton) {
         
         // Since MyTableViewCell can safely call openURL() - we'll just do it here.
         if let url = URL(string: websiteUrl!) {

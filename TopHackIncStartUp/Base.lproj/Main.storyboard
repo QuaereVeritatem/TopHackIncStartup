@@ -49,6 +49,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLi-U9-zb9">
                                                     <state key="normal" title="websiteLink"/>
                                                     <connections>
+                                                        <action selector="loadWebsite:" destination="Z65-uH-73G" eventType="touchUpInside" id="Um1-S7-bq3"/>
                                                         <action selector="websiteLink:" destination="Z65-uH-73G" eventType="touchUpInside" id="1HC-M7-9gl"/>
                                                         <action selector="websitelink:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tAT-iQ-bXj"/>
                                                     </connections>
@@ -105,6 +106,7 @@
                                             <outlet property="nameLabel" destination="Z1n-SE-OoX" id="bEw-Hg-6EK"/>
                                             <outlet property="progType" destination="xuD-Cv-Ven" id="rVF-Fh-Kxa"/>
                                             <outlet property="rankingLabel" destination="IMv-0P-Z0Y" id="WA5-ny-6yM"/>
+                                            <outlet property="websiteBtn" destination="aLi-U9-zb9" id="DCa-j3-p0Z"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -444,6 +446,6 @@
         <image name="tracker label" width="202" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ooV-EC-X7V"/>
+        <segue reference="kwu-WZ-YiO"/>
     </inferredMetricsTieBreakers>
 </document>
