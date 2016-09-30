@@ -464,7 +464,7 @@ class BackendlessManager {
     }
     
     
-    func removeMeal(mealToRemove: HackIncStartUp, completion: @escaping () -> (), error: @escaping () -> ()) {
+    func removeEvent(mealToRemove: HackIncStartUp, completion: @escaping () -> (), error: @escaping () -> ()) {
         //dont delete something until it was removed from the database first!
         print("Remove Meal: \(mealToRemove.objectId!)")
         
