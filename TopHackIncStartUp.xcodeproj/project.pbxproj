@@ -13,9 +13,6 @@
 		372C37D81D9B21EB00882ACC /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37D31D9B21EB00882ACC /* Utility.swift */; };
 		372C37E01D9B221700882ACC /* BackendlessTopHack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37DA1D9B221700882ACC /* BackendlessTopHack.swift */; };
 		372C37E11D9B221700882ACC /* HackIncStartUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37DB1D9B221700882ACC /* HackIncStartUp.swift */; };
-		372C37E31D9B221700882ACC /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37DD1D9B221700882ACC /* MealTableViewController.swift */; };
-		372C37E41D9B221700882ACC /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37DE1D9B221700882ACC /* MealViewController.swift */; };
-		372C37E51D9B221700882ACC /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37DF1D9B221700882ACC /* RatingControl.swift */; };
 		372C37E71D9C186800882ACC /* AddNewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37E61D9C186800882ACC /* AddNewEventViewController.swift */; };
 		37F72F621D7BF6D00059FCD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F72F611D7BF6D00059FCD2 /* AppDelegate.swift */; };
 		37F72F641D7BF6D00059FCD2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F72F631D7BF6D00059FCD2 /* HomeViewController.swift */; };
@@ -34,9 +31,6 @@
 		372C37D31D9B21EB00882ACC /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		372C37DA1D9B221700882ACC /* BackendlessTopHack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendlessTopHack.swift; sourceTree = "<group>"; };
 		372C37DB1D9B221700882ACC /* HackIncStartUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackIncStartUp.swift; sourceTree = "<group>"; };
-		372C37DD1D9B221700882ACC /* MealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
-		372C37DE1D9B221700882ACC /* MealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
-		372C37DF1D9B221700882ACC /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		372C37E61D9C186800882ACC /* AddNewEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewEventViewController.swift; sourceTree = "<group>"; };
 		37F72F5E1D7BF6D00059FCD2 /* TopHackIncStartUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopHackIncStartUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F72F611D7BF6D00059FCD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,16 +62,6 @@
 				BDDB8E819DB77AB2F7F389AE /* Pods_TopHackIncStartUp.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		372C37D91D9B21F800882ACC /* meal files */ = {
-			isa = PBXGroup;
-			children = (
-				372C37DD1D9B221700882ACC /* MealTableViewController.swift */,
-				372C37DE1D9B221700882ACC /* MealViewController.swift */,
-				372C37DF1D9B221700882ACC /* RatingControl.swift */,
-			);
-			name = "meal files";
 			sourceTree = "<group>";
 		};
 		37F72F551D7BF6D00059FCD2 = {
@@ -112,7 +96,6 @@
 				372C37DA1D9B221700882ACC /* BackendlessTopHack.swift */,
 				37F72F651D7BF6D00059FCD2 /* Main.storyboard */,
 				372C37CF1D9B21EB00882ACC /* BackendlessManager.swift */,
-				372C37D91D9B21F800882ACC /* meal files */,
 				37F72F681D7BF6D00059FCD2 /* Assets.xcassets */,
 				37F72F6A1D7BF6D00059FCD2 /* LaunchScreen.storyboard */,
 				37F72F6D1D7BF6D00059FCD2 /* Info.plist */,
@@ -253,7 +236,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				372C37E51D9B221700882ACC /* RatingControl.swift in Sources */,
 				372C37E11D9B221700882ACC /* HackIncStartUp.swift in Sources */,
 				37F72F641D7BF6D00059FCD2 /* HomeViewController.swift in Sources */,
 				372C37D71D9B21EB00882ACC /* RegisterViewController.swift in Sources */,
@@ -261,9 +243,7 @@
 				372C37D81D9B21EB00882ACC /* Utility.swift in Sources */,
 				37F72F621D7BF6D00059FCD2 /* AppDelegate.swift in Sources */,
 				372C37D51D9B21EB00882ACC /* LoginViewController.swift in Sources */,
-				372C37E41D9B221700882ACC /* MealViewController.swift in Sources */,
 				37F72FD61D7E40B70059FCD2 /* TopCell.swift in Sources */,
-				372C37E31D9B221700882ACC /* MealTableViewController.swift in Sources */,
 				372C37E71D9C186800882ACC /* AddNewEventViewController.swift in Sources */,
 				372C37E01D9B221700882ACC /* BackendlessTopHack.swift in Sources */,
 			);

@@ -26,11 +26,17 @@ class TopCell: UITableViewCell {
     
     @IBOutlet weak var websiteBtn: UIButton!
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }    
+    
     @IBAction func loadWebsite(_ sender: UIButton) {
         
         // Since MyTableViewCell can safely call openURL() - we'll just do it here.
-        if let url = URL(string: websiteUrl!) {
-            UIApplication.shared.openURL(url)
+        if let webUrl = URL(string: websiteUrl!) {
+            UIApplication.shared.openURL(webUrl)
         }
 
         
@@ -41,11 +47,6 @@ class TopCell: UITableViewCell {
         // Initialization code
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
     
 
     

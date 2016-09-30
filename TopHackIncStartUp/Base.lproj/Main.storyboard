@@ -50,8 +50,6 @@
                                                     <state key="normal" title="websiteLink"/>
                                                     <connections>
                                                         <action selector="loadWebsite:" destination="Z65-uH-73G" eventType="touchUpInside" id="Um1-S7-bq3"/>
-                                                        <action selector="websiteLink:" destination="Z65-uH-73G" eventType="touchUpInside" id="1HC-M7-9gl"/>
-                                                        <action selector="websitelink:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tAT-iQ-bXj"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ProgramType" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuD-Cv-Ven">

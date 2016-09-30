@@ -113,13 +113,16 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! TopCell
         
+        let row = (indexPath as NSIndexPath).row
+        
         cell.nameLabel.text = bestHackIncStartUp[(indexPath as NSIndexPath).row].name
         cell.progType.text = String(describing: bestHackIncStartUp[(indexPath as NSIndexPath).row].progType)
         cell.locationLabel.text = String(describing: bestHackIncStartUp[(indexPath as NSIndexPath).row].areaLoc)
         cell.rankingLabel.text = String(describing: bestHackIncStartUp[(indexPath as NSIndexPath).row].dateOrTimeFrame)
         cell.IncAccHackPic.image = UIImage(named: bestHackIncStartUp[(indexPath as NSIndexPath).row].logo)
         
-        let row = (indexPath as NSIndexPath).row
+        
+        
         let fullUrl = bestHackIncStartUp[row].progUrl
         cell.websiteUrl = fullUrl
         
