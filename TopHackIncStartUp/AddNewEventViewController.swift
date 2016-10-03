@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddNewEventViewController: UIViewController {
+class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var progNameLabel: UITextField!
     
@@ -49,28 +49,18 @@ class AddNewEventViewController: UIViewController {
          saveButton.isEnabled = false
         
         
-        let name = nameTextField.text ?? ""
-        let rating = ratingControl.rating
-        let photo = photoImageView.image
+        let name = progNameLabel.text ?? ""
+      //  let rating = ratingControl.rating
+      //  let photo = photoImageView.image
+
         
-        if meal == nil {
-            
-            meal = Meal(name: name, photo: photo, rating: rating)
-            
-        } else {
-            
-            meal?.name = name
-            meal?.photo = photo
-            meal?.rating = rating
-            
-        }
         
         if BackendlessManager.sharedInstance.isUserLoggedIn() {
             
             // We're logged in - attempt to save to Backendless!
-            saveSpinner.startAnimating()
+            spinner.startAnimating()
             
-            BackendlessManager.sharedInstance.saveMeal(mealData: meal!,
+/*            BackendlessManager.sharedInstance.saveMeal(mealData: meal!,
                                                        
                                                        completion: {
                                                         
@@ -104,12 +94,25 @@ class AddNewEventViewController: UIViewController {
             
             // We're not logged in - just unwind and have MealTableViewController
             // save later using NSKeyedArchiver.
-            self.performSegue(withIdentifier: "unwindToMealList", sender: self)
+            self.performSegue(withIdentifier: "unwindToMealList", sender: self) */
             
         }
     }
     
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
+        // Hide the keyboard.
+        progNameLabel.resignFirstResponder()
+        
+        // UIImagePickerController is a view controller that lets a user pick media from their photo library.
+        let imagePickerController = UIImagePickerController()
+        
+        // Only allow photos to be picked, not taken.
+        imagePickerController.sourceType = .photoLibrary
+        
+        // Make sure ViewController is notified when the user picks an image.
+        imagePickerController.delegate = self
+        
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

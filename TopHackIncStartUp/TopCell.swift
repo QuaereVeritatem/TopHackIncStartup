@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+// @IBDesignable makes any changes we make in this class live/realtime in storyboard
+@IBDesignable
 class TopCell: UITableViewCell {
     
     var websiteUrl: String?

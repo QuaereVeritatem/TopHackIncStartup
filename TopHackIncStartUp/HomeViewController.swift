@@ -9,6 +9,8 @@
 //TechCommunity tracker.. include website clickable link and date for events (or say year round)
 //Top Hackathons,Incubators,accelerators,bootcamps that programmers should know about
 
+//**** New Name:  'TechBolt' - connecting tech proffesionals to the events you care about
+
 import UIKit
 //work on further increasing design as well..nav bar on homepage and double reload of homepage from table
 //make sure to put in comments before I upload to github
