@@ -15,6 +15,17 @@
 		372C37E11D9B221700882ACC /* HackIncStartUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37DB1D9B221700882ACC /* HackIncStartUp.swift */; };
 		372C37E71D9C186800882ACC /* AddNewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37E61D9C186800882ACC /* AddNewEventViewController.swift */; };
 		372C37F01DA20D4B00882ACC /* POIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37EF1DA20D4B00882ACC /* POIViewController.swift */; };
+		372C37FA1DA30A0300882ACC /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37F21DA30A0300882ACC /* Duration.swift */; };
+		372C37FB1DA30A0300882ACC /* Int+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37F31DA30A0300882ACC /* Int+Timepiece.swift */; };
+		372C37FC1DA30A0300882ACC /* NSCalendar+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37F41DA30A0300882ACC /* NSCalendar+Timepiece.swift */; };
+		372C37FD1DA30A0300882ACC /* NSDate+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37F51DA30A0300882ACC /* NSDate+Timepiece.swift */; };
+		372C37FE1DA30A0300882ACC /* NSDateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37F61DA30A0300882ACC /* NSDateComponents+Timepiece.swift */; };
+		372C37FF1DA30A0300882ACC /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37F71DA30A0300882ACC /* String+Timepiece.swift */; };
+		372C38001DA30A0300882ACC /* WWCalendarTimeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37F81DA30A0300882ACC /* WWCalendarTimeSelector.swift */; };
+		372C38011DA30A0300882ACC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37F91DA30A0300882ACC /* ViewController.swift */; };
+		372C38041DA33B1D00882ACC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C38031DA33B1D00882ACC /* SettingsViewController.swift */; };
+		372C38061DA33BAC00882ACC /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C38051DA33BAC00882ACC /* SettingsTableViewCell.swift */; };
+		372C38081DA33C0E00882ACC /* AddNewPOIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C38071DA33C0E00882ACC /* AddNewPOIViewController.swift */; };
 		37F72F621D7BF6D00059FCD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F72F611D7BF6D00059FCD2 /* AppDelegate.swift */; };
 		37F72F641D7BF6D00059FCD2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F72F631D7BF6D00059FCD2 /* HomeViewController.swift */; };
 		37F72F671D7BF6D00059FCD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37F72F651D7BF6D00059FCD2 /* Main.storyboard */; };
@@ -34,6 +45,17 @@
 		372C37DB1D9B221700882ACC /* HackIncStartUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackIncStartUp.swift; sourceTree = "<group>"; };
 		372C37E61D9C186800882ACC /* AddNewEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewEventViewController.swift; sourceTree = "<group>"; };
 		372C37EF1DA20D4B00882ACC /* POIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POIViewController.swift; sourceTree = "<group>"; };
+		372C37F21DA30A0300882ACC /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
+		372C37F31DA30A0300882ACC /* Int+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Timepiece.swift"; sourceTree = "<group>"; };
+		372C37F41DA30A0300882ACC /* NSCalendar+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalendar+Timepiece.swift"; sourceTree = "<group>"; };
+		372C37F51DA30A0300882ACC /* NSDate+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Timepiece.swift"; sourceTree = "<group>"; };
+		372C37F61DA30A0300882ACC /* NSDateComponents+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateComponents+Timepiece.swift"; sourceTree = "<group>"; };
+		372C37F71DA30A0300882ACC /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
+		372C37F81DA30A0300882ACC /* WWCalendarTimeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WWCalendarTimeSelector.swift; sourceTree = "<group>"; };
+		372C37F91DA30A0300882ACC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		372C38031DA33B1D00882ACC /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		372C38051DA33BAC00882ACC /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		372C38071DA33C0E00882ACC /* AddNewPOIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPOIViewController.swift; sourceTree = "<group>"; };
 		37F72F5E1D7BF6D00059FCD2 /* TopHackIncStartUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopHackIncStartUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F72F611D7BF6D00059FCD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37F72F631D7BF6D00059FCD2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +88,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		372C37F11DA3090E00882ACC /* Calendar Files */ = {
+			isa = PBXGroup;
+			children = (
+				372C37F21DA30A0300882ACC /* Duration.swift */,
+				372C37F31DA30A0300882ACC /* Int+Timepiece.swift */,
+				372C37F41DA30A0300882ACC /* NSCalendar+Timepiece.swift */,
+				372C37F51DA30A0300882ACC /* NSDate+Timepiece.swift */,
+				372C37F61DA30A0300882ACC /* NSDateComponents+Timepiece.swift */,
+				372C37F71DA30A0300882ACC /* String+Timepiece.swift */,
+				372C37F81DA30A0300882ACC /* WWCalendarTimeSelector.swift */,
+				372C37F91DA30A0300882ACC /* ViewController.swift */,
+			);
+			name = "Calendar Files";
+			sourceTree = "<group>";
+		};
+		372C38021DA324FE00882ACC /* Bluetooth Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Bluetooth Files";
+			sourceTree = "<group>";
+		};
 		37F72F551D7BF6D00059FCD2 = {
 			isa = PBXGroup;
 			children = (
@@ -87,16 +131,21 @@
 		37F72F601D7BF6D00059FCD2 /* TopHackIncStartUp */ = {
 			isa = PBXGroup;
 			children = (
+				372C38021DA324FE00882ACC /* Bluetooth Files */,
+				372C37F11DA3090E00882ACC /* Calendar Files */,
 				37F72F611D7BF6D00059FCD2 /* AppDelegate.swift */,
-				372C37E61D9C186800882ACC /* AddNewEventViewController.swift */,
 				372C37D01D9B21EB00882ACC /* LoginViewController.swift */,
 				372C37D21D9B21EB00882ACC /* RegisterViewController.swift */,
+				372C38031DA33B1D00882ACC /* SettingsViewController.swift */,
+				372C38051DA33BAC00882ACC /* SettingsTableViewCell.swift */,
 				37F72F631D7BF6D00059FCD2 /* HomeViewController.swift */,
+				372C37E61D9C186800882ACC /* AddNewEventViewController.swift */,
 				372C37D31D9B21EB00882ACC /* Utility.swift */,
 				37F72FD51D7E40B70059FCD2 /* TopCell.swift */,
 				372C37DB1D9B221700882ACC /* HackIncStartUp.swift */,
 				372C37DA1D9B221700882ACC /* BackendlessTopHack.swift */,
 				372C37EF1DA20D4B00882ACC /* POIViewController.swift */,
+				372C38071DA33C0E00882ACC /* AddNewPOIViewController.swift */,
 				37F72F651D7BF6D00059FCD2 /* Main.storyboard */,
 				372C37CF1D9B21EB00882ACC /* BackendlessManager.swift */,
 				37F72F681D7BF6D00059FCD2 /* Assets.xcassets */,
@@ -239,14 +288,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				372C37FE1DA30A0300882ACC /* NSDateComponents+Timepiece.swift in Sources */,
+				372C38011DA30A0300882ACC /* ViewController.swift in Sources */,
 				372C37E11D9B221700882ACC /* HackIncStartUp.swift in Sources */,
+				372C38041DA33B1D00882ACC /* SettingsViewController.swift in Sources */,
+				372C38081DA33C0E00882ACC /* AddNewPOIViewController.swift in Sources */,
 				37F72F641D7BF6D00059FCD2 /* HomeViewController.swift in Sources */,
 				372C37F01DA20D4B00882ACC /* POIViewController.swift in Sources */,
+				372C37FF1DA30A0300882ACC /* String+Timepiece.swift in Sources */,
+				372C37FA1DA30A0300882ACC /* Duration.swift in Sources */,
+				372C37FC1DA30A0300882ACC /* NSCalendar+Timepiece.swift in Sources */,
+				372C37FB1DA30A0300882ACC /* Int+Timepiece.swift in Sources */,
 				372C37D71D9B21EB00882ACC /* RegisterViewController.swift in Sources */,
+				372C38061DA33BAC00882ACC /* SettingsTableViewCell.swift in Sources */,
+				372C38001DA30A0300882ACC /* WWCalendarTimeSelector.swift in Sources */,
 				372C37D41D9B21EB00882ACC /* BackendlessManager.swift in Sources */,
 				372C37D81D9B21EB00882ACC /* Utility.swift in Sources */,
 				37F72F621D7BF6D00059FCD2 /* AppDelegate.swift in Sources */,
 				372C37D51D9B21EB00882ACC /* LoginViewController.swift in Sources */,
+				372C37FD1DA30A0300882ACC /* NSDate+Timepiece.swift in Sources */,
 				37F72FD61D7E40B70059FCD2 /* TopCell.swift in Sources */,
 				372C37E71D9C186800882ACC /* AddNewEventViewController.swift in Sources */,
 				372C37E01D9B221700882ACC /* BackendlessTopHack.swift in Sources */,
