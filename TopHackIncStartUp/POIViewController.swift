@@ -5,6 +5,7 @@
 //  Created by Robert Martin on 10/2/16.
 //  Copyright © 2016 Robert Martin. All rights reserved.
 //
+//software program to crop pics really needed so pics look clean
 
 import UIKit
 
