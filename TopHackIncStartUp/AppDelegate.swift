@@ -19,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         BackendlessManager.sharedInstance.initApp()
         
+        //backendless Push notification setup
+        let settings = UIUserNotificationSettings(types:[.alert, .sound, .badge], categories: nil)
+        UIApplication.shared.registerUserNotificationSettings(settings)
+
+        
         if !BackendlessManager.sharedInstance.isUserLoggedIn() {
             BackendlessManager.sharedInstance.registerTestUser()
         }

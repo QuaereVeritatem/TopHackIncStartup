@@ -60,6 +60,7 @@
 		372C38071DA33C0E00882ACC /* AddNewPOIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPOIViewController.swift; sourceTree = "<group>"; };
 		372C38351DA42A9F00882ACC /* SettingsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
 		372C38381DA44A4500882ACC /* WWCalendarTimeSelector.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WWCalendarTimeSelector.storyboard; sourceTree = "<group>"; };
+		372C38681DA55FF800882ACC /* TopHackIncStartUp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TopHackIncStartUp.entitlements; sourceTree = "<group>"; };
 		37F72F5E1D7BF6D00059FCD2 /* TopHackIncStartUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopHackIncStartUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F72F611D7BF6D00059FCD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37F72F631D7BF6D00059FCD2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +146,7 @@
 		37F72F601D7BF6D00059FCD2 /* TopHackIncStartUp */ = {
 			isa = PBXGroup;
 			children = (
+				372C38681DA55FF800882ACC /* TopHackIncStartUp.entitlements */,
 				372C38021DA324FE00882ACC /* Bluetooth Files */,
 				372C37F11DA3090E00882ACC /* Calendar Files */,
 				37F72F611D7BF6D00059FCD2 /* AppDelegate.swift */,
@@ -213,8 +215,16 @@
 				TargetAttributes = {
 					37F72F5D1D7BF6D00059FCD2 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 24SMK2L74Z;
+						DevelopmentTeam = T3K5P842PL;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -448,7 +458,8 @@
 			baseConfigurationReference = 2338D68D71C8869AD95DA8E4 /* Pods-TopHackIncStartUp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 24SMK2L74Z;
+				CODE_SIGN_ENTITLEMENTS = TopHackIncStartUp/TopHackIncStartUp.entitlements;
+				DEVELOPMENT_TEAM = T3K5P842PL;
 				INFOPLIST_FILE = TopHackIncStartUp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.QuaereVeritatem.TopHackIncStartUp;
@@ -462,7 +473,8 @@
 			baseConfigurationReference = E56E2788548D4403358F606E /* Pods-TopHackIncStartUp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 24SMK2L74Z;
+				CODE_SIGN_ENTITLEMENTS = TopHackIncStartUp/TopHackIncStartUp.entitlements;
+				DEVELOPMENT_TEAM = T3K5P842PL;
 				INFOPLIST_FILE = TopHackIncStartUp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.QuaereVeritatem.TopHackIncStartUp;
