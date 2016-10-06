@@ -8,16 +8,17 @@
 
 import UIKit
 
-//This is class is equivalent to Meal 
+//This is class is equivalent to Meal (classifications for user-side stuff)
+//data for EventsVC and POIVC
 class HackIncStartUp: NSObject, NSCoding {
     
     // MARK: Common Properties Shared by Archiver and Backendless
     
         var name: String
-        var progUrl: String?
+        var progUrl: String? //full website address
        // var progType:
        // var areaLoc: HomeViewController.hackIncStartUp.AreaLoc
-        var logo: String?
+        var logo: String? // an image here but an url string in BackendlessTopHack
        // var dateOrTimeFrame: HomeViewController.hackIncStartUp.TimeFrame
     
     // MARK: Archiver Only Properties
@@ -58,7 +59,7 @@ class HackIncStartUp: NSObject, NSCoding {
         super.init()
         
         
-        // Initialization should fail if there is no name or if the rating is negative.
+        // Initialization should fail if there is no name.
         if name.isEmpty  {
             return nil
         }

@@ -23,10 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let settings = UIUserNotificationSettings(types:[.alert, .sound, .badge], categories: nil)
         UIApplication.shared.registerUserNotificationSettings(settings)
 
-        
-        if !BackendlessManager.sharedInstance.isUserLoggedIn() {
-            BackendlessManager.sharedInstance.registerTestUser()
-        }
+        //if logged in skip log in/register VC's and start on eventVC(HomeVC)
+        if BackendlessManager.sharedInstance.isUserLoggedIn() {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "tabBarController")        }
 
         
         return true

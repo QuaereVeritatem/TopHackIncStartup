@@ -1,6 +1,6 @@
 //
 //  HomeViewController.swift
-//  //TopHackIncStartUp
+//  //TophackIncEvent
 //
 //  Created by Robert Martin on 9/4/16.
 //  Copyright © 2016 Robert Martin. All rights reserved.
@@ -19,7 +19,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var myTableView: UITableView!
     
     
-    struct hackIncStartUp {
+    struct hackIncEvent {
         
         var name: String
         var progUrl: String
@@ -27,6 +27,24 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         var areaLoc: AreaLoc
         var logo: String
         var dateOrTimeFrame: TimeFrame
+    }
+    
+    struct personsOfInterest {
+        var fullName: String
+        var compName: String?
+        var jobType: String?
+        var networkStatus: String?
+        var standoutInfo:String?
+        var poiEmail: String? //website URL
+        var poiThumbnailPic: String?
+        var linkedInUser: String?
+        var twitterUser: String?
+        var faceBookUser: String?
+        var instagramUser: String?
+        
+        
+        
+        
     }
     
     enum ProgTypes {
@@ -60,23 +78,24 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     }
     
 
-    let bestHackIncStartUp = [
-        hackIncStartUp(name: "AngelHack", progUrl: "http://angelhack.com", progType: ProgTypes.hackathon, areaLoc: AreaLoc.Worldwide, logo: "angelHack", dateOrTimeFrame: TimeFrame.monthly),
-        hackIncStartUp(name: "StartUpWeekend", progUrl: "https://StartUpWeekend.org", progType: ProgTypes.hackathon, areaLoc: AreaLoc.Worldwide, logo: "startUpWeekend", dateOrTimeFrame: TimeFrame.monthly),
-        hackIncStartUp(name: "TechStars", progUrl: "http://techStars.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Worldwide, logo: "techStars", dateOrTimeFrame: TimeFrame.monthly),
-        hackIncStartUp(name: "TechWildCatters", progUrl: "http://techwildcatters.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Dallas, logo: "techWildcatters", dateOrTimeFrame: TimeFrame.monthly),
-        hackIncStartUp(name: "HealthWildcatters", progUrl: "http://healthwildcatters.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Dallas, logo: "healthWildcatters1", dateOrTimeFrame: TimeFrame.monthly),
-        hackIncStartUp(name: "AngelPad", progUrl: "https://angelpad.org", progType: ProgTypes.accelerator, areaLoc: AreaLoc.SanFran_NYC, logo: "angelPad", dateOrTimeFrame: TimeFrame.yearly),
-        hackIncStartUp(name: "IronYard", progUrl: "https://theironYard.com", progType: ProgTypes.bootcamp, areaLoc: AreaLoc.Nationwide, logo: "ironYard", dateOrTimeFrame: TimeFrame.monthly),
-        hackIncStartUp(name: "Capital Factory", progUrl: "https://capitalfactory.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Austin, logo: "capitalFactory", dateOrTimeFrame: TimeFrame.monthly),
-        hackIncStartUp(name: "Y Combinator", progUrl: "https://ycombinator.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Mountainview, logo: "yCombinator", dateOrTimeFrame: TimeFrame.yearly)
+    let besthackIncEvent = [
+        hackIncEvent(name: "AngelHack", progUrl: "http://angelhack.com", progType: ProgTypes.hackathon, areaLoc: AreaLoc.Worldwide, logo: "angelHack", dateOrTimeFrame: TimeFrame.monthly),
+        hackIncEvent(name: "StartUpWeekend", progUrl: "https://StartUpWeekend.org", progType: ProgTypes.hackathon, areaLoc: AreaLoc.Worldwide, logo: "startUpWeekend", dateOrTimeFrame: TimeFrame.monthly),
+        hackIncEvent(name: "TechStars", progUrl: "http://techStars.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Worldwide, logo: "techStars", dateOrTimeFrame: TimeFrame.monthly),
+        hackIncEvent(name: "TechWildCatters", progUrl: "http://techwildcatters.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Dallas, logo: "techWildcatters", dateOrTimeFrame: TimeFrame.monthly),
+        hackIncEvent(name: "HealthWildcatters", progUrl: "http://healthwildcatters.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Dallas, logo: "healthWildcatters1", dateOrTimeFrame: TimeFrame.monthly),
+        hackIncEvent(name: "AngelPad", progUrl: "https://angelpad.org", progType: ProgTypes.accelerator, areaLoc: AreaLoc.SanFran_NYC, logo: "angelPad", dateOrTimeFrame: TimeFrame.yearly),
+        hackIncEvent(name: "IronYard", progUrl: "https://theironYard.com", progType: ProgTypes.bootcamp, areaLoc: AreaLoc.Nationwide, logo: "ironYard", dateOrTimeFrame: TimeFrame.monthly),
+        hackIncEvent(name: "Capital Factory", progUrl: "https://capitalfactory.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Austin, logo: "capitalFactory", dateOrTimeFrame: TimeFrame.monthly),
+        hackIncEvent(name: "Y Combinator", progUrl: "https://ycombinator.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Mountainview, logo: "yCombinator", dateOrTimeFrame: TimeFrame.yearly)
     ]
 
     @IBAction func addEvents(_ sender: UIBarButtonItem) {
+        //already setup to go to next VC
     }
     
     @IBAction func editCurrentEvents(_ sender: UIBarButtonItem) {
-        
+        //setup for deleting cells
     }
     
     
@@ -101,6 +120,9 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // Add support for pull-to-refresh on the table view.
+ //       self.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: UIControlEvents.valueChanged)
     }
 
     override func didReceiveMemoryWarning() {
@@ -109,7 +131,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bestHackIncStartUp.count
+        return besthackIncEvent.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -118,15 +140,15 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         
         let row = (indexPath as NSIndexPath).row
         
-        cell.nameLabel.text = bestHackIncStartUp[(indexPath as NSIndexPath).row].name
-        cell.progType.text = String(describing: bestHackIncStartUp[(indexPath as NSIndexPath).row].progType)
-        cell.locationLabel.text = String(describing: bestHackIncStartUp[(indexPath as NSIndexPath).row].areaLoc)
-        cell.rankingLabel.text = String(describing: bestHackIncStartUp[(indexPath as NSIndexPath).row].dateOrTimeFrame)
-        cell.IncAccHackPic.image = UIImage(named: bestHackIncStartUp[(indexPath as NSIndexPath).row].logo)
+        cell.nameLabel.text = besthackIncEvent[(indexPath as NSIndexPath).row].name
+        cell.progType.text = String(describing: besthackIncEvent[(indexPath as NSIndexPath).row].progType)
+        cell.locationLabel.text = String(describing: besthackIncEvent[(indexPath as NSIndexPath).row].areaLoc)
+        cell.rankingLabel.text = String(describing: besthackIncEvent[(indexPath as NSIndexPath).row].dateOrTimeFrame)
+        cell.IncAccHackPic.image = UIImage(named: besthackIncEvent[(indexPath as NSIndexPath).row].logo)
         
         
         
-        let fullUrl = bestHackIncStartUp[row].progUrl
+        let fullUrl = besthackIncEvent[row].progUrl
         cell.websiteUrl = fullUrl
         
         var shortUrl: String = ""

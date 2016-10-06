@@ -35,9 +35,10 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
 
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
-        let isPresentingInAddMealMode = presentingViewController is UINavigationController
+        // ****This dismiss (cancel) VC function not working!!!
+        let isPresentingInAddEventMode = presentingViewController is UINavigationController
         
-        if isPresentingInAddMealMode {
+        if isPresentingInAddEventMode {
             dismiss(animated: true, completion: nil)
         } else {
             navigationController!.popViewController(animated: true)
@@ -128,7 +129,7 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        checkValidMealName()
+        checkValidEventName()
         navigationItem.title = textField.text
     }
     
@@ -137,7 +138,7 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
         saveButton.isEnabled = false
     }
     
-    func checkValidMealName() {
+    func checkValidEventName() {
         // Disable the Save button if the text field is empty.
         let text = progNameLabel.text ?? ""
         saveButton.isEnabled = !text.isEmpty
