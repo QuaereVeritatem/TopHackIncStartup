@@ -14,6 +14,7 @@
 import UIKit
 //work on further increasing design as well..nav bar on homepage and double reload of homepage from table
 //make sure to put in comments before I upload to github
+//make sure indentations all matchup and are consistent
 class HomeViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var myTableView: UITableView!
@@ -21,32 +22,15 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     
     struct hackIncEvent {
         
-        var name: String
-        var progUrl: String
-        var progType: ProgTypes
-        var areaLoc: AreaLoc
-        var logo: String
-        var dateOrTimeFrame: TimeFrame
+        var name: String //program name
+        var progUrl: String? //website...should be an optional
+        var progType: ProgTypes? //should be an optional
+        var areaLoc: AreaLoc? //location should be optional
+        var logo: String? //should be an optional in case no logo added
+        var dateOrTimeFrame: TimeFrame?  //should be optional
     }
     
-    struct personsOfInterest {
-        var fullName: String
-        var compName: String?
-        var jobType: String?
-        var networkStatus: String?
-        var standoutInfo:String?
-        var poiEmail: String? //website URL
-        var poiThumbnailPic: String?
-        var linkedInUser: String?
-        var twitterUser: String?
-        var faceBookUser: String?
-        var instagramUser: String?
         
-        
-        
-        
-    }
-    
     enum ProgTypes {
         case accelerator
         case hackathon
@@ -72,13 +56,29 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         case yearly
         case monthly
         case weekly
-        case specificMonth(String)
-        case specificDate(Int, Int, Int)
+        case specificMonth(TwelveMonths)
+        case specificDate(Int, Int, Int) //implement pickerview on months that use this variable month,day,year
         
     }
     
+    enum TwelveMonths {
+        case January
+        case February
+        case March
+        case April
+        case May
+        case June
+        case July
+        case August
+        case September
+        case October
+        case November
+        case December
+    }
+    
+        
 
-    let besthackIncEvent = [
+    var besthackIncEvent = [
         hackIncEvent(name: "AngelHack", progUrl: "http://angelhack.com", progType: ProgTypes.hackathon, areaLoc: AreaLoc.Worldwide, logo: "angelHack", dateOrTimeFrame: TimeFrame.monthly),
         hackIncEvent(name: "StartUpWeekend", progUrl: "https://StartUpWeekend.org", progType: ProgTypes.hackathon, areaLoc: AreaLoc.Worldwide, logo: "startUpWeekend", dateOrTimeFrame: TimeFrame.monthly),
         hackIncEvent(name: "TechStars", progUrl: "http://techStars.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Worldwide, logo: "techStars", dateOrTimeFrame: TimeFrame.monthly),
@@ -89,8 +89,8 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         hackIncEvent(name: "Capital Factory", progUrl: "https://capitalfactory.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Austin, logo: "capitalFactory", dateOrTimeFrame: TimeFrame.monthly),
         hackIncEvent(name: "Y Combinator", progUrl: "https://ycombinator.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Mountainview, logo: "yCombinator", dateOrTimeFrame: TimeFrame.yearly)
     ]
-
-    @IBAction func addEvents(_ sender: UIBarButtonItem) {
+    
+        @IBAction func addEvents(_ sender: UIBarButtonItem) {
         //already setup to go to next VC
     }
     
@@ -136,29 +136,65 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        /*safely unwrap optionals
+        //fetch an example optional string
+           let optionalString = fetchOptionalString()
+        
+        // now unwrap it
+           if let unwrapped = optionalString {
+               print(unwrapped)
+        }   */
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! TopCell
         
         let row = (indexPath as NSIndexPath).row
         
         cell.nameLabel.text = besthackIncEvent[(indexPath as NSIndexPath).row].name
-        cell.progType.text = String(describing: besthackIncEvent[(indexPath as NSIndexPath).row].progType)
+        
+        //the rest of these are optionals (check for nil)
+        if  besthackIncEvent[(indexPath as NSIndexPath).row].progType != nil {
+            cell.progType.text = String(describing: besthackIncEvent[(indexPath as NSIndexPath).row].progType)
+        } else {
+            cell.progType.text = ""
+        }
+        
+        if  besthackIncEvent[(indexPath as NSIndexPath).row].areaLoc != nil {
         cell.locationLabel.text = String(describing: besthackIncEvent[(indexPath as NSIndexPath).row].areaLoc)
+        } else {
+            cell.locationLabel.text = ""
+        }
+        
+        if  besthackIncEvent[(indexPath as NSIndexPath).row].dateOrTimeFrame != nil {
         cell.rankingLabel.text = String(describing: besthackIncEvent[(indexPath as NSIndexPath).row].dateOrTimeFrame)
-        cell.IncAccHackPic.image = UIImage(named: besthackIncEvent[(indexPath as NSIndexPath).row].logo)
+        } else {
+            cell.rankingLabel.text = ""
+        }
         
-        
-        
-        let fullUrl = besthackIncEvent[row].progUrl
-        cell.websiteUrl = fullUrl
+        if besthackIncEvent[(indexPath as NSIndexPath).row].logo != nil {
+        cell.IncAccHackPic.image = UIImage(named: besthackIncEvent[(indexPath as NSIndexPath).row].logo!)
+        } else {
+            cell.IncAccHackPic.image = UIImage(named: "defaultLogo1")
+        }
         
         var shortUrl: String = ""
-        
-        // If the URL has "http://" or "https://" in it - remove it!
-        if fullUrl.lowercased().range(of: "http://") != nil {
-            shortUrl = fullUrl.replacingOccurrences(of: "http://", with: "")
-        } else if fullUrl.lowercased().range(of: "https://") != nil {
-            shortUrl = fullUrl.replacingOccurrences(of: "https://", with: "")
+        //test for nil
+        if besthackIncEvent[row].progUrl != nil {
+            var fullUrl = besthackIncEvent[row].progUrl
+            cell.websiteUrl = fullUrl
+            // If the URL has "http://" or "https://" in it - remove it!
+            if fullUrl!.lowercased().range(of: "http://") != nil {
+                shortUrl = fullUrl!.replacingOccurrences(of: "http://", with: "")
+            } else if fullUrl!.lowercased().range(of: "https://") != nil {
+                shortUrl = fullUrl!.replacingOccurrences(of: "https://", with: "")
+            }
+        }   else {
+            //website entered is nil
+                var fullUrl = ""
+            cell.websiteUrl = fullUrl
         }
+        
+        
         
         cell.websiteBtn.setTitle(shortUrl, for: UIControlState())
         
@@ -197,6 +233,11 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         })
         
         task.resume()
+    }
+    
+    //generic function that can compare two values regardless of type!
+    func areValuesEqual<T: Equatable>(firstValue: T, secondValue: T) -> Bool {
+        return firstValue == secondValue
     }
 
 

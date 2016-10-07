@@ -9,23 +9,83 @@
 import UIKit
 
 class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    struct hackEvent {
+        
+        var name: String //program name
+        var progUrl: String? //website...should be an optional
+        var progType: ProgTypes? //should be an optional
+        var areaLoc: AreaLoc? //location should be optional
+        var logo: String? //should be an optional in case no logo added
+        var dateOrTimeFrame: TimeFrame?  //should be optional
+    }
+    
+    enum ProgTypes {
+        case accelerator
+        case hackathon
+        case bootcamp
+        case incubator
+        case startUpPitch
+        case networking
+        
+    }
+    
+    enum AreaLoc {
+        case Worldwide
+        case Dallas
+        case Nationwide
+        case Austin
+        case Mountainview
+        case SanFran_NYC
+        case NYC
+        
+    }
+    
+    enum TimeFrame {
+        case yearly
+        case monthly
+        case weekly
+        case specificMonth(TwelveMonths)
+        case specificDate(Int, Int, Int) //implement pickerview on months that use this variable month,day,year
+        
+    }
+    
+    enum TwelveMonths {
+        case January
+        case February
+        case March
+        case April
+        case May
+        case June
+        case July
+        case August
+        case September
+        case October
+        case November
+        case December
+    }
 
+    var hackInc = [hackEvent]()
+    
     @IBOutlet weak var progNameLabel: UITextField!
     
     @IBOutlet weak var websiteLink: UITextField!
     
-    @IBOutlet weak var progTypeLabel: UITextField!
+    @IBOutlet weak var progTypeLabel: UITextField! //should be tied to pickerView
     
-    @IBOutlet weak var progLocation: UITextField!
+    @IBOutlet weak var progLocation: UITextField!  //should be tied to pickerView
     
-    @IBOutlet weak var dateLabel: UITextField!
+    @IBOutlet weak var dateLabel: UITextField!     //should be tied to pickerView
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
-    
+    //image not connected..delete and put imageview under transparent button (same autolayout)
     @IBOutlet weak var photoImageView: UIImageView!
+    
+    @IBAction func photoImageButton(_ sender: UIButton) {
+    }
     
         override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +109,20 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
     @IBAction func save(_ sender: UIBarButtonItem) {
          saveButton.isEnabled = false
         
-        
+        //programName
         let name = progNameLabel.text ?? ""
-      //  let rating = ratingControl.rating
-      //  let photo = photoImageView.image
+          let web = websiteLink.text ?? ""
+            let progT = progTypeLabel
+            let progL = progLocation
+            let dateL = dateLabel
+ 
+        let photo = photoImageView.image //not tied to anything yet
+        //update the struct Event
+        hackInc[hackEvent.name] = name
+        hackInc. , progUrl: web, progType: progT, areaLoc: progL, logo: photo , dateOrTimeFrame: dateL)
+        
 
+        HomeVC.besthackIncEvent.append(hackInc(name: name, progUrl: web, progType: progT, areaLoc: progL, logo: photo , dateOrTimeFrame: dateL))
         
         
         if BackendlessManager.sharedInstance.isUserLoggedIn() {
@@ -63,33 +132,33 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
             
 /*            BackendlessManager.sharedInstance.saveMeal(mealData: meal!,
                                                        
-                                                       completion: {
-                                                        
-                                                        // It was saved to the database!
-                                                        self.saveSpinner.stopAnimating()
-                                                        
-                                                        self.meal?.replacePhoto = false // Reset this just in case we did a photo replacement.
-                                                        
-                                                        self.performSegue(withIdentifier: "unwindToMealList", sender: self)
-                },
-                                                       
-                                                       error: {
-                                                        
-                                                        // It was NOT saved to the database! - tell the user and DON'T call performSegue.
-                                                        self.saveSpinner.stopAnimating()
-                                                        
-                                                        let alertController = UIAlertController(title: "Save Error",
-                                                                                                message: "Oops! We couldn't save your Meal at this time.",
-                                                                                                preferredStyle: .alert)
-                                                        
-                                                        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                                                        alertController.addAction(okAction)
-                                                        
-                                                        self.present(alertController, animated: true, completion: nil)
-                                                        
-                                                        self.saveButton.isEnabled = true
-                                                        
-            })
+             completion: {
+             
+             // It was saved to the database!
+             self.saveSpinner.stopAnimating()
+             
+             self.meal?.replacePhoto = false // Reset this just in case we did a photo replacement.
+             
+             self.performSegue(withIdentifier: "unwindToMealList", sender: self)
+             },
+             
+             error: {
+             
+             // It was NOT saved to the database! - tell the user and DON'T call performSegue.
+             self.saveSpinner.stopAnimating()
+             
+             let alertController = UIAlertController(title: "Save Error",
+             message: "Oops! We couldn't save your Meal at this time.",
+             preferredStyle: .alert)
+             
+             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+             alertController.addAction(okAction)
+             
+             self.present(alertController, animated: true, completion: nil)
+             
+             self.saveButton.isEnabled = true
+             
+             })
             
         } else {
             
@@ -129,6 +198,7 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        //make sure field not empty 
         checkValidEventName()
         navigationItem.title = textField.text
     }
