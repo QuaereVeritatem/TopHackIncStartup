@@ -9,64 +9,7 @@
 import UIKit
 
 class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    struct hackEvent {
-        
-        var name: String //program name
-        var progUrl: String? //website...should be an optional
-        var progType: ProgTypes? //should be an optional
-        var areaLoc: AreaLoc? //location should be optional
-        var logo: String? //should be an optional in case no logo added
-        var dateOrTimeFrame: TimeFrame?  //should be optional
-    }
-    
-    enum ProgTypes {
-        case accelerator
-        case hackathon
-        case bootcamp
-        case incubator
-        case startUpPitch
-        case networking
-        
-    }
-    
-    enum AreaLoc {
-        case Worldwide
-        case Dallas
-        case Nationwide
-        case Austin
-        case Mountainview
-        case SanFran_NYC
-        case NYC
-        
-    }
-    
-    enum TimeFrame {
-        case yearly
-        case monthly
-        case weekly
-        case specificMonth(TwelveMonths)
-        case specificDate(Int, Int, Int) //implement pickerview on months that use this variable month,day,year
-        
-    }
-    
-    enum TwelveMonths {
-        case January
-        case February
-        case March
-        case April
-        case May
-        case June
-        case July
-        case August
-        case September
-        case October
-        case November
-        case December
-    }
-
-    var hackInc = [hackEvent]()
-    
+ 
     @IBOutlet weak var progNameLabel: UITextField!
     
     @IBOutlet weak var websiteLink: UITextField!
@@ -105,7 +48,7 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
         }
     }
     
-    
+    //***Find a better way to do this (ck ios course examples like this)
     @IBAction func save(_ sender: UIBarButtonItem) {
          saveButton.isEnabled = false
         
@@ -118,11 +61,14 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
  
         let photo = photoImageView.image //not tied to anything yet
         //update the struct Event
-        hackInc[hackEvent.name] = name
-        hackInc. , progUrl: web, progType: progT, areaLoc: progL, logo: photo , dateOrTimeFrame: dateL)
+       // EventData.sharedInstance.testEvent.areaLoc = progL  //need to setup pickerview to textfield!!
+       // EventData.sharedInstance.testEvent.dateOrTimeFrame = dateL  //need to setup pickerview to textfield!!
+        EventData.sharedInstance.testEvent.logo = photo?.accessibilityIdentifier
+        EventData.sharedInstance.testEvent.name = name
+       // EventData.sharedInstance.testEvent.progType = progT   //need to setup pickerview to textfield!!
+        EventData.sharedInstance.testEvent.progUrl = web
         
-
-        HomeVC.besthackIncEvent.append(hackInc(name: name, progUrl: web, progType: progT, areaLoc: progL, logo: photo , dateOrTimeFrame: dateL))
+        EventData.sharedInstance.besthackIncEvent.append(EventData.sharedInstance.testEvent)
         
         
         if BackendlessManager.sharedInstance.isUserLoggedIn() {

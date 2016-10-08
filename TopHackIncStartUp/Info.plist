@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>My description about why I need this capability</string>
 	<key>CFBundleDisplayName</key>
 	<string>TechBolt</string>
 	<key>CFBundleExecutable</key>

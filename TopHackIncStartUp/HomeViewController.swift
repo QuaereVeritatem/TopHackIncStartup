@@ -19,7 +19,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var myTableView: UITableView!
     
-    
+ /*
     struct hackIncEvent {
         
         var name: String //program name
@@ -76,8 +76,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         case December
     }
     
-        
-
+    
     var besthackIncEvent = [
         hackIncEvent(name: "AngelHack", progUrl: "http://angelhack.com", progType: ProgTypes.hackathon, areaLoc: AreaLoc.Worldwide, logo: "angelHack", dateOrTimeFrame: TimeFrame.monthly),
         hackIncEvent(name: "StartUpWeekend", progUrl: "https://StartUpWeekend.org", progType: ProgTypes.hackathon, areaLoc: AreaLoc.Worldwide, logo: "startUpWeekend", dateOrTimeFrame: TimeFrame.monthly),
@@ -88,7 +87,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         hackIncEvent(name: "IronYard", progUrl: "https://theironYard.com", progType: ProgTypes.bootcamp, areaLoc: AreaLoc.Nationwide, logo: "ironYard", dateOrTimeFrame: TimeFrame.monthly),
         hackIncEvent(name: "Capital Factory", progUrl: "https://capitalfactory.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Austin, logo: "capitalFactory", dateOrTimeFrame: TimeFrame.monthly),
         hackIncEvent(name: "Y Combinator", progUrl: "https://ycombinator.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Mountainview, logo: "yCombinator", dateOrTimeFrame: TimeFrame.yearly)
-    ]
+    ] */
     
         @IBAction func addEvents(_ sender: UIBarButtonItem) {
         //already setup to go to next VC
@@ -131,7 +130,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return besthackIncEvent.count
+        return EventData.sharedInstance.besthackIncEvent.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -150,37 +149,37 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         
         let row = (indexPath as NSIndexPath).row
         
-        cell.nameLabel.text = besthackIncEvent[(indexPath as NSIndexPath).row].name
+        cell.nameLabel.text = EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].name
         
         //the rest of these are optionals (check for nil)
-        if  besthackIncEvent[(indexPath as NSIndexPath).row].progType != nil {
-            cell.progType.text = String(describing: besthackIncEvent[(indexPath as NSIndexPath).row].progType)
+        if  EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].progType != nil {
+            cell.progType.text = String(describing: EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].progType)
         } else {
             cell.progType.text = ""
         }
         
-        if  besthackIncEvent[(indexPath as NSIndexPath).row].areaLoc != nil {
-        cell.locationLabel.text = String(describing: besthackIncEvent[(indexPath as NSIndexPath).row].areaLoc)
+        if  EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].areaLoc != nil {
+        cell.locationLabel.text = String(describing: EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].areaLoc)
         } else {
             cell.locationLabel.text = ""
         }
         
-        if  besthackIncEvent[(indexPath as NSIndexPath).row].dateOrTimeFrame != nil {
-        cell.rankingLabel.text = String(describing: besthackIncEvent[(indexPath as NSIndexPath).row].dateOrTimeFrame)
+        if  EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].dateOrTimeFrame != nil {
+        cell.rankingLabel.text = String(describing: EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].dateOrTimeFrame)
         } else {
             cell.rankingLabel.text = ""
         }
         
-        if besthackIncEvent[(indexPath as NSIndexPath).row].logo != nil {
-        cell.IncAccHackPic.image = UIImage(named: besthackIncEvent[(indexPath as NSIndexPath).row].logo!)
+        if EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].logo != nil {
+        cell.IncAccHackPic.image = UIImage(named: EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].logo!)
         } else {
             cell.IncAccHackPic.image = UIImage(named: "defaultLogo1")
         }
         
         var shortUrl: String = ""
         //test for nil
-        if besthackIncEvent[row].progUrl != nil {
-            var fullUrl = besthackIncEvent[row].progUrl
+        if EventData.sharedInstance.besthackIncEvent[row].progUrl != nil {
+            var fullUrl = EventData.sharedInstance.besthackIncEvent[row].progUrl
             cell.websiteUrl = fullUrl
             // If the URL has "http://" or "https://" in it - remove it!
             if fullUrl!.lowercased().range(of: "http://") != nil {
