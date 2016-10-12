@@ -45,7 +45,10 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
             //set textfields to pullup a pickerview
             progTypeLabel.inputView = pickerView
             progLocation.inputView = pickerView
+            //try this to fix the errors we be having!!!*****
+            // progLocation.inputView = pickerView2
             dateLabel.inputView = pickerView
+            //dateLabel.inputView = pickerView3
 
        
     }

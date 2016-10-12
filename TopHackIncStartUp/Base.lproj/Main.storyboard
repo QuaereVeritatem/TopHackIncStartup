@@ -102,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="di9-yE-tXE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3501.5999999999999" y="-1548.5757121439281"/>
+            <point key="canvasLocation" x="3657" y="-1549"/>
         </scene>
         <!--HomeViewController-->
         <scene sceneID="tne-QT-ifu">
@@ -674,36 +674,26 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MP4-UU-WZT">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="95" id="0bu-GT-2H3"/>
-                                            <constraint firstAttribute="height" constant="98" id="TDq-Vq-ZJW"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jsQ-WO-Nix">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="meO-tQ-Hkw"/>
-                                            <constraint firstAttribute="height" constant="50" id="ypQ-9k-rHg"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LcE-hC-E0A">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="RGG-Jx-f3R"/>
-                                            <constraint firstAttribute="height" constant="50" id="xFR-6B-F3u"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qlZ-i3-v9d">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="17w-4G-aOu"/>
-                                            <constraint firstAttribute="width" constant="50" id="CRu-CL-bL1"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vMv-4f-1Jh">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="VJN-sz-2bM"/>
-                                            <constraint firstAttribute="width" constant="50" id="nnl-aX-xTg"/>
-                                        </constraints>
-                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1g5-oj-K5P">
+                                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="image Upload"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JfH-FI-RCq">
+                                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Facebook"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgI-Vh-j5N">
+                                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Instagram"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ds-h6-DlF">
+                                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Twitter"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srU-Cw-3wP">
+                                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="LinkedIn"/>
+                                    </button>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vgz-Bg-BXW">
@@ -712,6 +702,9 @@
                                     <constraint firstAttribute="width" constant="70" id="nr2-AH-RGh"/>
                                 </constraints>
                                 <state key="normal" title="Sync Data"/>
+                                <connections>
+                                    <action selector="bluetoothSync:" destination="NDJ-Y9-W8A" eventType="touchUpInside" id="o4f-qT-lcb"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -729,13 +722,29 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Person" id="b9q-6y-aQM">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="tDU-X4-LAF"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="G3R-d0-Wdo"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="tDU-X4-LAF">
+                            <connections>
+                                <action selector="cancel:" destination="NDJ-Y9-W8A" id="Fvp-cK-ygL"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="G3R-d0-Wdo">
+                            <connections>
+                                <action selector="save:" destination="NDJ-Y9-W8A" id="0mi-al-Mem"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="compNameLabel" destination="RuO-W2-5cc" id="M5m-W0-1ew"/>
+                        <outlet property="emailLabel" destination="hSO-1M-9rB" id="ukV-5L-wAa"/>
+                        <outlet property="fullNameLabel" destination="5lD-rR-Szt" id="YI3-wC-BlF"/>
+                        <outlet property="jobTypeLabel" destination="WkC-sG-3p1" id="gc2-Zx-Awy"/>
+                        <outlet property="networkStatusLabel" destination="RbU-mF-WZs" id="zDj-7P-EZl"/>
+                        <outlet property="standOutInfoLabel" destination="4tc-s3-bq7" id="19P-aA-keb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Agf-Ah-N5Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3657" y="-72"/>
+            <point key="canvasLocation" x="3656.8000000000002" y="-72.413793103448285"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="7cS-pJ-twB">
@@ -810,6 +819,26 @@
                                     <constraint firstAttribute="height" constant="62" id="PEA-3Y-93z"/>
                                 </constraints>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="cnb-7D-yM1">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lad-W2-Ecg">
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="FaceBook"/>
+                                        <connections>
+                                            <action selector="loginViaFacebook:" destination="r9G-YQ-1eU" eventType="touchUpInside" id="Vik-Br-c7b"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceW-zj-GrD">
+                                        <state key="normal" title="Twitter"/>
+                                        <connections>
+                                            <action selector="loginViaTwitter:" destination="r9G-YQ-1eU" eventType="touchUpInside" id="6sc-sF-cZ0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ceW-zj-GrD" firstAttribute="width" secondItem="lad-W2-Ecg" secondAttribute="width" id="fav-sV-pdd"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -824,7 +853,9 @@
                             <constraint firstAttribute="trailing" secondItem="Fg0-rc-BgO" secondAttribute="trailing" id="LdM-sH-cRY"/>
                             <constraint firstItem="mhu-qS-ROq" firstAttribute="top" secondItem="Fg0-rc-BgO" secondAttribute="bottom" id="Owr-cO-Tte"/>
                             <constraint firstItem="ZuB-ZW-pa7" firstAttribute="centerX" secondItem="ozf-cD-tHj" secondAttribute="centerX" id="P0V-Av-iD2"/>
+                            <constraint firstItem="cnb-7D-yM1" firstAttribute="centerX" secondItem="ozf-cD-tHj" secondAttribute="centerX" id="UmY-9X-mvs"/>
                             <constraint firstItem="8JI-th-Cpa" firstAttribute="top" secondItem="8rs-nE-pys" secondAttribute="bottom" constant="-3.5" id="XZH-dD-v2y"/>
+                            <constraint firstItem="cnb-7D-yM1" firstAttribute="top" secondItem="ZuB-ZW-pa7" secondAttribute="bottom" constant="8" id="a3w-Tx-sEt"/>
                             <constraint firstItem="U3j-mR-HPG" firstAttribute="centerX" secondItem="ozf-cD-tHj" secondAttribute="centerX" id="em0-uX-RW7"/>
                             <constraint firstItem="mR7-PP-XHx" firstAttribute="top" secondItem="aUz-iv-lCa" secondAttribute="bottom" id="n68-Vb-e4O"/>
                             <constraint firstItem="ZuB-ZW-pa7" firstAttribute="top" secondItem="xgD-89-rqR" secondAttribute="bottom" id="oPf-Zl-cwW"/>
@@ -1143,6 +1174,6 @@
         <image name="LogoDuskColored" width="194" height="180"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kwu-WZ-YiO"/>
+        <segue reference="ooV-EC-X7V"/>
     </inferredMetricsTieBreakers>
 </document>

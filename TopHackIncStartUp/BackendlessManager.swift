@@ -92,6 +92,53 @@ class BackendlessManager {
         }
     }
     
+    func loginViaFacebook(completion: @escaping () -> (), error: @escaping (String) -> ()) {
+        
+        backendless.userService.easyLogin(
+            
+            withFacebookFieldsMapping: ["email":"email"], permissions: ["email"],
+            
+            response: {(result : NSNumber?) -> () in
+                print ("Result: \(result)")
+                completion()
+            },
+            
+            error: { (fault : Fault?) -> () in
+                print("Server reported an error: \(fault)")
+                error((fault?.message)!)
+        })
+    }
+    
+    func loginViaTwitter(completion: @escaping () -> (), error: @escaping (String) -> ()) {
+        
+        backendless.userService.easyLogin(withTwitterFieldsMapping: ["email":"email"],
+                                          
+                                          response: {(result : NSNumber?) -> () in
+                                            print ("Result: \(result)")
+                                            completion()
+            },
+                                          
+                                          error: { (fault : Fault?) -> () in
+                                            print("Server reported an error: \(fault)")
+                                            error((fault?.message)!)
+        })
+    }
+    
+    func handleOpen(open url: URL, completion: @escaping () -> (), error: @escaping () -> ()) {
+        
+        print("handleOpen: url scheme = \(url.scheme)")
+        
+        let user = backendless.userService.handleOpen(url)
+        
+        if user != nil {
+            print("handleOpen: user = \(user)")
+            //make same as is user loggen in code/function
+            completion()
+        } else {
+            error()
+        }
+    }
+    
     func registerUser(email: String, password: String, completion: @escaping () -> (), error: @escaping (String) -> ()) {
         
         let user: BackendlessUser = BackendlessUser()

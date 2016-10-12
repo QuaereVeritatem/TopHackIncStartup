@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BackendlessManager.sharedInstance.initApp()
         
         //backendless Push notification setup
-        let settings = UIUserNotificationSettings(types:[.alert, .sound, .badge], categories: nil)
-        UIApplication.shared.registerUserNotificationSettings(settings)
+      //***  let settings = UIUserNotificationSettings(types:[.alert, .sound, .badge], categories: nil)
+     //**   UIApplication.shared.registerUserNotificationSettings(settings)
 
         //if logged in skip log in/register VC's and start on eventVC(HomeVC)
         if BackendlessManager.sharedInstance.isUserLoggedIn() {
@@ -33,6 +33,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        // If the user logs in via Facebook or Twitter, this code will handle the successful login.
+        BackendlessManager.sharedInstance.handleOpen( open: url,
+                                                      
+            completion: {
+                                                        
+                    // If the user is logged in - skip the login view and go straight the menu!
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "menuVC")
+            },
+                                                      
+                    error: {})
+        
+        return true
+    }
+    
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
