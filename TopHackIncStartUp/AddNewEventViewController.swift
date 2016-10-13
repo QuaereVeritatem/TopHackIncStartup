@@ -10,11 +10,9 @@ import UIKit
 
 class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var pickProgTyp = EventData.ProgTypes.self
-    var pickLocation = EventData.AreaLoc.self
-    var pickDate = EventData.TimeFrame.self
-    var pickMonths = EventData.TwelveMonths.self
-    var pickConvType: [String] = [""]
+    var pickProgTyp = EventData.sharedInstance.progTypesArray
+    var pickLocation = EventData.sharedInstance.areaLocArray
+    var pickDate = EventData.sharedInstance.timeFrameArray
     
     @IBOutlet weak var progNameLabel: UITextField!
     
@@ -26,9 +24,13 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
     
     @IBOutlet weak var dateLabel: UITextField!     //should be tied to pickerView
     
+    weak var activeField: UITextField?
+    
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    let pickerView = UIPickerView()
     
     //image not connected..delete and put imageview under transparent button (same autolayout)
     @IBOutlet weak var photoImageView: UIImageView!
@@ -36,21 +38,20 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
     @IBAction func photoImageButton(_ sender: UIButton) {
     }
     
-        override func viewDidLoad() {
+    override func viewDidLoad() {
+        
         super.viewDidLoad()
-            //setting textfields as pickerviews
-            let pickerView = UIPickerView()
-            pickerView.delegate = self
-            
-            //set textfields to pullup a pickerview
-            progTypeLabel.inputView = pickerView
-            progLocation.inputView = pickerView
-            //try this to fix the errors we be having!!!*****
-            // progLocation.inputView = pickerView2
-            dateLabel.inputView = pickerView
-            //dateLabel.inputView = pickerView3
-
-       
+        
+        //setting textfields as pickerviews
+        pickerView.delegate = self
+        
+        //set textfields to pullup a pickerview
+        progTypeLabel.inputView = pickerView
+        progLocation.inputView = pickerView
+        //try this to fix the errors we be having!!!*****
+        // progLocation.inputView = pickerView2
+        dateLabel.inputView = pickerView
+        //dateLabel.inputView = pickerView3
     }
 
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -166,13 +167,16 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
     func textFieldDidEndEditing(_ textField: UITextField) {
         //make sure field not empty 
         checkValidEventName()
-        navigationItem.title = textField.text
+        //navigationItem.title = textField.text  //this changes nav bar to textfield
+        self.activeField = nil
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disable the Save button while editing.
         saveButton.isEnabled = false
-   
+        self.activeField = textField
+        
+        pickerView.reloadAllComponents()
     }
     
     func checkValidEventName() {
@@ -198,125 +202,50 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
         dismiss(animated: true, completion: nil)
     }
     
-//    func callPickerView(_ inputTextField: UITextField!, _ pickOption: AnyObject){
-//        
-//       
-//        let pickerView = UIPickerView()
-//        pickerView.delegate = self
-//        inputTextField.inputView = pickerView
-//        
-//        if inputTextField == progTypeLabel {
-//           let convertedPickOp: [String] = pickOption as! [String]
-//            pickConvType = convertedPickOp
-//        }
-//        
-//        if inputTextField == progLocation {
-//          let convertedPickOp = pickOption as! [String]
-//            pickConvType = convertedPickOp
-//        }
-//        
-//        if inputTextField == dateLabel {
-//          let convertedPickOp = pickOption as! [String]
-//            pickConvType = convertedPickOp
-//        }
-//
-//        
-//    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
     
-    
-    //pickerview not updating...only textfield and not the right way at that
-     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        
-        //if current textfield/pickerview is dateLabel the make comp X 3
-        if pickerView != dateLabel.inputView {
-            return 1
-        } else {
-        
-            return 3 }
-     }
+        return 1
+    }
      
      func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        //we need to change array to pickConvType so we can get the array count
-        //pickerview was set to label's input view..here we're reverse checking what we did earlier, to see if its a match
-        if pickerView == progTypeLabel.inputView {
-            let arrayLabel: [String] = [String(describing: pickProgTyp.accelerator), String(describing: pickProgTyp.hackathon), String(describing: pickProgTyp.bootcamp), String(describing: pickProgTyp.incubator), String(describing: pickProgTyp.startUpPitch), String(describing: pickProgTyp.networking)]
-            return arrayLabel.count  //array at position [row]
+        var count = 1
+        
+        if self.activeField?.tag == 1 {
+            count = EventData.sharedInstance.progTypesArray.count
+            print("prog type count is \(EventData.sharedInstance.progTypesArray.count)")
+        } else if self.activeField?.tag == 2 {
+            count = EventData.sharedInstance.areaLocArray.count
+        } else if self.activeField?.tag == 3 {
+            count =  EventData.sharedInstance.timeFrameArray.count
         }
         
-        if pickerView == progLocation.inputView {
-            let arrayLabel: [String] = [String(describing: pickLocation.Worldwide), String(describing: pickLocation.Dallas), String(describing: pickLocation.Nationwide), String(describing: pickLocation.Austin), String(describing: pickLocation.Mountainview), String(describing: pickLocation.SanFran_NYC), String(describing: pickLocation.NYC)]
-            return arrayLabel.count        }
-        
-        if pickerView == dateLabel.inputView {
-            var monthsConv: [String] = []
-            //set all months to strings
-            monthsConv = [String(describing: pickMonths.January), String(describing: pickMonths.February), String(describing: pickMonths.March), String(describing: pickMonths.April), String(describing: pickMonths.May), String(describing: pickMonths.June), String(describing: pickMonths.July), String(describing: pickMonths.August), String(describing: pickMonths.September), String(describing: pickMonths.October), String(describing: pickMonths.November), String(describing: pickMonths.December)]
-            
-            
-            let arrayLabel: [String] = [String(describing: pickDate.yearly), String(describing: pickDate.monthly), String(describing: pickDate.weekly), String(describing: monthsConv.count), String(describing: pickDate.specificDate(monthsConv.count, 31, 2017))] //the last two need to be fixed for custom data entry **dont HARDCODE!
-            return arrayLabel.count
-        }
-
-        
-     return 7  // delete this when we solve above problem
+        return count
      }
-     
+    
      func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
+        var arrayP = "empty"
         
-        if pickerView == progTypeLabel.inputView {
-            let arrayLabel: [String] = [String(describing: pickProgTyp.accelerator), String(describing: pickProgTyp.hackathon), String(describing: pickProgTyp.bootcamp), String(describing: pickProgTyp.incubator), String(describing: pickProgTyp.startUpPitch), String(describing: pickProgTyp.networking)]
-            return arrayLabel[row]  //array at position [row]
+        if self.activeField?.tag == 1 {
+            arrayP = EventData.sharedInstance.progTypesArray[row]
+        } else if self.activeField?.tag == 2 {
+            arrayP = EventData.sharedInstance.areaLocArray[row]
+        } else if self.activeField?.tag == 3 {
+            arrayP =  EventData.sharedInstance.timeFrameArray[row]
         }
         
-        if pickerView == progLocation.inputView {
-            let arrayLabel: [String] = [String(describing: pickLocation.Worldwide), String(describing: pickLocation.Dallas), String(describing: pickLocation.Nationwide), String(describing: pickLocation.Austin), String(describing: pickLocation.Mountainview), String(describing: pickLocation.SanFran_NYC), String(describing: pickLocation.NYC)]
-            return arrayLabel[row] //array at position [row]
-        }
-        
-        if pickerView == dateLabel.inputView {
-            
-            var monthsConv: [String] = []
-            //set all months to strings
-            monthsConv = [String(describing: pickMonths.January), String(describing: pickMonths.February), String(describing: pickMonths.March), String(describing: pickMonths.April), String(describing: pickMonths.May), String(describing: pickMonths.June), String(describing: pickMonths.July), String(describing: pickMonths.August), String(describing: pickMonths.September), String(describing: pickMonths.October), String(describing: pickMonths.November), String(describing: pickMonths.December)]
-            
-            
-            let arrayLabel: [String] = [String(describing: pickDate.yearly), String(describing: pickDate.monthly), String(describing: pickDate.weekly), String(describing: monthsConv), String(describing: pickDate.specificDate(row, row, row))] //the last two need to be fixed for custom data entry
-            return arrayLabel[row] //array at position [row]
-        }
-
-        return ""
+        return arrayP
      }
      
-     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        if pickerView == progTypeLabel.inputView {
-            let arrayLabel: [String] = [String(describing: pickProgTyp.accelerator), String(describing: pickProgTyp.hackathon), String(describing: pickProgTyp.bootcamp), String(describing: pickProgTyp.incubator), String(describing: pickProgTyp.startUpPitch), String(describing: pickProgTyp.networking)]
-            progTypeLabel.text = arrayLabel[row]  //array at position [row]
-        }
-        
-        if pickerView == progLocation.inputView {
-            let arrayLabel: [String] = [String(describing: pickLocation.Worldwide), String(describing: pickLocation.Dallas), String(describing: pickLocation.Nationwide), String(describing: pickLocation.Austin), String(describing: pickLocation.Mountainview), String(describing: pickLocation.SanFran_NYC), String(describing: pickLocation.NYC)]
-            progLocation.text = arrayLabel[row] //array at position [row]
-        }
-        
-        if pickerView == dateLabel.inputView {
-            
-            var monthsConv: [String] = []
-            //set all months to strings 
-            monthsConv = [String(describing: pickMonths.January), String(describing: pickMonths.February), String(describing: pickMonths.March), String(describing: pickMonths.April), String(describing: pickMonths.May), String(describing: pickMonths.June), String(describing: pickMonths.July), String(describing: pickMonths.August), String(describing: pickMonths.September), String(describing: pickMonths.October), String(describing: pickMonths.November), String(describing: pickMonths.December)]
-            
-            
-            let arrayLabel: [String] = [String(describing: pickDate.yearly), String(describing: pickDate.monthly), String(describing: pickDate.weekly), String(describing: monthsConv), String(describing: pickDate.specificDate(row, row, row))] //the last two need to be fixed for custom data entry
-            dateLabel.text = arrayLabel[row] //array at position [row]
-        }
-        
-        
-     }
-     
-    
- 
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 
-
+        if self.activeField?.tag == 1 {
+            progTypeLabel.text = EventData.sharedInstance.progTypesArray[row]
+        } else if self.activeField?.tag == 2 {
+            progLocation.text = EventData.sharedInstance.areaLocArray[row]
+        } else if self.activeField?.tag == 3 {
+            dateLabel.text = EventData.sharedInstance.timeFrameArray[row]
+        }
+    }
 }

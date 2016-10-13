@@ -24,63 +24,65 @@ struct hackIncEvent {
 
 
 enum ProgTypes {
-    case accelerator
-    case hackathon
-    case bootcamp
-    case incubator
-    case startUpPitch
-    case networking
+    case accelerator(String)
+    case hackathon(String)
+    case bootcamp(String)
+    case incubator(String)
+    case startUpPitch(String)
+    case networking(String)
     
 }
 
 enum AreaLoc {
-    case Worldwide
-    case Dallas
-    case Nationwide
-    case Austin
-    case Mountainview
-    case SanFran_NYC
-    case NYC
+    case Worldwide(String)
+    case Dallas(String)
+    case Nationwide(String)
+    case Austin(String)
+    case Mountainview(String)
+    case SanFran_NYC(String)
+    case NYC(String)
     
 }
 
 enum TimeFrame {
-    case yearly
-    case monthly
-    case weekly
-    case specificMonth(TwelveMonths)
-    case specificDate(Int, Int, Int) //implement pickerview on months that use this variable month,day,year
+    case yearly(String)
+    case monthly(String)
+    case weekly(String)
+    case January(String)
+    case February(String)
+    case March(String)
+    case April(String)
+    case May(String)
+    case June(String)
+    case July(String)
+    case August(String)
+    case September(String)
+    case October(String)
+    case November(String)
+    case December(String)
+}
     
-}
+    var progTypesArray: [String] = ["accelerator", "hackathon", "bootcamp", "incubator", "startUpPitch", "networking"]
+    
+    var areaLocArray: [String] = ["Worldwide", "Dallas", "Nationwide", "Austin", "Mountainview", "SanFran_NYC", "NYC"]
+    
+    var timeFrameArray: [String] = ["Yearly", "Monthly", "Weekly", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-enum TwelveMonths {
-    case January
-    case February
-    case March
-    case April
-    case May
-    case June
-    case July
-    case August
-    case September
-    case October
-    case November
-    case December
-}
 
-    var testEvent: hackIncEvent = hackIncEvent(name: "", progUrl: "", progType: ProgTypes.hackathon, areaLoc: AreaLoc.Worldwide, logo: "", dateOrTimeFrame: TimeFrame.monthly)
+    var testEvent: hackIncEvent = hackIncEvent(name: "", progUrl: "", progType: ProgTypes.hackathon("hackathon"), areaLoc: AreaLoc.Worldwide("Worldwide"), logo: "", dateOrTimeFrame: TimeFrame.monthly("Monthly"))
 
 var besthackIncEvent = [
-    hackIncEvent(name: "AngelHack", progUrl: "http://angelhack.com", progType: ProgTypes.hackathon, areaLoc: AreaLoc.Worldwide, logo: "angelHack", dateOrTimeFrame: TimeFrame.monthly),
-    hackIncEvent(name: "StartUpWeekend", progUrl: "https://StartUpWeekend.org", progType: ProgTypes.hackathon, areaLoc: AreaLoc.Worldwide, logo: "startUpWeekend", dateOrTimeFrame: TimeFrame.monthly),
-    hackIncEvent(name: "TechStars", progUrl: "http://techStars.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Worldwide, logo: "techStars", dateOrTimeFrame: TimeFrame.monthly),
-    hackIncEvent(name: "TechWildCatters", progUrl: "http://techwildcatters.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Dallas, logo: "techWildcatters", dateOrTimeFrame: TimeFrame.monthly),
-    hackIncEvent(name: "HealthWildcatters", progUrl: "http://healthwildcatters.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Dallas, logo: "healthWildcatters1", dateOrTimeFrame: TimeFrame.monthly),
-    hackIncEvent(name: "AngelPad", progUrl: "https://angelpad.org", progType: ProgTypes.accelerator, areaLoc: AreaLoc.SanFran_NYC, logo: "angelPad", dateOrTimeFrame: TimeFrame.yearly),
-    hackIncEvent(name: "IronYard", progUrl: "https://theironYard.com", progType: ProgTypes.bootcamp, areaLoc: AreaLoc.Nationwide, logo: "ironYard", dateOrTimeFrame: TimeFrame.monthly),
-    hackIncEvent(name: "Capital Factory", progUrl: "https://capitalfactory.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Austin, logo: "capitalFactory", dateOrTimeFrame: TimeFrame.monthly),
-    hackIncEvent(name: "Y Combinator", progUrl: "https://ycombinator.com", progType: ProgTypes.accelerator, areaLoc: AreaLoc.Mountainview, logo: "yCombinator", dateOrTimeFrame: TimeFrame.yearly)
+    hackIncEvent(name: "AngelHack", progUrl: "http://angelhack.com", progType: ProgTypes.hackathon("hackathon"), areaLoc: AreaLoc.Worldwide("Worldwide"), logo: "angelHack", dateOrTimeFrame: TimeFrame.monthly("Monthly")),
+    hackIncEvent(name: "StartUpWeekend", progUrl: "https://StartUpWeekend.org", progType: ProgTypes.hackathon("hackathon"), areaLoc: AreaLoc.Worldwide("Worldwide"), logo: "startUpWeekend", dateOrTimeFrame: TimeFrame.monthly("Monthly")),
+    hackIncEvent(name: "TechStars", progUrl: "http://techStars.com", progType: ProgTypes.accelerator("accelerator"), areaLoc: AreaLoc.Worldwide("Worldwide"), logo: "techStars", dateOrTimeFrame: TimeFrame.monthly("Monthly")),
+    hackIncEvent(name: "TechWildCatters", progUrl: "http://techwildcatters.com", progType: ProgTypes.accelerator("accelerator"), areaLoc: AreaLoc.Dallas("Dallas"), logo: "techWildcatters", dateOrTimeFrame: TimeFrame.monthly("Monthly")),
+    hackIncEvent(name: "HealthWildcatters", progUrl: "http://healthwildcatters.com", progType: ProgTypes.accelerator("accelerator"), areaLoc: AreaLoc.Dallas("Dallas"), logo: "healthWildcatters1", dateOrTimeFrame: TimeFrame.monthly("Monthly")),
+    hackIncEvent(name: "AngelPad", progUrl: "https://angelpad.org", progType: ProgTypes.accelerator("accelerator"), areaLoc: AreaLoc.SanFran_NYC("SanFran_NYC"), logo: "angelPad", dateOrTimeFrame: TimeFrame.yearly("Yearly")),
+    hackIncEvent(name: "IronYard", progUrl: "https://theironYard.com", progType: ProgTypes.bootcamp("bootcamp"), areaLoc: AreaLoc.Nationwide("Nationwide"), logo: "ironYard", dateOrTimeFrame: TimeFrame.monthly("Monthly")),
+    hackIncEvent(name: "Capital Factory", progUrl: "https://capitalfactory.com", progType: ProgTypes.accelerator("accelerator"), areaLoc: AreaLoc.Austin("Austin"), logo: "capitalFactory", dateOrTimeFrame: TimeFrame.monthly("Monthly")),
+    hackIncEvent(name: "Y Combinator", progUrl: "https://ycombinator.com", progType: ProgTypes.accelerator("accelerator"), areaLoc: AreaLoc.Mountainview("Mountainview"), logo: "yCombinator", dateOrTimeFrame: TimeFrame.yearly("Yearly"))
 ]
 
+    }
 
-}
+

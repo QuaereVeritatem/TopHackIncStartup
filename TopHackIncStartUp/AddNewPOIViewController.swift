@@ -10,24 +10,17 @@ import UIKit
 
 class AddNewPOIViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 
+    let pickerView = UIPickerView()
     var pickJobType = PersonData.JobTypes.self
     var pickNetWorkStatus = PersonData.NetworkStatus.self
-    var firstPickerView: UIPickerView?
-    var secondPickerView: UIPickerView?
+    var picker = UIPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-       
-        firstPickerView?.delegate = self
-        
-        jobTypeLabel.inputView = firstPickerView
-        networkStatusLabel.inputView = secondPickerView
-        
-        let subCount = countIt(&pickJobType)
-        print("The number of choices in the picker is ")
-        
+        pickerView.delegate = self
+        jobTypeLabel.inputView = pickerView
+        networkStatusLabel.inputView = pickerView
     }
 
     @IBOutlet weak var fullNameLabel: UITextField!
@@ -41,6 +34,10 @@ class AddNewPOIViewController: UIViewController, UITextFieldDelegate, UIImagePic
     @IBOutlet weak var standOutInfoLabel: UITextField!
     
     @IBOutlet weak var emailLabel: UITextField!
+    
+    weak var activeField: UITextField?
+    
+
     
     
     override func didReceiveMemoryWarning() {
@@ -67,13 +64,15 @@ class AddNewPOIViewController: UIViewController, UITextFieldDelegate, UIImagePic
     func textFieldDidEndEditing(_ textField: UITextField) {
         //make sure field not empty
        // checkValidEventName()  // havent implemented yet
-        navigationItem.title = textField.text
+       // navigationItem.title = textField.text  //this changes nav bar to textfield
+        self.activeField = nil
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disable the Save button while editing.
        // saveButton.isEnabled = false  //havent implemented yet ***
-        
+        self.activeField = textField
+        pickerView.reloadAllComponents()
     }
     
     //MARK: PickerViews
@@ -83,47 +82,39 @@ class AddNewPOIViewController: UIViewController, UITextFieldDelegate, UIImagePic
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
         var count = 0
-        if pickerView == firstPickerView {
-           let arrayLabel: [String] = [String(describing: pickJobType.Developer), String(describing: pickJobType.Designer), String(describing: pickJobType.Investor), String(describing: pickJobType.Management), String(describing: pickJobType.Entrepreneur), String(describing: pickJobType.other)]
-            count = arrayLabel.count
-            
-        } else { if pickerView == secondPickerView {
-            let arrayLabel: [String] = [String(describing: pickNetWorkStatus.ImportantPerson), String(describing: pickNetWorkStatus.Connection), String(describing: pickNetWorkStatus.MightNeedThereHelp), String(describing: pickNetWorkStatus.WouldLikeToWorkWith), String(describing: pickNetWorkStatus.VIP)]
-            count = arrayLabel.count
-            }
-           
+        
+        if self.activeField?.tag == 1 {
+            count = PersonData.sharedInstance.jobTypesArray.count
+            print("prog type count is \(EventData.sharedInstance.progTypesArray.count)")
+        } else if self.activeField?.tag == 2 {
+            count = PersonData.sharedInstance.networkStatusArray.count
         }
-        //put the final return here
+        print("The size of array is \(count)")
         return count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == firstPickerView {
-            let arrayLabel: [String] = [String(describing: pickJobType.Developer), String(describing: pickJobType.Designer), String(describing: pickJobType.Investor), String(describing: pickJobType.Management), String(describing: pickJobType.Entrepreneur), String(describing: pickJobType.other)]
-            return arrayLabel[row]
-            
-        } else { if pickerView == secondPickerView {
-            let arrayLabel: [String] = [String(describing: pickNetWorkStatus.ImportantPerson), String(describing: pickNetWorkStatus.Connection), String(describing: pickNetWorkStatus.MightNeedThereHelp), String(describing: pickNetWorkStatus.WouldLikeToWorkWith), String(describing: pickNetWorkStatus.VIP)]
-            return arrayLabel[row]
-            }
-            
+        
+        var arrayP = "empty"
+        
+        if self.activeField?.tag == 1 {
+            arrayP = PersonData.sharedInstance.jobTypesArray[row]  //array at position [row]
+        } else if self.activeField?.tag == 2 {
+            arrayP = PersonData.sharedInstance.networkStatusArray[row]
         }
-        return ""
+        return arrayP
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
        
-        if pickerView == firstPickerView {
-            let arrayLabel: [String] = [String(describing: pickJobType.Developer), String(describing: pickJobType.Designer), String(describing: pickJobType.Investor), String(describing: pickJobType.Management), String(describing: pickJobType.Entrepreneur), String(describing: pickJobType.other)]
-           jobTypeLabel.text = arrayLabel[row]
-            
-        } else { if pickerView == secondPickerView {
-            let arrayLabel: [String] = [String(describing: pickNetWorkStatus.ImportantPerson), String(describing: pickNetWorkStatus.Connection), String(describing: pickNetWorkStatus.MightNeedThereHelp), String(describing: pickNetWorkStatus.WouldLikeToWorkWith), String(describing: pickNetWorkStatus.VIP)]
-           networkStatusLabel.text = arrayLabel[row]
-            }
-            
+        if self.activeField?.tag == 1 {
+            jobTypeLabel.text = PersonData.sharedInstance.jobTypesArray[row]  //array at position [row]
+        } else if self.activeField?.tag == 2 {
+            networkStatusLabel.text = PersonData.sharedInstance.networkStatusArray[row] //array at position [row]
         }
+
         
     }
     // A Generic function that will count an array of any type!!

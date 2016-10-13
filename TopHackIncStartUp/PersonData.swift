@@ -44,8 +44,12 @@ class PersonData {
         case VIP(String)
     }
     
+    var jobTypesArray: [String] = ["Developer", "Designer", "Investor", "Management", "Entrepreneur", "other"]
+    
+    var networkStatusArray: [String] = ["Important Person", "Connection", "Might Need There Help", "WouldLikeToWorkWith", "VIP"]
+    
     var arrayPersonsOfInterest = [
-        personsOfInterest(fullName: "Robert Martin", compName: "Texas Instruments", jobType: JobTypes.,"Developer", networkStatus: NetworkStatus.MightNeedThereHelp, standoutInfo: "Very Imaginative", poiEmail: "I am getting a new one@gmail.com", poiThumbnailPic: "Not Tom", linkedInUser: "", twitterUser: "", faceBookUser: "",instagramUser: "" )]
+        personsOfInterest(fullName: "Robert Martin", compName: "Texas Instruments", jobType: JobTypes.Developer("Developer"), networkStatus: NetworkStatus.MightNeedThereHelp("Might Need There Help"), standoutInfo: "Very Imaginative", poiEmail: "I am getting a new one@gmail.com", poiThumbnailPic: "Not Tom", linkedInUser: "", twitterUser: "", faceBookUser: "",instagramUser: "" )]
     
     
     
