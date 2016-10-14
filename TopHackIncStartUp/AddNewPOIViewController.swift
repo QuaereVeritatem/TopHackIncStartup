@@ -35,6 +35,23 @@ class AddNewPOIViewController: UIViewController, UITextFieldDelegate, UIImagePic
     
     @IBOutlet weak var emailLabel: UITextField!
     
+    @IBAction func imageUploadButton(_ sender: UIButton) {
+    }
+    
+    @IBAction func facbookButton(_ sender: UIButton) {
+    }
+    
+    @IBAction func instagramButton(_ sender: UIButton) {
+    }
+    
+    @IBAction func twitterButton(_ sender: UIButton) {
+    }
+    
+    @IBAction func linkedInButton(_ sender: UIButton) {
+    }
+    
+    
+    
     weak var activeField: UITextField?
     
 
@@ -45,10 +62,30 @@ class AddNewPOIViewController: UIViewController, UITextFieldDelegate, UIImagePic
         // Dispose of any resources that can be recreated.
     }
     
+    //theres 2 of these buttons , remove one with caution
+    @IBAction func bluetoothSyncButton(_ sender: UIButton) {
+    }
     @IBAction func cancel(_ sender: UIBarButtonItem) {
     }
 
     @IBAction func save(_ sender: UIBarButtonItem) {
+        
+        // add all textfields' data to collection called testPerson (safely unwrap 1st!!)
+        PersonData.sharedInstance.testPerson.fullName = fullNameLabel.text!
+        PersonData.sharedInstance.testPerson.compName = compNameLabel.text!
+        PersonData.sharedInstance.testPerson.jobType = PersonData.JobTypes(rawValue: jobTypeLabel.text!)
+        PersonData.sharedInstance.testPerson.networkStatus = PersonData.NetworkStatus(rawValue: networkStatusLabel.text!)
+        PersonData.sharedInstance.testPerson.standoutInfo = standOutInfoLabel.text!
+        PersonData.sharedInstance.testPerson.poiEmail = emailLabel.text!
+ //       PersonData.sharedInstance.testPerson.poiThumbnailPic = imageUploadButton!
+        PersonData.sharedInstance.testPerson.linkedInUser = "not implemented yet"
+        PersonData.sharedInstance.testPerson.twitterUser = "not implemented yet"
+        PersonData.sharedInstance.testPerson.faceBookUser = "not implemented yet"
+        PersonData.sharedInstance.testPerson.instagramUser = "not implemented yet"
+
+        //adding to local database
+        PersonData.sharedInstance.arrayPersonsOfInterest.append(PersonData.sharedInstance.testPerson)
+        self.performSegue(withIdentifier: "SegueBackToPOI", sender: self)
     }
 
     @IBAction func bluetoothSync(_ sender: UIButton) {
@@ -63,14 +100,14 @@ class AddNewPOIViewController: UIViewController, UITextFieldDelegate, UIImagePic
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         //make sure field not empty
-       // checkValidEventName()  // havent implemented yet
-       // navigationItem.title = textField.text  //this changes nav bar to textfield
+        // checkValidEventName()  // havent implemented yet
+        // navigationItem.title = textField.text  //this changes nav bar to textfield
         self.activeField = nil
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disable the Save button while editing.
-       // saveButton.isEnabled = false  //havent implemented yet ***
+        // saveButton.isEnabled = false  //havent implemented yet ***
         self.activeField = textField
         pickerView.reloadAllComponents()
     }

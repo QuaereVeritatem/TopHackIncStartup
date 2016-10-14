@@ -70,25 +70,25 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! TopCell
         
         let row = (indexPath as NSIndexPath).row
-        
         cell.nameLabel.text = EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].name
         
         //the rest of these are optionals (check for nil)
+        //program type portion of cell needs data from besthackIncEvent..data is of weird types for these 3
         if  EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].progType != nil {
-            cell.progType.text = EventData.sharedInstance.progTypesArray[row]
-            //row is going out of index at 6 for some reason..right here
+            //this doesnt print just the string literal: find a way to pull string out of output
+            cell.progType.text = String(describing: EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].progType!)
         } else {
             cell.progType.text = ""
         }
         
         if  EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].areaLoc != nil {
-        cell.locationLabel.text = EventData.sharedInstance.areaLocArray[row]
+        cell.locationLabel.text = String(describing: EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].areaLoc!)
         } else {
             cell.locationLabel.text = ""
         }
         
         if  EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].dateOrTimeFrame != nil {
-        cell.rankingLabel.text = EventData.sharedInstance.timeFrameArray[row] //rankingLabel is date label name
+        cell.rankingLabel.text = String(describing: EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].dateOrTimeFrame!) //rankingLabel is date label name
         } else {
             cell.rankingLabel.text = ""
         }
@@ -146,11 +146,11 @@ class HomeViewController: UIViewController, UITableViewDataSource {
                     }
                     
                 } catch {
-                    print("NSData Error: \(error)")
+                        print("NSData Error: \(error)")
                 }
                 
             } else {
-                print("NSURLSession Error: \(error)")
+                    print("NSURLSession Error: \(error)")
             }
         })
         
@@ -160,6 +160,24 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     //generic function that can compare two values regardless of type!
     func areValuesEqual<T: Equatable>(firstValue: T, secondValue: T) -> Bool {
         return firstValue == secondValue
+    }
+    
+    //this function will iterate through an array and find and return the element equal to the second value
+    func compareAllValuesInArray<T: Equatable>(firstValue: [T], secondValue: T) -> String {
+
+        for i in firstValue {
+            if secondValue == i {
+                return i as! String
+            }
+        }
+        return "no elements are equal to the second Value"
+    }
+    
+    //this variable gets the quotes part of the EventData.sharedInstance.besthackIncEvent variable
+    func gettingTheQuotesPart<T: Equatable>(variable: T) -> String {
+        var quotePart = ""
+        var fullPart = variable
+        return quotePart
     }
 
 

@@ -251,6 +251,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="SZS-S1-H2P" id="X42-WB-T7p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -377,6 +380,7 @@
                         <outlet property="saveButton" destination="ncK-De-zsO" id="keH-DE-YWA"/>
                         <outlet property="spinner" destination="yPt-e7-8AW" id="MZb-fU-hnd"/>
                         <outlet property="websiteLink" destination="dxR-M7-miN" id="AqN-9s-mRm"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="NewEventSegueBack" id="eOj-Fv-TmH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Nn-A0-bce" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -425,7 +429,7 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vpi-Pf-Z58">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyCell" id="CXE-IV-shh">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="POICell" id="CXE-IV-shh" customClass="POITableViewCell" customModule="TopHackIncStartUp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="301" height="130"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CXE-IV-shh" id="QuD-bU-OO9">
@@ -468,7 +472,7 @@
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Nw3-A3-9j6">
                                                             <subviews>
-                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cXg-cd-ewa" userLabel="fullName">
+                                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cXg-cd-ewa" userLabel="fName">
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="90" id="miU-z4-LQh"/>
                                                                         <constraint firstAttribute="height" constant="30" id="v1N-yK-euE"/>
@@ -476,8 +480,11 @@
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                     <textInputTraits key="textInputTraits"/>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="RNN-89-fwf" id="KUc-NJ-XhS"/>
+                                                                    </connections>
                                                                 </textField>
-                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rgj-HZ-Nhl" userLabel="companyName">
+                                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rgj-HZ-Nhl" userLabel="companyName">
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="QHk-9M-ArH"/>
                                                                         <constraint firstAttribute="width" constant="90" id="kM8-DM-qQv"/>
@@ -485,12 +492,15 @@
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                     <textInputTraits key="textInputTraits"/>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="RNN-89-fwf" id="weS-81-lUK"/>
+                                                                    </connections>
                                                                 </textField>
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jb8-e2-OEg">
                                                             <subviews>
-                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Job Type" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Qe-jF-5Dt" userLabel="jobType">
+                                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Job Type" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Qe-jF-5Dt" userLabel="jobType">
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="bGw-W0-PKR"/>
                                                                         <constraint firstAttribute="width" constant="90" id="cUk-NL-g0o"/>
@@ -498,8 +508,11 @@
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                     <textInputTraits key="textInputTraits"/>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="RNN-89-fwf" id="AWq-aI-qL2"/>
+                                                                    </connections>
                                                                 </textField>
-                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Network Status" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NE7-1r-iIC" userLabel="importantPerson">
+                                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Network Status" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NE7-1r-iIC" userLabel="importantPerson">
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="1zC-Ov-jBA"/>
                                                                         <constraint firstAttribute="width" constant="90" id="2QI-TU-VE4"/>
@@ -507,10 +520,13 @@
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                     <textInputTraits key="textInputTraits"/>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="RNN-89-fwf" id="5nW-bD-Hci"/>
+                                                                    </connections>
                                                                 </textField>
                                                             </subviews>
                                                         </stackView>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pertinent Info" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BAI-4X-7fP" userLabel="pertinentInfo">
+                                                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pertinent Info" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BAI-4X-7fP" userLabel="pertinentInfo">
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="190" id="JMP-ZP-jwh"/>
                                                                 <constraint firstAttribute="height" constant="30" id="Jlc-SY-r8E"/>
@@ -518,6 +534,9 @@
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="RNN-89-fwf" id="sTE-P1-PKq"/>
+                                                            </connections>
                                                         </textField>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="aHW-2a-Vuo">
                                                             <subviews>
@@ -527,8 +546,11 @@
                                                                         <constraint firstAttribute="height" constant="30" id="oMw-Ap-Jxa"/>
                                                                     </constraints>
                                                                     <state key="normal" title="Sync Data"/>
+                                                                    <connections>
+                                                                        <action selector="bluetoothSyncButton:" destination="CXE-IV-shh" eventType="touchUpInside" id="fOX-IJ-Pf8"/>
+                                                                    </connections>
                                                                 </button>
-                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Nm-Rk-ZWl" userLabel="email">
+                                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Nm-Rk-ZWl" userLabel="email">
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="111" id="HBs-Sv-OtY"/>
                                                                         <constraint firstAttribute="height" constant="30" id="fbO-LG-Asb"/>
@@ -536,6 +558,9 @@
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                     <textInputTraits key="textInputTraits"/>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="RNN-89-fwf" id="F0K-mx-aoK"/>
+                                                                    </connections>
                                                                 </textField>
                                                             </subviews>
                                                         </stackView>
@@ -566,8 +591,25 @@
                                                         <constraint firstItem="jb8-e2-OEg" firstAttribute="top" secondItem="Nw3-A3-9j6" secondAttribute="bottom" id="ztW-P7-wiv"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="compLabel" destination="rgj-HZ-Nhl" id="9r1-nA-UkC"/>
+                                                    <outlet property="emailLabel" destination="4Nm-Rk-ZWl" id="gQ8-rX-e6m"/>
+                                                    <outlet property="fNameLabel" destination="cXg-cd-ewa" id="Abp-2v-hyR"/>
+                                                    <outlet property="facebookImage" destination="YpT-Rn-tbf" id="LU8-Lq-Ss5"/>
+                                                    <outlet property="goodInfoLabel" destination="BAI-4X-7fP" id="sSS-l1-Pp5"/>
+                                                    <outlet property="instagramImage" destination="qpv-Gx-Gs4" id="L1X-KV-asM"/>
+                                                    <outlet property="jobLabel" destination="8Qe-jF-5Dt" id="SC7-6Y-Tcu"/>
+                                                    <outlet property="linkedImage" destination="dot-US-eJt" id="OXG-5L-asF"/>
+                                                    <outlet property="networkLabel" destination="NE7-1r-iIC" id="bnA-MN-gbN"/>
+                                                    <outlet property="photoImage" destination="ew0-hB-xdK" id="pBj-Sj-Kk9"/>
+                                                    <outlet property="twitterImage" destination="gHe-MW-I3J" id="taR-S3-qjb"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="RNN-89-fwf" id="4Ua-Un-scF"/>
+                                            <outlet property="delegate" destination="RNN-89-fwf" id="8V5-8R-45A"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -599,10 +641,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Vpi-Pf-Z58" id="nCJ-bn-SvY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GyG-vs-PYi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2680.8000000000002" y="-72.413793103448285"/>
+            <point key="canvasLocation" x="2681" y="-72"/>
         </scene>
         <!--AddNewPOIViewController-->
         <scene sceneID="eBx-WW-w0j">
@@ -690,22 +735,37 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1g5-oj-K5P">
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="image Upload"/>
+                                        <connections>
+                                            <action selector="imageUploadButton:" destination="NDJ-Y9-W8A" eventType="touchUpInside" id="6Ox-Qq-klm"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JfH-FI-RCq">
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Facebook"/>
+                                        <connections>
+                                            <action selector="facbookButton:" destination="NDJ-Y9-W8A" eventType="touchUpInside" id="LaA-FP-CfJ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgI-Vh-j5N">
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Instagram"/>
+                                        <connections>
+                                            <action selector="instagramButton:" destination="NDJ-Y9-W8A" eventType="touchUpInside" id="ifq-Kx-yf6"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ds-h6-DlF">
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Twitter"/>
+                                        <connections>
+                                            <action selector="twitterButton:" destination="NDJ-Y9-W8A" eventType="touchUpInside" id="89h-Yj-kQc"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srU-Cw-3wP">
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="LinkedIn"/>
+                                        <connections>
+                                            <action selector="linkedInButton:" destination="NDJ-Y9-W8A" eventType="touchUpInside" id="3ho-bB-foo"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -717,6 +777,7 @@
                                 <state key="normal" title="Sync Data"/>
                                 <connections>
                                     <action selector="bluetoothSync:" destination="NDJ-Y9-W8A" eventType="touchUpInside" id="o4f-qT-lcb"/>
+                                    <action selector="bluetoothSyncButton:" destination="NDJ-Y9-W8A" eventType="touchUpInside" id="b5j-iS-Laq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -753,6 +814,7 @@
                         <outlet property="jobTypeLabel" destination="WkC-sG-3p1" id="gc2-Zx-Awy"/>
                         <outlet property="networkStatusLabel" destination="RbU-mF-WZs" id="aXw-uB-Zn6"/>
                         <outlet property="standOutInfoLabel" destination="4tc-s3-bq7" id="19P-aA-keb"/>
+                        <segue destination="RNN-89-fwf" kind="show" identifier="SegueBackToPOI" id="o9G-3z-r50"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Agf-Ah-N5Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1188,5 +1250,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ooV-EC-X7V"/>
+        <segue reference="eOj-Fv-TmH"/>
+        <segue reference="o9G-3z-r50"/>
     </inferredMetricsTieBreakers>
 </document>

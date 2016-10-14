@@ -36,6 +36,7 @@
 		37F72FD61D7E40B70059FCD2 /* TopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F72FD51D7E40B70059FCD2 /* TopCell.swift */; };
 		37F74B101DA9957D00669764 /* EventData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F74B0F1DA9957D00669764 /* EventData.swift */; };
 		37F74BA01DAD6F4300669764 /* PersonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F74B9F1DAD6F4300669764 /* PersonData.swift */; };
+		37F74BB61DB0317000669764 /* POITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F74BB51DB0317000669764 /* POITableViewCell.swift */; };
 		B3603098274C263A097931EB /* Pods_TopHackIncStartUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDB8E819DB77AB2F7F389AE /* Pods_TopHackIncStartUp.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		37F72FD51D7E40B70059FCD2 /* TopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopCell.swift; sourceTree = "<group>"; };
 		37F74B0F1DA9957D00669764 /* EventData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventData.swift; sourceTree = "<group>"; };
 		37F74B9F1DAD6F4300669764 /* PersonData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonData.swift; sourceTree = "<group>"; };
+		37F74BB51DB0317000669764 /* POITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POITableViewCell.swift; sourceTree = "<group>"; };
 		BDDB8E819DB77AB2F7F389AE /* Pods_TopHackIncStartUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopHackIncStartUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E56E2788548D4403358F606E /* Pods-TopHackIncStartUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopHackIncStartUp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopHackIncStartUp/Pods-TopHackIncStartUp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,6 +191,7 @@
 				372C37EF1DA20D4B00882ACC /* POIViewController.swift */,
 				37F74B9F1DAD6F4300669764 /* PersonData.swift */,
 				372C38071DA33C0E00882ACC /* AddNewPOIViewController.swift */,
+				37F74BB51DB0317000669764 /* POITableViewCell.swift */,
 			);
 			name = Persons;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				372C38001DA30A0300882ACC /* WWCalendarTimeSelector.swift in Sources */,
 				37F74B101DA9957D00669764 /* EventData.swift in Sources */,
 				372C38361DA42AA000882ACC /* SettingsData.swift in Sources */,
+				37F74BB61DB0317000669764 /* POITableViewCell.swift in Sources */,
 				372C37D41D9B21EB00882ACC /* BackendlessManager.swift in Sources */,
 				372C37D81D9B21EB00882ACC /* Utility.swift in Sources */,
 				37F72F621D7BF6D00059FCD2 /* AppDelegate.swift in Sources */,

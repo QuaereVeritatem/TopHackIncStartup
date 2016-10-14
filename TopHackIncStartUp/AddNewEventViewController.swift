@@ -79,8 +79,8 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
         if photoImageView != nil {
             let photo = photoImageView.image  //not tied to anything yet
         //update the struct Event
-       // EventData.sharedInstance.testEvent.areaLoc = progL  //need to setup pickerview to textfield!!
-       // EventData.sharedInstance.testEvent.dateOrTimeFrame = dateL  //need to setup pickerview to textfield!!
+    //    EventData.sharedInstance.testEvent.areaLoc = progL  //need to setup pickerview to textfield!!
+    //    EventData.sharedInstance.testEvent.dateOrTimeFrame = dateL  //need to setup pickerview to textfield!!
             EventData.sharedInstance.testEvent.logo = photo?.accessibilityIdentifier
         } else { EventData.sharedInstance.testEvent.logo = "defaultLogo1"
         }
@@ -95,7 +95,7 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
         if BackendlessManager.sharedInstance.isUserLoggedIn() {
             
             // We're logged in - attempt to save to Backendless!
-            spinner.startAnimating()
+        //    spinner.startAnimating()
             
 /*            BackendlessManager.sharedInstance.saveMeal(mealData: meal!,
                                                        
@@ -130,8 +130,8 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
         } else {
             
             // We're not logged in - just unwind and have MealTableViewController
-            // save later using NSKeyedArchiver.
-            self.performSegue(withIdentifier: "unwindToMealList", sender: self) */
+            // save later using NSKeyedArchiver.*/
+            self.performSegue(withIdentifier: "NewEventSegueBack", sender: self)
             
         }
     }

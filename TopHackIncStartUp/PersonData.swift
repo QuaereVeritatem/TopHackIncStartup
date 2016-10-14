@@ -18,7 +18,7 @@ class PersonData {
         var jobType: JobTypes?
         var networkStatus: NetworkStatus?
         var standoutInfo:String?
-        var poiEmail: String? //website URL
+        var poiEmail: String?
         var poiThumbnailPic: String?
         var linkedInUser: String?
         var twitterUser: String?
@@ -27,29 +27,31 @@ class PersonData {
         
     }
     
-    enum JobTypes {
-        case Developer(String)
-        case Designer(String)
-        case Investor(String)
-        case Management(String)
-        case Entrepreneur(String)
-        case other(String)
+    enum JobTypes: String {
+        case Developer = "Developer"
+        case Designer = "Designer"
+        case Investor = "Investor"
+        case Management = "Management"
+        case Entrepreneur = "Entrepreneur"
+        case other = "other"
     }
     
-    enum NetworkStatus {
-        case ImportantPerson(String)
-        case Connection(String)
-        case MightNeedThereHelp(String)
-        case WouldLikeToWorkWith(String)
-        case VIP(String)
+    enum NetworkStatus: String {
+        case ImportantPerson = "Important Person"
+        case Connection = "Connection"
+        case MightNeedThereHelp = "Might Need There Help"
+        case WouldLikeToWorkWith = "Would Like To Work With"
+        case VIP = "VIP"
     }
     
     var jobTypesArray: [String] = ["Developer", "Designer", "Investor", "Management", "Entrepreneur", "other"]
     
     var networkStatusArray: [String] = ["Important Person", "Connection", "Might Need There Help", "WouldLikeToWorkWith", "VIP"]
     
+    var testPerson: personsOfInterest = personsOfInterest(fullName: "", compName: nil , jobType: JobTypes.Developer, networkStatus: NetworkStatus.MightNeedThereHelp, standoutInfo: nil, poiEmail: nil, poiThumbnailPic: nil, linkedInUser: nil, twitterUser: nil, faceBookUser: nil,instagramUser: nil)
+    
     var arrayPersonsOfInterest = [
-        personsOfInterest(fullName: "Robert Martin", compName: "Texas Instruments", jobType: JobTypes.Developer("Developer"), networkStatus: NetworkStatus.MightNeedThereHelp("Might Need There Help"), standoutInfo: "Very Imaginative", poiEmail: "I am getting a new one@gmail.com", poiThumbnailPic: "Not Tom", linkedInUser: "", twitterUser: "", faceBookUser: "",instagramUser: "" )]
+        personsOfInterest(fullName: "Robert Martin", compName: "Texas Instruments", jobType: JobTypes.Developer, networkStatus: NetworkStatus.MightNeedThereHelp, standoutInfo: "Very Imaginative...and not Tom", poiEmail: "I am getting a new one@gmail.com", poiThumbnailPic: "Not Tom", linkedInUser: "", twitterUser: "", faceBookUser: "",instagramUser: "" )]
     
     
     

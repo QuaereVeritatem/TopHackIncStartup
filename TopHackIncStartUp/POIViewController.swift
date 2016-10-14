@@ -8,43 +8,20 @@
 //software program to crop pics really needed so pics look clean
 
 import UIKit
+@IBDesignable
 
-class POIViewController: UIViewController {
+class POIViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
-    struct personsOfInterest {
-        var fullName: String
-        var compName: String?
-        var jobType: JobTypes?
-        var networkStatus: NetworkStatus?
-        var standoutInfo:String?
-        var poiEmail: String? //website URL
-        var poiThumbnailPic: String?
-        var linkedInUser: String?
-        var twitterUser: String?
-        var faceBookUser: String?
-        var instagramUser: String?
-        
-    }
+    @IBOutlet weak var tableView: UITableView!
+   
+    //need tableview delegates and tableview functions
 
-    enum JobTypes {
-        case Developer
-        case Designer
-        case Investor
-        case Management
-        case Entrepreneur
-        case other
-    }
     
-    enum NetworkStatus {
-        case ImportantPerson
-        case Connection
-        case MightNeedThereHelp
-        case WouldLikeToWorkWith
-        case VIP
-    }
     
-    var arrayPersonsOfInterest = [
-        personsOfInterest(fullName: "Robert Martin", compName: "Texas Instruments", jobType: JobTypes.Developer, networkStatus: NetworkStatus.MightNeedThereHelp, standoutInfo: "Very Imaginative", poiEmail: "I am getting a new one@gmail.com", poiThumbnailPic: "Not Tom", linkedInUser: "", twitterUser: "", faceBookUser: "",instagramUser: "" )]
+    
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,14 +35,88 @@ class POIViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
+    
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     print("numberOfRowsInSection, the count is \(PersonData.sharedInstance.arrayPersonsOfInterest.count)")
+     return PersonData.sharedInstance.arrayPersonsOfInterest.count
+     }
+     
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     
+     let cell = tableView.dequeueReusableCell(withIdentifier: "POICell", for: indexPath) as! POITableViewCell
+     
+     let row = (indexPath as NSIndexPath).row
+     cell.fNameLabel.text = PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].fullName
+     
+     //the rest of these are optionals (check for nil)
+     //program type portion of cell needs data from besthackIncEvent..data is of weird types for these 3
+     if  PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].compName != nil {
+     //this doesnt print just the string literal: find a way to pull string out of output *******
+        cell.compLabel.text = String(describing: PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].compName!)
+     } else {
+        cell.compLabel.text = ""
+     }
+        
+    if  PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].jobType != nil {
+            cell.jobLabel.text = String(describing: PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].jobType!)
+        }   else {
+            cell.jobLabel.text = ""
+        }
+        
+    if  PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].networkStatus != nil {
+            cell.networkLabel.text = String(describing: PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].networkStatus!)
+        }   else {
+            cell.networkLabel.text = ""
+        }
+    
+    if  PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].standoutInfo != nil {
+            cell.goodInfoLabel.text = String(describing: PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].standoutInfo!)
+        }   else {
+            cell.goodInfoLabel.text = ""
+        }
+        
+    if  PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].poiEmail != nil {
+            cell.emailLabel.text = String(describing: PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].poiEmail!)
+        }   else {
+            cell.emailLabel.text = ""
+        }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    if  PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].poiThumbnailPic != nil {
+            cell.photoImage.image = UIImage(named: String(describing: PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].poiThumbnailPic!))
+        }   else {
+            cell.photoImage.image  = UIImage(named: "defaultLogo2")
+        }
+        
+    if  (PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].linkedInUser != nil) || (PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].linkedInUser != "") {
+            cell.linkedImage.image = UIImage(named: "linkedInLogodark")
+        }
+
+    if  PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].faceBookUser != nil {
+            cell.facebookImage.image = UIImage(named: "facebookLogodark")
+        }
+        
+    if  PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].twitterUser != nil {
+            cell.twitterImage.image = UIImage(named: "twitterLogodark")
+        }
+        
+    if  PersonData.sharedInstance.arrayPersonsOfInterest[(indexPath as NSIndexPath).row].instagramUser != nil {
+            cell.instagramImage.image = UIImage(named: "instagramlogodark")
+        }
+        
+     
+     return cell
+     }
+ 
+    func gettingTheQuotesPart<T: Equatable>(variable: T) -> String {
+        var quotePart = ""
+        var fullPart = variable
+        var shortPart = variable
+        return quotePart
     }
-    */
+    
+
+
 
 }
