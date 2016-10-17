@@ -100,7 +100,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         }
         
         var shortUrl: String = ""
-        //test for nil
+        //test for nil ***if now https is entered by user, website isnt shown on cell-FIX!
         if EventData.sharedInstance.besthackIncEvent[row].progUrl != nil {
             var fullUrl = EventData.sharedInstance.besthackIncEvent[row].progUrl
             cell.websiteUrl = fullUrl
@@ -121,6 +121,34 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         cell.websiteBtn.setTitle(shortUrl, for: UIControlState())
         
         return cell
+    }
+    
+      func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     
+    
+     
+     // Override to support editing the table view.
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     
+     if editingStyle == .delete {
+     
+     if BackendlessManager.sharedInstance.isUserLoggedIn() {
+     
+     // Find the MealData in the data source that we wish to delete.
+     let EventToRemove = EventData.sharedInstance.besthackIncEvent[indexPath.row]
+     
+     //BackendlessManager.sharedInstance.removeMeal(mealToRemove: EventToRemove,
+     
+     //completion: {
+     
+     // It was removed from the database, now delete the row from the data source.
+     EventData.sharedInstance.besthackIncEvent.remove(at: (indexPath as NSIndexPath).row)
+     tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        }
     }
     
     func loadImageFromUrl(cell: TopCell, thumbnailUrl: String) {

@@ -38,6 +38,10 @@ class LoginViewController: UIViewController {
          settings.shadowOpacity = 0.1
          settings.overlayBlurStyle = .ExtraLight
  */
+        //rounded textfields
+       emailTextField.layer.cornerRadius = 5
+        passwordTextField.layer.cornerRadius = 5
+        loginBtn.layer.cornerRadius = 5
         
     }
     

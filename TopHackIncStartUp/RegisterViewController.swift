@@ -15,6 +15,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var registerBtn: UIButton!
     
+    @IBOutlet weak var cancelButton: UIButton!
+    
     let backendless = Backendless.sharedInstance()!
     
     override func viewDidLoad() {
@@ -23,8 +25,15 @@ class RegisterViewController: UIViewController {
         emailTextField.addTarget(self, action: #selector(LoginViewController.textFieldChanged(textField:)), for: UIControlEvents.editingChanged)
         passwordTextField.addTarget(self, action: #selector(LoginViewController.textFieldChanged(textField:)), for: UIControlEvents.editingChanged)
         passwordConfirmTextField.addTarget(self, action: #selector(LoginViewController.textFieldChanged(textField:)), for: UIControlEvents.editingChanged)
+        
+         emailTextField.layer.cornerRadius = 5
+         passwordTextField.layer.cornerRadius = 5
+         passwordConfirmTextField.layer.cornerRadius = 5
+        registerBtn.layer.cornerRadius = 5
+        cancelButton.layer.cornerRadius = 5
     }
 
+    // this funtion is the reason why the first option in pickerview isnt selctable-FIX IT!
     func textFieldChanged(textField: UITextField) {
         
         if emailTextField.text == "" || passwordTextField.text == "" || passwordConfirmTextField.text == "" {
