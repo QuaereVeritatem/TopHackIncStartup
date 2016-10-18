@@ -92,7 +92,7 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
         EventData.sharedInstance.besthackIncEvent.append(EventData.sharedInstance.testEvent)
         
         //saving to backendless part...
-        if BackendlessManager.sharedInstance.isUserLoggedIn() {
+        if 1==1 {//BackendlessManager.sharedInstance.isUserLoggedIn() {
             
             // We're logged in - attempt to save to Backendless!
         //    spinner.startAnimating()

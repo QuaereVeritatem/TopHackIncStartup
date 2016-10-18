@@ -42,7 +42,7 @@ class BackendlessManager {
         backendless.userService.setStayLoggedIn(true)
     }
     
-    func isUserLoggedIn() -> Bool {
+/*    func isUserLoggedIn() -> Bool {
         
         let isValidUser = backendless.userService.isValidUserToken()
         
@@ -52,7 +52,7 @@ class BackendlessManager {
             return false
         }
     }
-    
+*/
     func loginUser(email: String, password: String, completion: @escaping () -> (), error: @escaping (String) -> ()) {
         
         backendless.userService.login( email, password: password,
@@ -71,7 +71,7 @@ class BackendlessManager {
     func logoutUser(completion: @escaping () -> (), error: @escaping (String) -> ()) {
         
         // First, check if the user is actually logged in.
-        if isUserLoggedIn() {
+        if 1 == 1 /* isUserLoggedIn()  */ {
             
             // If they are currently logged in - go ahead and log them out!
             

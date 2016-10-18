@@ -30,21 +30,21 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     
     
 
-    //delete this 
-    @IBAction func LogOutBtn(_ sender: UIButton) {
-        print( "logoutBtn called!" )
-        
-        BackendlessManager.sharedInstance.logoutUser(
-            
-            completion: {
-                self.performSegue(withIdentifier: "gotoLoginFromMenu", sender: sender)
-                //self.dismiss(animated: true, completion: nil)
-            },
-            
-            error: { message in
-                print("User failed to log out: \(message)")
-        })
-    }
+//    //delete this 
+//    @IBAction func LogOutBtn(_ sender: UIButton) {
+//        print( "logoutBtn called!" )
+//        
+//        BackendlessManager.sharedInstance.logoutUser(
+//            
+//            completion: {
+//                self.performSegue(withIdentifier: "gotoLoginFromMenu", sender: sender)
+//                //self.dismiss(animated: true, completion: nil)
+//            },
+//            
+//            error: { message in
+//                print("User failed to log out: \(message)")
+//        })
+//    }
     
     
     override func viewDidLoad() {
@@ -130,26 +130,26 @@ class HomeViewController: UIViewController, UITableViewDataSource {
      
     
      
-     // Override to support editing the table view.
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     
-     if editingStyle == .delete {
-     
-     if BackendlessManager.sharedInstance.isUserLoggedIn() {
-     
-     // Find the MealData in the data source that we wish to delete.
-     let EventToRemove = EventData.sharedInstance.besthackIncEvent[indexPath.row]
-     
-     //BackendlessManager.sharedInstance.removeMeal(mealToRemove: EventToRemove,
-     
-     //completion: {
-     
-     // It was removed from the database, now delete the row from the data source.
-     EventData.sharedInstance.besthackIncEvent.remove(at: (indexPath as NSIndexPath).row)
-     tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-        }
-    }
+//     // Override to support editing the table view.
+//   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//     
+//     if editingStyle == .delete {
+//     
+//     if BackendlessManager.sharedInstance.isUserLoggedIn() {
+//     
+//     // Find the MealData in the data source that we wish to delete.
+//     let EventToRemove = EventData.sharedInstance.besthackIncEvent[indexPath.row]
+//     
+//     BackendlessManager.sharedInstance.removePersonOrEvent(personOrEventToRemove: EventToRemove,
+//     
+//     //completion: {
+//     
+//     // It was removed from the database, now delete the row from the data source.
+//     EventData.sharedInstance.besthackIncEvent.remove(at: (indexPath as NSIndexPath).row)
+//     tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
+//        }
+//    }
     
     func loadImageFromUrl(cell: TopCell, thumbnailUrl: String) {
         

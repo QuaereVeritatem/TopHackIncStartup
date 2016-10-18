@@ -51,7 +51,7 @@ class PersonData {
     var testPerson: personsOfInterest = personsOfInterest(fullName: "", compName: nil , jobType: JobTypes.Developer, networkStatus: NetworkStatus.MightNeedThereHelp, standoutInfo: nil, poiEmail: nil, poiThumbnailPic: nil, linkedInUser: nil, twitterUser: nil, faceBookUser: nil,instagramUser: nil)
     
     var arrayPersonsOfInterest = [
-        personsOfInterest(fullName: "Robert Martin", compName: "Texas Instruments", jobType: JobTypes.Developer, networkStatus: NetworkStatus.MightNeedThereHelp, standoutInfo: "Very Imaginative...and not Tom", poiEmail: "I am getting a new one@gmail.com", poiThumbnailPic: "Not Tom", linkedInUser: "", twitterUser: "", faceBookUser: "",instagramUser: "" )]
+        personsOfInterest(fullName: "Robert Martin", compName: "Guild of Software Architects", jobType: JobTypes.Developer, networkStatus: NetworkStatus.MightNeedThereHelp, standoutInfo: "Very Imaginative...and not Tom", poiEmail: "Use Slack", poiThumbnailPic: "Not Tom", linkedInUser: "", twitterUser: "", faceBookUser: "",instagramUser: "" )]
     
     
     

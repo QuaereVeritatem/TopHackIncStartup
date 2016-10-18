@@ -66,6 +66,13 @@ class AddNewPOIViewController: UIViewController, UITextFieldDelegate, UIImagePic
     @IBAction func bluetoothSyncButton(_ sender: UIButton) {
     }
     @IBAction func cancel(_ sender: UIBarButtonItem) {
+        let isPresentingInAddEventMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddEventMode {
+            dismiss(animated: true, completion: nil)
+        } else {
+            navigationController!.popViewController(animated: true)
+        }
     }
 
     @IBAction func save(_ sender: UIBarButtonItem) {
