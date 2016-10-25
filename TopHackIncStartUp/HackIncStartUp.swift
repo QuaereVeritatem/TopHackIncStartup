@@ -37,7 +37,9 @@ class HackIncStartUp: NSObject, NSCoding {
     //a persistent path on the file system where data will be saved and loaded..
     //access the path using the syntax Meal.ArchiveURL.path!(when accessed outside the class)
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("meals")
+    
+    //string literal said "meals" up to recently 10-24
+    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("events")
     //constants marked with static keyword apply to the class instead of an instance of the class.
     
     // MARK: Types

@@ -23,6 +23,22 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func logOutBtn(_ sender: UIBarButtonItem) {
+            print( "logoutBtn called!" )
+    
+            BackendlessManager.sharedInstance.logoutUser(
+    
+                completion: {
+                    self.performSegue(withIdentifier: "gotoLoginFromMenu", sender: sender)
+                    //self.dismiss(animated: true, completion: nil)
+                },
+    
+                error: { message in
+                    print("User failed to log out: \(message)")
+            })
+        }
+
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath) as! SettingsTableViewCell

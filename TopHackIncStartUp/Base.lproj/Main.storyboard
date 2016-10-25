@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="r9G-YQ-1eU">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="r9G-YQ-1eU">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -27,7 +27,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RCb-0r-BeU" id="A4j-GF-yAa">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wby-J9-UDA">
@@ -68,9 +68,16 @@
                             <constraint firstItem="tYG-ka-CsL" firstAttribute="top" secondItem="T4b-gK-nRW" secondAttribute="top" id="y5F-Ma-PLB"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="cmx-ri-K64"/>
+                    <navigationItem key="navigationItem" title="Settings" id="cmx-ri-K64">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="0Z5-b2-rbb">
+                            <connections>
+                                <action selector="logOutBtn:" destination="3G2-ES-Gth" id="aUP-Fl-BE4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="7Db-Nx-Yai" kind="showDetail" id="coL-tD-dCK"/>
+                        <segue destination="r9G-YQ-1eU" kind="showDetail" identifier="gotoLoginFromMenu" id="Soe-0n-4SN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bJe-UE-1Cz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -181,7 +188,7 @@
                                             <constraints>
                                                 <constraint firstItem="aLi-U9-zb9" firstAttribute="top" secondItem="Z1n-SE-OoX" secondAttribute="bottom" constant="3" id="B4f-gN-VI9"/>
                                                 <constraint firstItem="f2U-4z-PZT" firstAttribute="leading" secondItem="xuD-Cv-Ven" secondAttribute="trailing" id="JuD-Yq-dp5"/>
-                                                <constraint firstItem="IMv-0P-Z0Y" firstAttribute="leading" secondItem="f2U-4z-PZT" secondAttribute="trailing" constant="15" id="OU7-Oo-j9z"/>
+                                                <constraint firstItem="IMv-0P-Z0Y" firstAttribute="leading" secondItem="f2U-4z-PZT" secondAttribute="trailing" constant="1" id="OU7-Oo-j9z"/>
                                                 <constraint firstItem="Z1n-SE-OoX" firstAttribute="leading" secondItem="QAn-5b-DAA" secondAttribute="trailing" constant="5" id="OUY-sD-90p"/>
                                                 <constraint firstItem="f2U-4z-PZT" firstAttribute="top" secondItem="aLi-U9-zb9" secondAttribute="bottom" id="TRc-p9-tKa"/>
                                                 <constraint firstAttribute="bottom" secondItem="QAn-5b-DAA" secondAttribute="bottom" id="TZC-ZU-kDY"/>
@@ -301,7 +308,7 @@
                                     <constraint firstItem="tNN-3N-kxk" firstAttribute="width" secondItem="dxR-M7-miN" secondAttribute="width" id="FtX-wk-wli"/>
                                     <constraint firstItem="7Gq-3r-mMa" firstAttribute="width" secondItem="dxR-M7-miN" secondAttribute="width" id="Jyi-PZ-CCB"/>
                                     <constraint firstItem="z7j-g7-iQz" firstAttribute="width" secondItem="dxR-M7-miN" secondAttribute="width" id="NAT-8P-ONb"/>
-                                    <constraint firstAttribute="width" constant="336" id="NK8-LW-5hQ"/>
+                                    <constraint firstAttribute="width" constant="300" id="NK8-LW-5hQ"/>
                                     <constraint firstItem="tNN-3N-kxk" firstAttribute="height" secondItem="dxR-M7-miN" secondAttribute="height" id="hW6-36-sr6"/>
                                     <constraint firstItem="crh-YN-93F" firstAttribute="height" secondItem="dxR-M7-miN" secondAttribute="height" id="nUc-L5-LPa"/>
                                     <constraint firstItem="crh-YN-93F" firstAttribute="width" secondItem="dxR-M7-miN" secondAttribute="width" id="nVH-s7-gph"/>
@@ -326,7 +333,9 @@
                                     <constraint firstAttribute="width" constant="148" id="45T-O3-fRX"/>
                                     <constraint firstAttribute="height" constant="106" id="spb-Bc-Hv8"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Load Event Logo">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="photoImageButton:" destination="AaG-Zb-yIz" eventType="touchUpInside" id="QPj-Qo-fnx"/>
                                     <outletCollection property="gestureRecognizers" destination="ZEu-cN-SHx" appends="YES" id="YTg-iH-a5c"/>
@@ -420,7 +429,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="130"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CXE-IV-shh" id="QuD-bU-OO9">
-                                                    <frame key="frameInset" width="375" height="129"/>
+                                                    <frame key="frameInset" width="375" height="129.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ew0-hB-xdK" userLabel="ProfilePic">
@@ -457,11 +466,11 @@
                                                                 </imageView>
                                                             </subviews>
                                                         </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Nw3-A3-9j6">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Nw3-A3-9j6">
                                                             <subviews>
                                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cXg-cd-ewa" userLabel="fName">
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="100" id="miU-z4-LQh"/>
+                                                                        <constraint firstAttribute="width" constant="80" id="miU-z4-LQh"/>
                                                                         <constraint firstAttribute="height" constant="30" id="v1N-yK-euE"/>
                                                                     </constraints>
                                                                     <nil key="textColor"/>
@@ -485,12 +494,12 @@
                                                                 </textField>
                                                             </subviews>
                                                         </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jb8-e2-OEg">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="jb8-e2-OEg">
                                                             <subviews>
                                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Job Type" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Qe-jF-5Dt" userLabel="jobType">
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="bGw-W0-PKR"/>
-                                                                        <constraint firstAttribute="width" constant="100" id="cUk-NL-g0o"/>
+                                                                        <constraint firstAttribute="width" constant="80" id="cUk-NL-g0o"/>
                                                                     </constraints>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -533,7 +542,6 @@
                                                                         <constraint firstAttribute="width" constant="70" id="JOM-yq-htd"/>
                                                                         <constraint firstAttribute="height" constant="30" id="oMw-Ap-Jxa"/>
                                                                     </constraints>
-                                                                    <state key="normal" title="Sync Data"/>
                                                                     <connections>
                                                                         <action selector="bluetoothSyncButton:" destination="CXE-IV-shh" eventType="touchUpInside" id="fOX-IJ-Pf8"/>
                                                                     </connections>
@@ -552,7 +560,7 @@
                                                                 </textField>
                                                             </subviews>
                                                         </stackView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bluetooth Connect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2B-pS-wgB">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2B-pS-wgB">
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="70" id="HRW-qN-quZ"/>
                                                                 <constraint firstAttribute="height" constant="8" id="yxB-Cx-i6O"/>
@@ -650,14 +658,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FinalBorderDuskColored" translatesAutoresizingMaskIntoConstraints="NO" id="ffP-ry-cEA"/>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Bluetooth to populate just the important Data (optional)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBK-Xr-PnP">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="HnI-1Z-rX5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GhF-GB-Ysp">
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5lD-rR-Szt">
@@ -757,29 +757,14 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vgz-Bg-BXW">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Wyj-TI-rmV"/>
-                                    <constraint firstAttribute="width" constant="70" id="nr2-AH-RGh"/>
-                                </constraints>
-                                <state key="normal" title="Sync Data"/>
-                                <connections>
-                                    <action selector="bluetoothSync:" destination="NDJ-Y9-W8A" eventType="touchUpInside" id="o4f-qT-lcb"/>
-                                    <action selector="bluetoothSyncButton:" destination="NDJ-Y9-W8A" eventType="touchUpInside" id="b5j-iS-Laq"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="GhF-GB-Ysp" firstAttribute="top" secondItem="Efx-2l-rT1" secondAttribute="bottom" id="2FS-69-rRL"/>
-                            <constraint firstItem="gBK-Xr-PnP" firstAttribute="centerX" secondItem="EGi-m6-GOE" secondAttribute="centerX" id="6WW-xG-Iq3"/>
                             <constraint firstItem="ffP-ry-cEA" firstAttribute="top" secondItem="EGi-m6-GOE" secondAttribute="top" id="Njg-IM-GV5"/>
                             <constraint firstItem="jX5-gl-6N3" firstAttribute="top" secondItem="ffP-ry-cEA" secondAttribute="bottom" id="ZWq-Wu-pgl"/>
-                            <constraint firstItem="gBK-Xr-PnP" firstAttribute="top" secondItem="Vgz-Bg-BXW" secondAttribute="bottom" constant="3" id="dex-d0-YBM"/>
-                            <constraint firstItem="Vgz-Bg-BXW" firstAttribute="centerX" secondItem="EGi-m6-GOE" secondAttribute="centerX" id="htc-tJ-w0P"/>
                             <constraint firstAttribute="trailing" secondItem="ffP-ry-cEA" secondAttribute="trailing" id="jG0-bV-nfZ"/>
                             <constraint firstItem="ffP-ry-cEA" firstAttribute="leading" secondItem="EGi-m6-GOE" secondAttribute="leading" id="q8j-ba-Ag1"/>
-                            <constraint firstItem="Vgz-Bg-BXW" firstAttribute="top" secondItem="GhF-GB-Ysp" secondAttribute="bottom" constant="8" id="r5y-FU-Ptp"/>
                             <constraint firstItem="GhF-GB-Ysp" firstAttribute="centerX" secondItem="EGi-m6-GOE" secondAttribute="centerX" id="zhF-Re-rKF"/>
                         </constraints>
                     </view>
@@ -1185,11 +1170,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OG3-UZ-JX5" id="xWU-9H-ngK">
-                                            <frame key="frameInset" width="342" height="43"/>
+                                            <frame key="frameInset" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="mvq-rI-mDq">
-                                                    <frame key="frameInset" minX="15" width="325" height="43"/>
+                                                    <frame key="frameInset" minX="15" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1289,8 +1274,8 @@
         <image name="twitterLogodark" width="285" height="244"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FxN-vo-fgi"/>
         <segue reference="ooV-EC-X7V"/>
-        <segue reference="toE-1Q-f8G"/>
+        <segue reference="FxN-vo-fgi"/>
+        <segue reference="o9G-3z-r50"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -5,6 +5,7 @@
 //  Created by Robert Martin on 10/3/16.
 //  Copyright © 2016 Robert Martin. All rights reserved.
 //
+//problems here: social storage links not working, image upload and bluetooth not working,
 
 import UIKit
 
@@ -62,9 +63,7 @@ class AddNewPOIViewController: UIViewController, UITextFieldDelegate, UIImagePic
         // Dispose of any resources that can be recreated.
     }
     
-    //theres 2 of these buttons , remove one with caution
-    @IBAction func bluetoothSyncButton(_ sender: UIButton) {
-    }
+ 
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         let isPresentingInAddEventMode = presentingViewController is UINavigationController
         
@@ -95,8 +94,6 @@ class AddNewPOIViewController: UIViewController, UITextFieldDelegate, UIImagePic
         self.performSegue(withIdentifier: "SegueBackToPOI", sender: self)
     }
 
-    @IBAction func bluetoothSync(_ sender: UIButton) {
-    }
     
     //MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

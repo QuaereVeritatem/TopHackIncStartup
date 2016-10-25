@@ -5,6 +5,7 @@
 //  Created by Robert Martin on 9/28/16.
 //  Copyright © 2016 Robert Martin. All rights reserved.
 //
+//problems here: picture button crash and first pickerview option not selectable at first
 
 import UIKit
 
@@ -75,17 +76,23 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
         let progT = progTypeLabel
         let progL = progLocation
         let dateL = dateLabel
-        //next line causing fatal run-time crash (bad way to inwrap optional!! *******)
+        
+        //next line causing fatal run-time crash (bad way to unwrap optional!! *******)
         if photoImageView != nil {
             let photo = photoImageView.image  //not tied to anything yet
-        //update the struct Event
-    //    EventData.sharedInstance.testEvent.areaLoc = progL  //need to setup pickerview to textfield!!
-    //    EventData.sharedInstance.testEvent.dateOrTimeFrame = dateL  //need to setup pickerview to textfield!!
+            //update the struct Event
             EventData.sharedInstance.testEvent.logo = photo?.accessibilityIdentifier
         } else { EventData.sharedInstance.testEvent.logo = "defaultLogo1"
         }
         EventData.sharedInstance.testEvent.name = name
-       // EventData.sharedInstance.testEvent.progType = progT   //need to setup pickerview to textfield!!
+        
+        //** mapping raw value allows userdefined types to be set to text input fields **
+        EventData.sharedInstance.testEvent.areaLoc = (progL?.text).map { EventData.AreaLoc(rawValue: $0) }!
+        
+        EventData.sharedInstance.testEvent.dateOrTimeFrame = (dateL?.text).map { EventData.TimeFrame(rawValue: $0) }!
+        
+        EventData.sharedInstance.testEvent.progType = (progT?.text).map { EventData.ProgTypes(rawValue: $0) }!
+        
         EventData.sharedInstance.testEvent.progUrl = web
         
         //adding to local database
@@ -196,7 +203,7 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
         let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         
         // Set photoImageView to display the selected image.
-        photoImageView.image = selectedImage
+        photoImageView.image = selectedImage //this or prev line causes crash*****
         
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
@@ -248,4 +255,6 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
             dateLabel.text = EventData.sharedInstance.timeFrameArray[row]
         }
     }
+    
+    
 }

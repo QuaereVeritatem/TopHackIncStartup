@@ -22,5 +22,21 @@ class SettingsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    //    //delete this
+    //    @IBAction func LogOutBtn(_ sender: UIButton) {
+    //        print( "logoutBtn called!" )
+    //
+    //        BackendlessManager.sharedInstance.logoutUser(
+    //
+    //            completion: {
+    //                self.performSegue(withIdentifier: "gotoLoginFromMenu", sender: sender)
+    //                //self.dismiss(animated: true, completion: nil)
+    //            },
+    //
+    //            error: { message in
+    //                print("User failed to log out: \(message)")
+    //        })
+    //    }
 
 }

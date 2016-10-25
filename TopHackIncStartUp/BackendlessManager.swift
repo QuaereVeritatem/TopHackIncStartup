@@ -42,7 +42,7 @@ class BackendlessManager {
         backendless.userService.setStayLoggedIn(true)
     }
     
-/*    func isUserLoggedIn() -> Bool {
+    func isUserLoggedIn() -> Bool {
         
         let isValidUser = backendless.userService.isValidUserToken()
         
@@ -52,7 +52,8 @@ class BackendlessManager {
             return false
         }
     }
-*/
+
+    
     func loginUser(email: String, password: String, completion: @escaping () -> (), error: @escaping (String) -> ()) {
         
         backendless.userService.login( email, password: password,
@@ -666,10 +667,10 @@ class BackendlessManager {
         )
     }
     
-    
+    //prob setting up element of indexPath.row at becsthackIncevent
     func removePersonOrEvent(personOrEventToRemove: HackIncStartUp, completion: @escaping () -> (), error: @escaping () -> ()) {
         //dont delete something until it was removed from the database first!
-        print("Remove person or event: \(personOrEventToRemove.objectId!)")
+       // print("Remove person or event: \(personOrEventToRemove.objectId!)")
         
         let dataStore = backendless.persistenceService.of(BackendlessTopHack.ofClass())
         

@@ -11,10 +11,13 @@
 
 //**** New Name:  'TechBolt' - connecting tech proffesionals to the events you care about
 
+//problems here: edit button and swipe to delete dont work *******
+
 import UIKit
 //work on further increasing design as well..nav bar on homepage and double reload of homepage from table
 //make sure to put in comments before I upload to github
 //make sure indentations all matchup and are consistent
+//fix bugs
 class HomeViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
@@ -26,6 +29,8 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     
     @IBAction func editCurrentEvents(_ sender: UIBarButtonItem) {
         //setup for deleting cells
+        //self.editingStyle = .delete
+       
     }
     
     
@@ -51,13 +56,24 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // Add support for pull-to-refresh on the table view.
+        // Use the edit button item provided by the table view controller.
+        navigationItem.leftBarButtonItem = editButtonItem
+
+        
+        // Add support for pull-to-refresh on the table view.(not really needed though)
  //       self.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: UIControlEvents.valueChanged)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //makes editing possible on table view (slides screen over to show minus signs) 
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        
+        super.setEditing(editing, animated: animated)
+        tableView.setEditing(editing, animated: animated)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -130,26 +146,66 @@ class HomeViewController: UIViewController, UITableViewDataSource {
      
     
      
-//     // Override to support editing the table view.
-//   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//     
-//     if editingStyle == .delete {
-//     
-//     if BackendlessManager.sharedInstance.isUserLoggedIn() {
-//     
-//     // Find the MealData in the data source that we wish to delete.
-//     let EventToRemove = EventData.sharedInstance.besthackIncEvent[indexPath.row]
-//     
-//     BackendlessManager.sharedInstance.removePersonOrEvent(personOrEventToRemove: EventToRemove,
-//     
-//     //completion: {
-//     
-//     // It was removed from the database, now delete the row from the data source.
-//     EventData.sharedInstance.besthackIncEvent.remove(at: (indexPath as NSIndexPath).row)
-//     tableView.deleteRows(at: [indexPath], with: .fade)
-//        }
-//        }
-//    }
+     // Override to support editing the table view.
+   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     
+          // if  editingStyle == .delete {
+    if  (editingStyle == UITableViewCellEditingStyle.delete) {
+            if BackendlessManager.sharedInstance.isUserLoggedIn() {
+     
+                // Find the EventData(old MealData) in the data source that we wish to delete.
+                // let mealToRemove = meals[indexPath.row]
+                var ETR = [HackIncStartUp]()
+                let EventToRemove = ETR[indexPath.row]
+     
+                BackendlessManager.sharedInstance.removePersonOrEvent(personOrEventToRemove: EventToRemove,
+     
+                    completion: {
+     
+                        // It was removed from the database, now delete the row from the data source.
+                        EventData.sharedInstance.besthackIncEvent.remove(at: (indexPath as NSIndexPath).row)
+                        //tableView.deleteRows(at: [indexPath], with: .fade)
+                       // self.removeAtIndex(indexPath.row)
+                        tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                        },
+                    
+                    error: {
+                        
+                        // It was NOT removed - tell the user and DON'T delete the row from the data source.
+                        let alertController = UIAlertController(title: "Remove Failed",
+                                                                message: "Oops! We couldn't remove your Event at this time.",
+                                                                preferredStyle: .alert)
+                        
+                        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        alertController.addAction(okAction)
+                        
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                ) //end of parameter
+
+            } else{
+                
+                // Delete the row from the data source
+                EventData.sharedInstance.besthackIncEvent.remove(at: (indexPath as NSIndexPath).row)
+                
+                // Save the meals.(events)
+             //   saveMealsToArchiver()
+                
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+
+    
+    @nonobjc func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        if (self.tableView.isEditing) {
+            return UITableViewCellEditingStyle.delete
+        }
+        return UITableViewCellEditingStyle.none
+    }
     
     func loadImageFromUrl(cell: TopCell, thumbnailUrl: String) {
         

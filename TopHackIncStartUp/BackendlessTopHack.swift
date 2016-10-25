@@ -12,7 +12,7 @@ import Foundation
 class BackendlessTopHack: NSObject {
     
     var objectId: String?
-    var name: String? //figure out what this goes to
+    var name: String? //this is for the user
     //no big photos
     var photoUrl: String?
     var thumbnailUrl: String?

@@ -6,6 +6,7 @@
 //  Copyright © 2016 Robert Martin. All rights reserved.
 //
 //software program to crop pics really needed so pics look clean
+//problems here: edit button not working, social button links not working, bluetooth button still there
 
 import UIKit
 @IBDesignable
@@ -27,6 +28,7 @@ class POIViewController: UIViewController , UITableViewDelegate, UITableViewData
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        navigationItem.leftBarButtonItem = editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +36,13 @@ class POIViewController: UIViewController , UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
+    //makes editing possible on table view (slides screen over to show minus signs)
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        
+        super.setEditing(editing, animated: animated)
+        tableView.setEditing(editing, animated: animated)
+    }
+
 
     
     // MARK: - Navigation
@@ -108,6 +117,68 @@ class POIViewController: UIViewController , UITableViewDelegate, UITableViewData
      
      return cell
      }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+            if BackendlessManager.sharedInstance.isUserLoggedIn() {
+                
+                // Find the EventData(old MealData) in the data source that we wish to delete.
+                // let mealToRemove = meals[indexPath.row]
+                var PTR = [HackIncStartUp]()
+                let personToRemove = PTR[indexPath.row]
+                
+                BackendlessManager.sharedInstance.removePersonOrEvent(personOrEventToRemove: personToRemove,
+                                                                      
+                                                                      completion: {
+                                                                        
+                                                                        // It was removed from the database, now delete the row from the data source.
+                                                                        PersonData.sharedInstance.arrayPersonsOfInterest.remove(at: (indexPath as NSIndexPath).row)
+                                                                        tableView.deleteRows(at: [indexPath], with: .fade)
+                    },
+                                                                      
+                                                                      error: {
+                                                                        
+                                                                        // It was NOT removed - tell the user and DON'T delete the row from the data source.
+                                                                        let alertController = UIAlertController(title: "Remove Failed",
+                                                                                                                message: "Oops! We couldn't remove your Contact at this time.",
+                                                                                                                preferredStyle: .alert)
+                                                                        
+                                                                        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                                                                        alertController.addAction(okAction)
+                                                                        
+                                                                        self.present(alertController, animated: true, completion: nil)
+                    }
+                ) //end of parameter
+                
+            } else{
+                
+                // Delete the row from the data source
+                PersonData.sharedInstance.arrayPersonsOfInterest.remove(at: (indexPath as NSIndexPath).row)
+                
+                // Save the meals.(contacts)
+                //   saveMealsToArchiver()
+                
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    
+    @nonobjc func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        if (self.tableView.isEditing) {
+            return UITableViewCellEditingStyle.delete
+        }
+        return UITableViewCellEditingStyle.none
+    }
  
     func gettingTheQuotesPart<T: Equatable>(variable: T) -> String {
         var quotePart = ""
