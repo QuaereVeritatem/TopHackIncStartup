@@ -23,6 +23,11 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.tintColor = UIColor.blue
+    }
+    
     @IBAction func logOutBtn(_ sender: UIBarButtonItem) {
             print( "logoutBtn called!" )
     

@@ -20,36 +20,18 @@ import UIKit
 //fix bugs
 class HomeViewController: UIViewController, UITableViewDataSource {
     
+    var backEndlessUltraTopHack = [BackendlessTopHack]() // an array of a class
+    var backEndlessUltraHackEvent = EventData.sharedInstance.besthackIncEvent //an array of hackIncEvent
+    
     @IBOutlet weak var tableView: UITableView!
     
  
-        @IBAction func addEvents(_ sender: UIBarButtonItem) {
-        //already setup to go to next VC
+    @IBAction func addEvents(_ sender: UIBarButtonItem) {
+    //already setup to go to next VC
     }
     
     @IBAction func editCurrentEvents(_ sender: UIBarButtonItem) {
-        //setup for deleting cells
-        //self.editingStyle = .delete
-       
     }
-    
-    
-
-//    //delete this 
-//    @IBAction func LogOutBtn(_ sender: UIButton) {
-//        print( "logoutBtn called!" )
-//        
-//        BackendlessManager.sharedInstance.logoutUser(
-//            
-//            completion: {
-//                self.performSegue(withIdentifier: "gotoLoginFromMenu", sender: sender)
-//                //self.dismiss(animated: true, completion: nil)
-//            },
-//            
-//            error: { message in
-//                print("User failed to log out: \(message)")
-//        })
-//    }
     
     
     override func viewDidLoad() {
@@ -59,10 +41,98 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem
 
+        //if backendless data is nil then load example data
+        if Backendless.sharedInstance().persistenceService.of(BackendlessTopHack.ofClass()) == nil {
+        //user not logged in (**user will always be logged in at this page!!!!!!!!!!!!!)
+       // if !BackendlessManager.sharedInstance.isUserLoggedIn() {
+            //load sample events into backendless
+            //save each event as an event in backendless
+            var index = 0
+            for i in EventData.sharedInstance.besthackIncEvent {
+                backEndlessUltraTopHack[index].EventName = i.name
+                backEndlessUltraTopHack[index].EventProgramType = i.progType.map { $0.rawValue }
+                backEndlessUltraTopHack[index].Website = i.progUrl
+                backEndlessUltraTopHack[index].EventAreaLoc = i.areaLoc.map { $0.rawValue }
+                backEndlessUltraTopHack[index].EventLogo = i.logo
+                backEndlessUltraTopHack[index].EventDate = i.dateOrTimeFrame.map { $0.rawValue }
+                
+                //to store a name(email) of user
+                backEndlessUltraTopHack[index].name = "default"
+                
+                //this is to create a unique objectID to store event in backendless with
+                let uuid = NSUUID().uuidString
+                backEndlessUltraTopHack[index].objectId = uuid
+                //must save logo picture in backend as well
+                
+                //now load into backendless persistent save spot
+                Backendless.sharedInstance().data.save( backEndlessUltraTopHack[index],
+                                       
+                                       response: { (entity: Any?) -> Void in
+                                        
+                                        let PersonOrEvent = entity as! BackendlessTopHack
+                                        
+                                        print("PersonOrEvent: \(PersonOrEvent.objectId!), PersonOrEvent: \(PersonOrEvent.name), photoUrl: \"\(PersonOrEvent.photoUrl!)")
+                    },
+                                       
+                                       error: { (fault: Fault?) -> Void in
+                                        print("PersonOrEvent failed to save: \(fault)")
+                    }
+                )
+                
+                index = index + 1
+            }
+            
+            
+            //then load backendless into currrent tableView
+        }
         
+        
+        
+        
+        
+        
+ /*       if BackendlessManager.sharedInstance.isUserLoggedIn() {
+            
+            refresh(sender: self)
+
+        } else {
+            
+            // Load any saved meals, otherwise load sample data. (this is important!!)
+          //  if let savedMeals = loadMealsFromArchiver() {
+             //   meals += savedMeals
+        } else {
+                // Load the sample data.
+            
+                //save each event as an event in backendless
+                backEndlessUltraTopHack = EventData.sharedInstance.besthackIncEvent as! [BackendlessTopHack]
+                // HACK: Disabled sample meal data for now!
+                // loadSampleMeals()
+            }
+        } */
         // Add support for pull-to-refresh on the table view.(not really needed though)
- //       self.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: UIControlEvents.valueChanged)
+        //self.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: UIControlEvents.valueChanged)
     }
+    
+    func refresh(sender: AnyObject) {
+        
+//        //if BackendlessManager.sharedInstance.isUserLoggedIn() {
+//            
+//          //  BackendlessManager.sharedInstance.loadMeals(
+//                
+//                completion: { mealData in
+//                    
+//                    self.meals = mealData
+//                    self.tableView.reloadData()
+//                    self.refreshControl?.endRefreshing()
+//                },
+//                
+//                error: {
+//                    self.tableView.reloadData()
+//                    self.refreshControl?.endRefreshing()
+//            } //)
+//        //}
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -165,7 +235,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
                         // It was removed from the database, now delete the row from the data source.
                         EventData.sharedInstance.besthackIncEvent.remove(at: (indexPath as NSIndexPath).row)
                         //tableView.deleteRows(at: [indexPath], with: .fade)
-                       // self.removeAtIndex(indexPath.row)
+                        //animation looks better
                         tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                         },
                     

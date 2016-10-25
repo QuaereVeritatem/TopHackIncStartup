@@ -68,6 +68,8 @@ class RegisterViewController: UIViewController {
                     
                         self.spinner.stopAnimating()
                         
+                        //heres where we load local database into backendless
+                        
                         self.performSegue(withIdentifier: "gotoMenuFromRegister", sender: sender)
                     },
                     

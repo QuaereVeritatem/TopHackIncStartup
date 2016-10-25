@@ -12,7 +12,7 @@ class SettingsData {
     
     static let sharedInstance = SettingsData()
     
-    var settingsChoices: [String] = ["Notification Manager", "About Me", "Help/FAQ's", "Report a Bug", "Privacy and Safety", "Logout"]
+    var settingsChoices: [String] = ["Notification Manager", "About Me", "Help/FAQ's", "Report a Bug", "Privacy and Safety"]
     
     
 }

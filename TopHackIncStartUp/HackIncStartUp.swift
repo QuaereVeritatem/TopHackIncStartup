@@ -19,7 +19,7 @@ class HackIncStartUp: NSObject, NSCoding {
        // var progType:
        // var areaLoc: HomeViewController.hackIncStartUp.AreaLoc
         var logo: String? // an image here but an url string in BackendlessTopHack
-       // var dateOrTimeFrame: HomeViewController.hackIncStartUp.TimeFrame
+        //var dateOrTimeFrame: TimeFrame
     
     // MARK: Archiver Only Properties
     
