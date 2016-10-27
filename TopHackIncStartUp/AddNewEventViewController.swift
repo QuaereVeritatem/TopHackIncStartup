@@ -37,6 +37,7 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
     @IBOutlet weak var photoImageView: UIImageView!
     
     @IBAction func photoImageButton(_ sender: UIButton) {
+        //imagePickerController(_, _)
     }
     
     override func viewDidLoad() {
@@ -97,32 +98,51 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
         
         //adding to local database
         EventData.sharedInstance.besthackIncEvent.append(EventData.sharedInstance.testEvent)
+        //adding to backendless class(so it can be stored in backendless) [storing in dual format]
+        let backendlessTH: BackendlessTopHack = BackendlessTopHack()
+        let newName = EventData.sharedInstance.testEvent.name
+        //if let newPhoto =
+        //change this photo to the default...it will crash as is ****!!!!!!!!!!!
+        let hackIS: HackIncStartUp = HackIncStartUp.init(name: newName, photo: photoImageView?.image)!
         
-        //saving to backendless part...
-        if 1==1 {//BackendlessManager.sharedInstance.isUserLoggedIn() {
-            
-            // We're logged in - attempt to save to Backendless!
-        //    spinner.startAnimating()
-            
-/*            BackendlessManager.sharedInstance.saveMeal(mealData: meal!,
-                                                       
+        backendlessTH.EventLogo = EventData.sharedInstance.testEvent.logo
+        backendlessTH.EventName = EventData.sharedInstance.testEvent.name
+        backendlessTH.EventAreaLoc = EventData.sharedInstance.testEvent.areaLoc.map { $0.rawValue }
+        backendlessTH.EventDate = EventData.sharedInstance.testEvent.dateOrTimeFrame.map { $0.rawValue }
+        backendlessTH.EventProgramType = EventData.sharedInstance.testEvent.progType.map { $0.rawValue }
+        backendlessTH.Website = EventData.sharedInstance.testEvent.progUrl
+        
+        hackIS.areaLoc = EventData.sharedInstance.testEvent.areaLoc
+        hackIS.dateOrTimeFrame = EventData.sharedInstance.testEvent.dateOrTimeFrame
+        hackIS.progType = EventData.sharedInstance.testEvent.progType
+        hackIS.progUrl = EventData.sharedInstance.testEvent.progUrl
+
+
+        let dualFormatEvent: (BackendlessTopHack,HackIncStartUp) = (backendlessTH, hackIS)
+        
+        //saving to backendless part
+        spinner.startAnimating()
+        
+        //save the event earlier that we appended (dont save the whole array over again)
+        BackendlessManager.sharedInstance.saveEvent(newEventData: dualFormatEvent,
              completion: {
              
              // It was saved to the database!
-             self.saveSpinner.stopAnimating()
+             self.spinner.stopAnimating()
              
-             self.meal?.replacePhoto = false // Reset this just in case we did a photo replacement.
+             //self.meal?.replacePhoto = false // Reset this just in case we did a photo replacement.
              
-             self.performSegue(withIdentifier: "unwindToMealList", sender: self)
+            //send back to event VC
+             self.performSegue(withIdentifier: "NewEventSegueBack", sender: self)
              },
              
              error: {
              
              // It was NOT saved to the database! - tell the user and DON'T call performSegue.
-             self.saveSpinner.stopAnimating()
+             self.spinner.stopAnimating()
              
              let alertController = UIAlertController(title: "Save Error",
-             message: "Oops! We couldn't save your Meal at this time.",
+             message: "Oops! We couldn't save your Event at this time.",
              preferredStyle: .alert)
              
              let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -134,13 +154,7 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
              
              })
             
-        } else {
-            
-            // We're not logged in - just unwind and have MealTableViewController
-            // save later using NSKeyedArchiver.*/
-            self.performSegue(withIdentifier: "NewEventSegueBack", sender: self)
-            
-        }
+        
     }
     
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {

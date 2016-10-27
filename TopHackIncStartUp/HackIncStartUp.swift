@@ -16,10 +16,10 @@ class HackIncStartUp: NSObject, NSCoding {
     
         var name: String
         var progUrl: String? //full website address
-       // var progType:
-       // var areaLoc: HomeViewController.hackIncStartUp.AreaLoc
+        var progType: EventData.ProgTypes?
+       var areaLoc: EventData.AreaLoc?
         var logo: String? // an image here but an url string in BackendlessTopHack
-        //var dateOrTimeFrame: TimeFrame
+        var dateOrTimeFrame: EventData.TimeFrame?
     
     // MARK: Archiver Only Properties
     

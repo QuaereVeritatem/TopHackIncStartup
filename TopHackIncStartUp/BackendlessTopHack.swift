@@ -16,7 +16,6 @@ class BackendlessTopHack: NSObject {
     //no big photos
     var photoUrl: String?
     var thumbnailUrl: String?
-    //var dateOrTimeFrame: Timeframe?
     
     
      //person of interest variables

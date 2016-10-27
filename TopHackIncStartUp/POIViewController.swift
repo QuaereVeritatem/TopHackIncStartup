@@ -129,7 +129,7 @@ class POIViewController: UIViewController , UITableViewDelegate, UITableViewData
                 var PTR = [HackIncStartUp]()
                 let personToRemove = PTR[indexPath.row]
                 
-                BackendlessManager.sharedInstance.removePersonOrEvent(personOrEventToRemove: personToRemove,
+                BackendlessManager.sharedInstance.removeEvent(personOrEventToRemove: personToRemove,
                                                                       
                                                                       completion: {
                                                                         

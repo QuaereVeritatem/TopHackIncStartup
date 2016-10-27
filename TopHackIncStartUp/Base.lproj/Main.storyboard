@@ -334,21 +334,30 @@
                                     <constraint firstAttribute="height" constant="106" id="spb-Bc-Hv8"/>
                                 </constraints>
                                 <state key="normal" title="Load Event Logo">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="photoImageButton:" destination="AaG-Zb-yIz" eventType="touchUpInside" id="QPj-Qo-fnx"/>
                                     <outletCollection property="gestureRecognizers" destination="ZEu-cN-SHx" appends="YES" id="YTg-iH-a5c"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XnJ-ik-XEz">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="123" id="8Ie-iX-dbl"/>
+                                    <constraint firstAttribute="height" constant="134" id="Q66-Tv-TD7"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="XnJ-ik-XEz" firstAttribute="centerX" secondItem="Hkc-Ki-eQ3" secondAttribute="centerX" id="14H-3P-bgk"/>
                             <constraint firstItem="gPf-6X-nQG" firstAttribute="leading" secondItem="Hkc-Ki-eQ3" secondAttribute="leading" id="1p1-8e-zh8"/>
                             <constraint firstItem="4kl-OL-cEN" firstAttribute="top" secondItem="7Gq-3r-mMa" secondAttribute="bottom" constant="25" id="AD4-rR-AYJ"/>
                             <constraint firstItem="gPf-6X-nQG" firstAttribute="top" secondItem="Hkc-Ki-eQ3" secondAttribute="top" id="BMK-Lc-KpA"/>
+                            <constraint firstItem="XnJ-ik-XEz" firstAttribute="top" secondItem="fiR-Ey-EQW" secondAttribute="bottom" constant="8" id="Khc-BP-pF1"/>
                             <constraint firstItem="30p-D8-qv5" firstAttribute="centerX" secondItem="Hkc-Ki-eQ3" secondAttribute="centerX" id="UXm-NR-vyx"/>
                             <constraint firstItem="fiR-Ey-EQW" firstAttribute="top" secondItem="DzG-gS-DvH" secondAttribute="bottom" id="Zsm-jc-qPF"/>
+                            <constraint firstItem="30p-D8-qv5" firstAttribute="top" secondItem="XnJ-ik-XEz" secondAttribute="bottom" constant="18" id="deV-Qe-pKZ"/>
                             <constraint firstItem="4kl-OL-cEN" firstAttribute="centerX" secondItem="Hkc-Ki-eQ3" secondAttribute="centerX" id="fpC-En-wBT"/>
                             <constraint firstAttribute="trailing" secondItem="gPf-6X-nQG" secondAttribute="trailing" id="kmX-LC-gsK"/>
                             <constraint firstItem="30p-D8-qv5" firstAttribute="top" secondItem="4kl-OL-cEN" secondAttribute="bottom" constant="29" id="kn5-e4-FDI"/>
@@ -370,6 +379,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dateLabel" destination="7Gq-3r-mMa" id="JAv-lR-7dv"/>
+                        <outlet property="photoImageView" destination="XnJ-ik-XEz" id="JwR-sF-qbH"/>
                         <outlet property="progLocation" destination="z7j-g7-iQz" id="cTL-be-ld2"/>
                         <outlet property="progNameLabel" destination="crh-YN-93F" id="amR-6r-LDQ"/>
                         <outlet property="progTypeLabel" destination="tNN-3N-kxk" id="Ze9-mI-1I3"/>
@@ -1274,8 +1284,8 @@
         <image name="twitterLogodark" width="285" height="244"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ooV-EC-X7V"/>
         <segue reference="toE-1Q-f8G"/>
-        <segue reference="FxN-vo-fgi"/>
+        <segue reference="ooV-EC-X7V"/>
+        <segue reference="eOj-Fv-TmH"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -1,6 +1,6 @@
 //
 //  HomeViewController.swift
-//  //TophackIncEvent
+//  //TophackIncEvent a.k.a. TechBolt
 //
 //  Created by Robert Martin on 9/4/16.
 //  Copyright © 2016 Robert Martin. All rights reserved.
@@ -228,7 +228,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
                 var ETR = [HackIncStartUp]()
                 let EventToRemove = ETR[indexPath.row]
      
-                BackendlessManager.sharedInstance.removePersonOrEvent(personOrEventToRemove: EventToRemove,
+                BackendlessManager.sharedInstance.removeEvent(personOrEventToRemove: EventToRemove,
      
                     completion: {
      
