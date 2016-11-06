@@ -39,4 +39,38 @@ class Utility {
             task()
         })
     }
+  
+    //we must encode and decode data before saving or loading
+/*    func loadEventFromArchiver() -> [EventData.hackIncEvent]? {
+        
+        return NSKeyedUnarchiver.unarchiveObject(withFile: EventData.hackIncEvent.ArchiveURL.path) as? [EventData.hackIncEvent]
+    }
+    
+    func saveEventToArchiver() {
+        
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(events, toFile: EventData.hackIncEvent.ArchiveURL.path)
+        
+        if !isSuccessfulSave {
+            print("Failed to save meals...")
+        }
+    }
+    
+    func loadPersonFromArchiver() -> [MealData]? {
+        
+        return NSKeyedUnarchiver.unarchiveObject(withFile: MealData.ArchiveURL.path) as? [MealData]
+    }
+    
+    func savePersonToArchiver() {
+        
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: MealData.ArchiveURL.path)
+        
+        if !isSuccessfulSave {
+            print("Failed to save meals...")
+        }
+    }
+*/
+    
+    
+    
+    
 }

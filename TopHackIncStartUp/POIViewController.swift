@@ -126,10 +126,11 @@ class POIViewController: UIViewController , UITableViewDelegate, UITableViewData
                 
                 // Find the EventData(old MealData) in the data source that we wish to delete.
                 // let mealToRemove = meals[indexPath.row]
-                var PTR = [HackIncStartUp]()
+                var PTR = [BackendlessTopHack]()
                 let personToRemove = PTR[indexPath.row]
                 
-                BackendlessManager.sharedInstance.removeEvent(personOrEventToRemove: personToRemove,
+                //this has to be of type BackendlessTopHack(persontoremove)
+                BackendlessManager.sharedInstance.removeEvent(EventToRemove: personToRemove,
                                                                       
                                                                       completion: {
                                                                         

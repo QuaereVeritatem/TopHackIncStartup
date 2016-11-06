@@ -23,10 +23,7 @@ class BackendlessManager {
     // This prevents others from using the default '()' initializer for this class.
     private init() {}
     
-    
     let backendless = Backendless.sharedInstance()!
-    
-    //***ALL instances of CLass personOrEvent must be changed to BackendlessTopHack [DONE]
     
     let VERSION_NUM = "v1"
     let APP_ID = "C28E4E1C-8C05-7A6B-FF1F-47592CAFB000"
@@ -58,21 +55,21 @@ class BackendlessManager {
         
         backendless.userService.login( email, password: password,
                                        
-                                       response: { (user: BackendlessUser?) -> Void in
-                                        print("User logged in: \(user!.objectId)")
-                                        completion()
+            response: { (user: BackendlessUser?) -> Void in
+                print("User logged in: \(user!.objectId)")
+                completion()
             },
                                        
-                                       error: { (fault: Fault?) -> Void in
-                                        print("User failed to login: \(fault)")
-                                        error((fault?.message)!)
+            error: { (fault: Fault?) -> Void in
+                print("User failed to login: \(fault)")
+                error((fault?.message)!)
         })
     }
     
     func logoutUser(completion: @escaping () -> (), error: @escaping (String) -> ()) {
         
         // First, check if the user is actually logged in.
-        if 1 == 1 /* isUserLoggedIn()  */ {
+        if  isUserLoggedIn()   {
             
             // If they are currently logged in - go ahead and log them out!
             
@@ -114,15 +111,15 @@ class BackendlessManager {
         
         backendless.userService.easyLogin(withTwitterFieldsMapping: ["email":"email"],
                                           
-                                          response: {(result : NSNumber?) -> () in
-                                            print ("Result: \(result)")
-                                            completion()
+            response: {(result : NSNumber?) -> () in
+                print ("Result: \(result)")
+                completion()
             },
                                           
-                                          error: { (fault : Fault?) -> () in
-                                            print("Server reported an error: \(fault)")
-                                            error((fault?.message)!)
-        })
+            error: { (fault : Fault?) -> () in
+                print("Server reported an error: \(fault)")
+                error((fault?.message)!)
+            })
     }
     
     func handleOpen(open url: URL, completion: @escaping () -> (), error: @escaping () -> ()) {
@@ -148,109 +145,20 @@ class BackendlessManager {
         
         backendless.userService.registering( user,
                                              
-                                             response: { (user: BackendlessUser?) -> Void in
+            response: { (user: BackendlessUser?) -> Void in
                                                 
-                                                print("User was registered: \(user?.objectId)")
-                                                completion()
+                print("User was registered: \(user?.objectId)")
+                completion()
             },
                                              
-                                             error: { (fault: Fault?) -> Void in
-                                                print("User failed to register: \(fault)")
-                                                error((fault?.message)!)
+            error: { (fault: Fault?) -> Void in
+                print("User failed to register: \(fault)")
+                error((fault?.message)!)
             }
         )
     }
 
-    
-  /*  func registerTestUser() {
-        
-        let user: BackendlessUser = BackendlessUser()
-        user.email = EMAIL as NSString!
-        user.password = PASSWORD as NSString!
-        
-        backendless.userService.registering( user,
-                                             
-                                             response: { (user: BackendlessUser?) -> Void in
-                                                
-                                                print("User was registered: \(user?.objectId)")
-                                                
-                                                self.loginTestUser()
-            },
-                                             
-                                             error: { (fault: Fault?) -> Void in
-                                                print("User failed to register: \(fault)")
-                                                
-                                                print(fault?.faultCode)
-                                                
-                                                // If fault is for "User already exists." - go ahead and just login!
-                                                if fault?.faultCode == "3033" {
-                                                    self.loginTestUser()
-                                                }
-            }
-        )
-    } */
-    
-   /* func loginTestUser() {
-        
-        backendless.userService.login( self.EMAIL, password: self.PASSWORD,
-                                       
-                                       response: { (user: BackendlessUser?) -> Void in
-                                        print("User logged in: \(user!.objectId)")
-            },
-                                       
-                                       error: { (fault: Fault?) -> Void in
-                                        print("User failed to login: \(fault)")
-            }
-        )
-    }
-    */
-    //************************** get rid of all personOrEvent refernces and data *****************
-    
-  /*  func saveTestData() {
-        
-        let newPersonOrEventBE = BackendlessTopHack()
-        newPersonOrEventBE.name = "Test Name #1"
-        newPersonOrEventBE.photoUrl = "https://guildsa.org/wp-content/uploads/2016/09/personOrEvent1.png"
-        
-        backendless.data.save( newPersonOrEventBE,
-                               
-                               response: { (entity: Any?) -> Void in
-                                
-                                let PersonOrEvent = entity as! BackendlessTopHack
-                                
-                                print("PersonOrEvent: \(PersonOrEvent.objectId!), PersonOrEvent: \(PersonOrEvent.name), photoUrl: \"\(PersonOrEvent.photoUrl!)")
-            },
-                               
-                               error: { (fault: Fault?) -> Void in
-                                print("PersonOrEvent failed to save: \(fault)")
-            }
-        )
-    }
-    
-    func loadTestData() {
-        
-        let dataStore = backendless.persistenceService.of(BackendlessTopHack.ofClass())
-        
-        dataStore?.find(
-            
-            { (PersonOrEventBEC: BackendlessCollection?) -> Void in
-                
-                print("Find attempt on all personOrEvents has completed without error!")
-                print("Number of personOrEvents found = \((PersonOrEventBEC?.data.count)!)")
-                
-                for personOrEvent in (PersonOrEventBEC?.data)! {
-                    
-                    let personOrEvent = personOrEvent as! BackendlessTopHack
-                    
-                    print("personOrEvent: \(personOrEvent.objectId!), name: \(personOrEvent.name), photoUrl: \"\(personOrEvent.photoUrl!)\"")
-                }
-            },
-            
-            error: { (fault: Fault?) -> Void in
-                print("Failed to find personOrEvents: \(fault)")
-            }
-        )
-    } */
+
     
     func savePhotoAndThumbnail(EventToSaveBE: BackendlessTopHack, photo: UIImage, completion: @escaping () -> (), error: @escaping () -> ()) {
         
@@ -311,201 +219,51 @@ class BackendlessManager {
                 error()
         })
     }
-    
- /*  func saveEventNotSureWhatThisFor(newEventData: HackIncStartUp, completion: @escaping () -> (), error: @escaping () -> ()) {
-        
-        if newEventData.objectId == nil {
-            
-            //
-            // Create a new personOrEvent along with a photo and thumbnail image.
-            //
-            
-            let EventToSaveBE = BackendlessTopHack()
-            EventToSaveBE.name = newEventData.name
-            
-            savePhotoAndThumbnail(EventToSaveBE: EventToSaveBE, photo: newEventData.photo!,
-                                                       
-               completion: {
-                
-                    // Once we save the photo and its thumbnail - save the personOrEvent!
-                    self.backendless.data.save( EventToSaveBE,
 
-                       response: { (entity: Any?) -> Void in
-
-                            let personOrEvent = entity as! BackendlessTopHack
-
-                            print("personOrEvent: \(personOrEvent.objectId!), name: \(personOrEvent.name), photoUrl: \"\(personOrEvent.photoUrl!)\"")
-
-                            newEventData.objectId = personOrEvent.objectId
-                            newEventData.photoUrl = personOrEvent.photoUrl
-                            newEventData.thumbnailUrl = personOrEvent.thumbnailUrl
-                        
-                            completion()
-                        },
-                       
-                       error: { (fault: Fault?) -> Void in
-                            print("Failed to save personOrEvent: \(fault)")
-                            error()
-                    })
-                },
-               
-                error: {
-                    print("Failed to save photo and thumbnail!")
-                    error()
-                })
-
-        } else if newEventData.replacePhoto {
-            
-            //
-            // Update the person or event AND replace the existing photo and 
-            // thumbnail image with a new one.
-            //
-            
-            let EventToSaveBE = BackendlessTopHack()
-            
-            savePhotoAndThumbnail(EventToSaveBE: EventToSaveBE, photo: newEventData.photo!,
-                                                       
-               completion: {
-
-                    let dataStore = self.backendless.persistenceService.of(BackendlessTopHack.ofClass())
-
-                    dataStore?.findID(newEventData.objectId,
-                                      
-                        response: { (personOrEvent: Any?) -> Void in
-                            
-                            // We found the personOrEvent to update.
-                            let personOrEvent = personOrEvent as! BackendlessTopHack
-                            
-                            // Cache old URLs for removal!
-                            let oldPhotoUrl = personOrEvent.photoUrl!
-                            let oldthumbnailUrl = personOrEvent.thumbnailUrl!
-                            
-                            // Update the personOrEvent with the new data.
-                            personOrEvent.name = newEventData.name
-                            personOrEvent.photoUrl = EventToSaveBE.photoUrl
-                            personOrEvent.thumbnailUrl = EventToSaveBE.thumbnailUrl
-                            
-                            // Save the updated personOrEvent.
-                            self.backendless.data.save( personOrEvent,
-                                                   
-                                response: { (entity: Any?) -> Void in
-                                    
-                                    let personOrEvent = entity as! BackendlessTopHack
-                                    
-                                    print("personOrEvent: \(personOrEvent.objectId!), name: \(personOrEvent.name), photoUrl: \"\(personOrEvent.photoUrl!)\"")
-                                    
-                                    // Update the personOrEventData used by the UI with the new URLS!
-                                    newEventData.photoUrl = personOrEvent.photoUrl
-                                    newEventData.thumbnailUrl = personOrEvent.thumbnailUrl
-                                    
-                                    completion()
-                                    
-                                    // Attempt to remove the old photo and thumbnail images.
-                                    self.removePhotoAndThumbnail(photoUrl: oldPhotoUrl, thumbnailUrl: oldthumbnailUrl, completion: {}, error: {})
-                                },
-                                                   
-                               error: { (fault: Fault?) -> Void in
-                                    print("Failed to save personOrEvent: \(fault)")
-                                    error()
-                            })
-                        },
-                         
-                        error: { (fault: Fault?) -> Void in
-                            print("Failed to find personOrEvent: \(fault)")
-                            error()
-                        }
-                    )
-                },
-                                                       
-                error: {
-                    print("Failed to save photo and thumbnail!")
-                    error()
-                })
-            
-        } else {
-            
-            //
-            // Update the personOrEvent data but keep the existing photo and thumbnail image.
-            //
-            
-            let dataStore = backendless.persistenceService.of(BackendlessTopHack.ofClass())
-
-            dataStore?.findID(newEventData.objectId,
-                              
-                response: { (personOrEvent: Any?) -> Void in
-                    
-                    // We found the personOrEvent to update.
-                    let personOrEvent = personOrEvent as! BackendlessTopHack
-                    
-                    // Update the personOrEvent with the new data
-                    personOrEvent.name = newEventData.name
-                    
-                    // Save the updated personOrEvent.
-                    self.backendless.data.save( personOrEvent,
-                                           
-                        response: { (entity: Any?) -> Void in
-                            
-                            let personOrEvent = entity as! BackendlessTopHack
-                            
-                            print("personOrEvent: \(personOrEvent.objectId!), name: \(personOrEvent.name), photoUrl: \"\(personOrEvent.photoUrl!)\"")
-                            
-                            completion()
-                        },
-                                           
-                       error: { (fault: Fault?) -> Void in
-                            print("Failed to save personOrEvent: \(fault)")
-                            error()
-                    })
-                },
-                 
-                error: { (fault: Fault?) -> Void in
-                    print("Failed to find personOrEvent: \(fault)")
-                    error()
-                }
-            )
-        }
-    }  */
-    //************* this is for the event: Name(event), url, prgtype, location, logo and timeframe
     func saveEvent(newEventData: (BackendlessTopHack,HackIncStartUp), completion: @escaping () -> (), error: @escaping () -> ()) {
         
         //checking HackIncStartUp for objectID...that means this must be class type to write OBjectID's to
         if newEventData.0.objectId == nil {
             
             //
-            // Create a new personOrEvent along with a photo and thumbnail image.
+            // Create a newEvent along with a photo and thumbnail image.
             //
+            //this will take the new event with no photo and make it default star
+            if (newEventData.1.photo == nil) {
+                newEventData.1.photo! = UIImage(named: "defaultLogo1")!
+            }
             
             let EventToSaveBE = newEventData.0
             
+            // MARK: Problem here - Crashes when new event added without a picture
             savePhotoAndThumbnail(EventToSaveBE: newEventData.0, photo: newEventData.1.photo!,
                                   
-                                  completion: {
+                completion: {
                                     
-                                    // Once we save the photo and its thumbnail - save the Event!
-                                    self.backendless.data.save( EventToSaveBE,
+                    // Once we save the photo and its thumbnail - save the Event!
+                    self.backendless.data.save( EventToSaveBE,
                                                                 
-                                                                response: { (entity: Any?) -> Void in
+                        response: { (entity: Any?) -> Void in
                                                                     
-                                                                    let Event = entity as! BackendlessTopHack
+                            let Event = entity as! BackendlessTopHack
                                                                     
-                                                                    print("Event: \(Event.objectId!), name: \(Event.name), photoUrl: \"\(Event.photoUrl!)\"")
+                            print("Event: \(Event.objectId!), name: \(Event.name), photoUrl: \"\(Event.photoUrl!)\"")
                                                                     
-                                                                    newEventData.0.objectId = Event.objectId
-                                                                    newEventData.0.photoUrl = Event.photoUrl
-                                                                    newEventData.0.thumbnailUrl = Event.thumbnailUrl
+                            newEventData.0.objectId = Event.objectId
+                            newEventData.0.photoUrl = Event.photoUrl
+                            newEventData.0.thumbnailUrl = Event.thumbnailUrl
                                                                     
-                                                                    completion()
-                                        },
+                            completion()
+                        },
                                                                 
-                                                                error: { (fault: Fault?) -> Void in
-                                                                    print("Failed to save Event: \(fault)")
-                                                                    error()
-                                    })
-                },
+                        error: { (fault: Fault?) -> Void in
+                            print("Failed to save Event: \(fault)")
+                            error()
+                        })},
                                   
-                                  error: {
-                                    print("Failed to save photo and thumbnail!")
-                                    error()
+                    error: {
+                        print("Failed to save photo and thumbnail!")
+                        error()
             })
             
         } else if newEventData.1.replacePhoto {
@@ -519,61 +277,60 @@ class BackendlessManager {
             
             savePhotoAndThumbnail(EventToSaveBE: EventToSaveBE, photo: newEventData.1.photo!,
                                   
-                                  completion: {
+                completion: {
                                     
-                                    let dataStore = self.backendless.persistenceService.of(newEventData.0.ofClass())
+                    let dataStore = self.backendless.persistenceService.of(newEventData.0.ofClass())
                                     
-                                    dataStore?.findID(newEventData.0.objectId,
+                    dataStore?.findID(newEventData.0.objectId,
                                                       
-                                                      response: { (Event: Any?) -> Void in
+                    response: { (Event: Any?) -> Void in
                                                         
-                                                        // We found the Event to update.
-                                                        let Event = Event as! BackendlessTopHack
+                        // We found the Event to update.
+                        let Event = Event as! BackendlessTopHack
                                                         
-                                                        // Cache old URLs for removal!
-                                                        let oldPhotoUrl = Event.photoUrl!
-                                                        let oldthumbnailUrl = Event.thumbnailUrl!
-                                                        
-                                                        // Update the personOrEvent with the new data.
-                                                        Event.name = newEventData.0.name
-                                                        Event.photoUrl = EventToSaveBE.photoUrl
-                                                        Event.thumbnailUrl = EventToSaveBE.thumbnailUrl
-                                                        
-                                                        // Save the updated personOrEvent.
-                                                        self.backendless.data.save( Event,
-                                                                                    
-                                                                                    response: { (entity: Any?) -> Void in
-                                                                                        
-                                                                                        let Event = entity as! BackendlessTopHack
-                                                                                        
-                                                                                        print("personOrEvent: \(Event.objectId!), name: \(Event.name), photoUrl: \"\(Event.photoUrl!)\"")
-                                                                                        
-                                                                                        // Update the personOrEventData used by the UI with the new URLS!
-                                                                                        newEventData.0.photoUrl = Event.photoUrl
-                                                                                        newEventData.0.thumbnailUrl = Event.thumbnailUrl
-                                                                                        
-                                                                                        completion()
-                                                                                        
-                                                                                        // Attempt to remove the old photo and thumbnail images.
-                                                                                        self.removePhotoAndThumbnail(photoUrl: oldPhotoUrl, thumbnailUrl: oldthumbnailUrl, completion: {}, error: {})
-                                                            },
-                                                                                    
-                                                                                    error: { (fault: Fault?) -> Void in
-                                                                                        print("Failed to save Event: \(fault)")
-                                                                                        error()
-                                                        })
-                                        },
-                                                      
-                                                      error: { (fault: Fault?) -> Void in
-                                                        print("Failed to find Event: \(fault)")
-                                                        error()
-                                        }
-                                    )
-                },
-                                  
-                                  error: {
-                                    print("Failed to save photo and thumbnail!")
-                                    error()
+                        // Cache old URLs for removal!
+                        let oldPhotoUrl = Event.photoUrl!
+                        let oldthumbnailUrl = Event.thumbnailUrl!
+                        
+                        // Update the personOrEvent with the new data.
+                        Event.name = newEventData.0.name
+                        Event.photoUrl = EventToSaveBE.photoUrl
+                        Event.thumbnailUrl = EventToSaveBE.thumbnailUrl
+                        
+                        // Save the updated personOrEvent.
+                        self.backendless.data.save( Event,
+                                                    
+                        response: { (entity: Any?) -> Void in
+                            
+                            let Event = entity as! BackendlessTopHack
+                            
+                            print("personOrEvent: \(Event.objectId!), name: \(Event.name), photoUrl: \"\(Event.photoUrl!)\"")
+                            
+                            // Update the personOrEventData used by the UI with the new URLS!
+                            newEventData.0.photoUrl = Event.photoUrl
+                            newEventData.0.thumbnailUrl = Event.thumbnailUrl
+                            
+                            completion()
+                            
+                            // Attempt to remove the old photo and thumbnail images.
+                            self.removePhotoAndThumbnail(photoUrl: oldPhotoUrl, thumbnailUrl: oldthumbnailUrl, completion: {}, error: {})
+                        },
+                        
+                        error: { (fault: Fault?) -> Void in
+                            print("Failed to save Event: \(fault)")
+                            error()
+                        })
+                    },
+                    
+                    error: { (fault: Fault?) -> Void in
+                        print("Failed to find Event: \(fault)")
+                        error()
+                    })
+            },
+                
+                error: {
+                    print("Failed to save photo and thumbnail!")
+                    error()
             })
             
         } else {
@@ -586,43 +343,43 @@ class BackendlessManager {
             
             dataStore?.findID(newEventData.0.objectId,
                               
-                              response: { (Event: Any?) -> Void in
+                response: { (Event: Any?) -> Void in
                                 
-                                // We found the Event to update.
-                                let Event = Event as! BackendlessTopHack
+                    // We found the Event to update.
+                    let Event = Event as! BackendlessTopHack
                                 
-                                // Update the Event with the new data
-                                Event.name = newEventData.0.name
+                    // Update the Event with the new data
+                    Event.name = newEventData.0.name
                                 
-                                // Save the updated Event.
-                                self.backendless.data.save( Event,
+                    // Save the updated Event.
+                    self.backendless.data.save( Event,
                                                             
-                                                            response: { (entity: Any?) -> Void in
+                        response: { (entity: Any?) -> Void in
                                                                 
-                                                                let Event = entity as! BackendlessTopHack
+                            let Event = entity as! BackendlessTopHack
                                                                 
-                                                                print("Event: \(Event.objectId!), name: \(Event.name), photoUrl: \"\(Event.photoUrl!)\"")
+                            print("Event: \(Event.objectId!), name: \(Event.name), photoUrl: \"\(Event.photoUrl!)\"")
                                                                 
-                                                                completion()
-                                    },
+                            completion()
+                        },
                                                             
-                                                            error: { (fault: Fault?) -> Void in
-                                                                print("Failed to save Event: \(fault)")
-                                                                error()
-                                })
-                },
+                        error: { (fault: Fault?) -> Void in
+                            print("Failed to save Event: \(fault)")
+                            error()
+                        })
+                    },
                               
-                              error: { (fault: Fault?) -> Void in
-                                print("Failed to find Event: \(fault)")
-                                error()
-                }
+                    error: { (fault: Fault?) -> Void in
+                        print("Failed to find Event: \(fault)")
+                        error()
+                    }
             )
         }
     }
 
     
     
-    func loadEvents(completion: @escaping ([HackIncStartUp]) -> ()) {
+    func loadEvents(completion: @escaping ([BackendlessTopHack]) -> ()) {
         
         let dataStore = backendless.persistenceService.of(BackendlessTopHack.ofClass())
         
@@ -632,49 +389,43 @@ class BackendlessManager {
         
         dataStore?.find( dataQuery,
                          
-                         response: { (PersonOrEventBEC: BackendlessCollection?) -> Void in
+            response: { (eventBEC: BackendlessCollection?) -> Void in
                             
-                            print("Find attempt on all Persons/Events (personOrEvents) has completed without error!")
-                            print("Number of Persons/Events (personOrEvents) found = \((PersonOrEventBEC?.data.count)!)")
+                print("Find attempt on all Persons/Events (personOrEvents) has completed without error!")
+                print("Number of Persons/Events (personOrEvents) found = \((eventBEC?.data.count)!)")
                             
-                            var personOrEventData = [HackIncStartUp]()
+                var eventData = [BackendlessTopHack]()
                             
-                            for personOrEvent in (PersonOrEventBEC?.data)! {
+                for event in (eventBEC?.data)! {
                                 
-                                let personOrEvent = personOrEvent as! BackendlessTopHack
+                    let event = event as! BackendlessTopHack
                                 
-                                print("personOrEvent: \(personOrEvent.objectId!), name: \(personOrEvent.name), photoUrl: \"\(personOrEvent.photoUrl!)\"")
+                    print("personOrEvent: \(event.objectId!), name: \(event.name), photoUrl: \"\(event.photoUrl!)\"")
                                 
-                                let newEventData = HackIncStartUp(name: personOrEvent.name!, photo: nil)
-                                
-                                if let newEventData = newEventData {
+                    let newEventData = event
                                     
-                                    newEventData.objectId = personOrEvent.objectId
-                                    newEventData.photoUrl = personOrEvent.photoUrl
-                                    newEventData.thumbnailUrl = personOrEvent.thumbnailUrl
-                                    
-                                    personOrEventData.append(newEventData)
-                                }
-                            }
+                    eventData.append(newEventData)
+                                
+                }
                             
-                            // Whatever person or events we found on the database - return them.
-                            completion(personOrEventData)
+                // Whatever person or events we found on the database - return them.
+                completion(eventData)
             },
                          
-                         error: { (fault: Fault?) -> Void in
-                            print("Failed to find Person or event: \(fault)")
+            error: { (fault: Fault?) -> Void in
+            print("Failed to find Person or event: \(fault)")
             }
         )
     }
     
-    //prob setting up element of indexPath.row at becsthackIncevent
-    func removeEvent(personOrEventToRemove: HackIncStartUp, completion: @escaping () -> (), error: @escaping () -> ()) {
+    // MARK: prob setting up element of indexPath.row at becsthackIncevent
+    func removeEvent(EventToRemove: BackendlessTopHack, completion: @escaping () -> (), error: @escaping () -> ()) {
         //dont delete something until it was removed from the database first!
        // print("Remove person or event: \(personOrEventToRemove.objectId!)")
         
         let dataStore = backendless.persistenceService.of(BackendlessTopHack.ofClass())
         
-        _ = dataStore?.removeID(personOrEventToRemove.objectId, response: { (result: NSNumber?) -> Void in
+        _ = dataStore?.removeID(EventToRemove.objectId, response: { (result: NSNumber?) -> Void in
                                     
             print("One person or event has been removed: \(result)")
             completion() },

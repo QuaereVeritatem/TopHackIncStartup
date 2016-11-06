@@ -71,6 +71,7 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
     //***Find a better way to do this (ck ios course examples like this)
     @IBAction func save(_ sender: UIBarButtonItem) {
         saveButton.isEnabled = false
+        var photo = UIImage(named: "defaultLogo1")
         
         let name = progNameLabel.text ?? ""
         let web = websiteLink.text ?? ""
@@ -79,11 +80,12 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
         let dateL = dateLabel
         
         //next line causing fatal run-time crash (bad way to unwrap optional!! *******)
-        if photoImageView != nil {
-            let photo = photoImageView.image  //not tied to anything yet
-            //update the struct Event
-            EventData.sharedInstance.testEvent.logo = photo?.accessibilityIdentifier
-        } else { EventData.sharedInstance.testEvent.logo = "defaultLogo1"
+        if photoImageView.image != nil {
+            photo = photoImageView.image  //not tied to anything yet
+            //update the struct Event logo = photoName (strjng)
+            EventData.sharedInstance.testEvent.logo = photoImageView.
+        } else { EventData.sharedInstance.testEvent.logo! = "defaultLogo1"
+            photo = UIImage(named: "defaultLogo1")
         }
         EventData.sharedInstance.testEvent.name = name
         
@@ -98,12 +100,13 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
         
         //adding to local database
         EventData.sharedInstance.besthackIncEvent.append(EventData.sharedInstance.testEvent)
+       
         //adding to backendless class(so it can be stored in backendless) [storing in dual format]
         let backendlessTH: BackendlessTopHack = BackendlessTopHack()
         let newName = EventData.sharedInstance.testEvent.name
         //if let newPhoto =
         //change this photo to the default...it will crash as is ****!!!!!!!!!!!
-        let hackIS: HackIncStartUp = HackIncStartUp.init(name: newName, photo: photoImageView?.image)!
+        let hackIS: HackIncStartUp = HackIncStartUp.init(name: newName, photo: photo)!
         
         backendlessTH.EventLogo = EventData.sharedInstance.testEvent.logo
         backendlessTH.EventName = EventData.sharedInstance.testEvent.name
@@ -133,6 +136,7 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
              //self.meal?.replacePhoto = false // Reset this just in case we did a photo replacement.
              
             //send back to event VC
+                print("Prob maybe NewEventSegueBack 1")
              self.performSegue(withIdentifier: "NewEventSegueBack", sender: self)
              },
              

@@ -35,7 +35,7 @@ class HackIncStartUp: NSObject, NSCoding {
     
     // MARK: Archiving Paths
     //a persistent path on the file system where data will be saved and loaded..
-    //access the path using the syntax Meal.ArchiveURL.path!(when accessed outside the class)
+    //access the path using the syntax HackIncStartUp.ArchiveURL.path!(when accessed outside the class)
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     
     //string literal said "meals" up to recently 10-24

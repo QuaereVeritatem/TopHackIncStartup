@@ -69,9 +69,9 @@ class HomeViewController: UIViewController, UITableViewDataSource {
                                        
                                        response: { (entity: Any?) -> Void in
                                         
-                                        let PersonOrEvent = entity as! BackendlessTopHack
+                                        let Event = entity as! BackendlessTopHack
                                         
-                                        print("PersonOrEvent: \(PersonOrEvent.objectId!), PersonOrEvent: \(PersonOrEvent.name), photoUrl: \"\(PersonOrEvent.photoUrl!)")
+                                        print("PersonOrEvent: \(Event.objectId!), PersonOrEvent: \(Event.name), photoUrl: \"\(Event.photoUrl!)")
                     },
                                        
                                        error: { (fault: Fault?) -> Void in
@@ -85,30 +85,41 @@ class HomeViewController: UIViewController, UITableViewDataSource {
             
             //then load backendless into currrent tableView
         }
+        // MARK: Problem starts here
         
-        
-        
-        
-        
-        
- /*       if BackendlessManager.sharedInstance.isUserLoggedIn() {
+        //backendless != nil so load backendless
+        BackendlessManager.sharedInstance.loadEvents(completion: { _ in Backendless.sharedInstance().persistenceService.of(BackendlessTopHack.ofClass())
             
-            refresh(sender: self)
-
-        } else {
+            // It was saved to the database!
             
-            // Load any saved meals, otherwise load sample data. (this is important!!)
-          //  if let savedMeals = loadMealsFromArchiver() {
-             //   meals += savedMeals
-        } else {
-                // Load the sample data.
             
-                //save each event as an event in backendless
-                backEndlessUltraTopHack = EventData.sharedInstance.besthackIncEvent as! [BackendlessTopHack]
-                // HACK: Disabled sample meal data for now!
-                // loadSampleMeals()
-            }
-        } */
+            //self.meal?.replacePhoto = false // Reset this just in case we did a photo replacement.
+            
+            //send back to event VC
+            print("Prob maybe NewEventSegueBack 2")
+          //  self.performSegue(withIdentifier: "NewEventSegueBack", sender: self)
+            } /*  ,
+            
+            error: {
+                
+                // It was NOT loaded from the database! - tell the user and DON'T call performSegue.
+                self.spinner.stopAnimating()
+                
+                let alertController = UIAlertController(title: "Load Error",
+                                                        message: "Oops! We couldn't Load your Events at this time.",
+                                                        preferredStyle: .alert)
+                
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertController.addAction(okAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+                
+                self.saveButton.isEnabled = true
+                
+        }  */     )
+        
+       // Backendless.sharedInstance().data.load
+        
         // Add support for pull-to-refresh on the table view.(not really needed though)
         //self.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: UIControlEvents.valueChanged)
     }
@@ -225,10 +236,13 @@ class HomeViewController: UIViewController, UITableViewDataSource {
      
                 // Find the EventData(old MealData) in the data source that we wish to delete.
                 // let mealToRemove = meals[indexPath.row]
-                var ETR = [HackIncStartUp]()
+                var ETR = [BackendlessTopHack]()
+                
+                // MARK : Crashes to here when deleting events *******
                 let EventToRemove = ETR[indexPath.row]
      
-                BackendlessManager.sharedInstance.removeEvent(personOrEventToRemove: EventToRemove,
+                //this has to be of type BackendlessTopHack(persontoremove)
+                BackendlessManager.sharedInstance.removeEvent(EventToRemove: EventToRemove,
      
                     completion: {
      
