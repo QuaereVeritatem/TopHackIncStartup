@@ -15,6 +15,8 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
     var pickLocation = EventData.sharedInstance.areaLocArray
     var pickDate = EventData.sharedInstance.timeFrameArray
     
+    var photoImageViewText: String?
+    
     @IBOutlet weak var progNameLabel: UITextField!
     
     @IBOutlet weak var websiteLink: UITextField!
@@ -82,8 +84,8 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
         //next line causing fatal run-time crash (bad way to unwrap optional!! *******)
         if photoImageView.image != nil {
             photo = photoImageView.image  //not tied to anything yet
-            //update the struct Event logo = photoName (strjng)
-            EventData.sharedInstance.testEvent.logo = photoImageView.
+            //update the struct Event logo = photoName (strjng) ***
+            EventData.sharedInstance.testEvent.logo = photoImageViewText
         } else { EventData.sharedInstance.testEvent.logo! = "defaultLogo1"
             photo = UIImage(named: "defaultLogo1")
         }
@@ -217,11 +219,16 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        //setting text equal to pic text
+        // MARK : Problem here... optional not properly unwrapped
+        photoImageViewText = UIImagePickerControllerOriginalImage
+        print("The picture is named.... \(photoImageViewText)")
         // The info dictionary contains multiple representations of the image, and this uses the original.
         let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         
         // Set photoImageView to display the selected image.
         photoImageView.image = selectedImage //this or prev line causes crash*****
+        
         
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)

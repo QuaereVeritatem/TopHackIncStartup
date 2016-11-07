@@ -20,7 +20,8 @@ import UIKit
 //fix bugs
 class HomeViewController: UIViewController, UITableViewDataSource {
     
-    var backEndlessUltraTopHack = [BackendlessTopHack]() // an array of a class
+    var backEndlessUltraTopHack: [BackendlessTopHack] = [] // an array of a class
+    var BackTopHack: BackendlessTopHack = BackendlessTopHack()
     var backEndlessUltraHackEvent = EventData.sharedInstance.besthackIncEvent //an array of hackIncEvent
     
     @IBOutlet weak var tableView: UITableView!
@@ -42,93 +43,75 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         navigationItem.leftBarButtonItem = editButtonItem
 
         //if backendless data is nil then load example data
-        if Backendless.sharedInstance().persistenceService.of(BackendlessTopHack.ofClass()) == nil {
+       // if (Backendless.sharedInstance().persistenceService.of(BackendlessTopHack.ofClass()) != nil)  {
+      
         //user not logged in (**user will always be logged in at this page!!!!!!!!!!!!!)
-       // if !BackendlessManager.sharedInstance.isUserLoggedIn() {
-            //load sample events into backendless
-            //save each event as an event in backendless
-            var index = 0
-            for i in EventData.sharedInstance.besthackIncEvent {
-                backEndlessUltraTopHack[index].EventName = i.name
-                backEndlessUltraTopHack[index].EventProgramType = i.progType.map { $0.rawValue }
-                backEndlessUltraTopHack[index].Website = i.progUrl
-                backEndlessUltraTopHack[index].EventAreaLoc = i.areaLoc.map { $0.rawValue }
-                backEndlessUltraTopHack[index].EventLogo = i.logo
-                backEndlessUltraTopHack[index].EventDate = i.dateOrTimeFrame.map { $0.rawValue }
+        if BackendlessManager.sharedInstance.isUserLoggedIn() {
+            if backEndlessUltraTopHack.isEmpty {
+                //load sample events into backendless
+                //save each event as an event in backendless
+                var index = 0
+                for i in backEndlessUltraHackEvent {
                 
-                //to store a name(email) of user
-                backEndlessUltraTopHack[index].name = "default"
+                    BackTopHack.EventName = i.name
+                    print("Event name is \(BackTopHack.EventName)")
+                    BackTopHack.EventProgramType = i.progType.map { $0.rawValue }
+                    BackTopHack.Website = i.progUrl
+                    BackTopHack.EventAreaLoc = i.areaLoc.map { $0.rawValue }
+                    BackTopHack.EventLogo = i.logo
+                    BackTopHack.EventDate = i.dateOrTimeFrame.map { $0.rawValue }
                 
-                //this is to create a unique objectID to store event in backendless with
-                let uuid = NSUUID().uuidString
-                backEndlessUltraTopHack[index].objectId = uuid
-                //must save logo picture in backend as well
+                    //to store a name(email) of user ***change this ASAP!!!! (needs to be backendless...email)
+                    BackTopHack.name = BackendlessManager.sharedInstance.EMAIL
                 
-                //now load into backendless persistent save spot
-                Backendless.sharedInstance().data.save( backEndlessUltraTopHack[index],
-                                       
-                                       response: { (entity: Any?) -> Void in
-                                        
-                                        let Event = entity as! BackendlessTopHack
-                                        
-                                        print("PersonOrEvent: \(Event.objectId!), PersonOrEvent: \(Event.name), photoUrl: \"\(Event.photoUrl!)")
-                    },
-                                       
-                                       error: { (fault: Fault?) -> Void in
-                                        print("PersonOrEvent failed to save: \(fault)")
-                    }
-                )
+                    //this is to create a unique objectID to store event in backendless with
+                    let uuid = NSUUID().uuidString
+                    BackTopHack.objectId = uuid
+                    //must save logo picture in backend as well
                 
-                index = index + 1
+                    backEndlessUltraTopHack.append(BackTopHack)
+                    index = index + 1
+                }//end of for loop
+            }//end of is backendlesstophack empty
+            
+            // MARK : Problem here - JSON not serializing
+           // JSONParse.sharedInstance.makeJSON(array: backEndlessUltraTopHack)
+            //now save it to backendless persistent save spot
+    /*        Backendless.sharedInstance().data.save( backEndlessUltraTopHack,
+                                                    
+                response: { (entity: Any?) -> Void in
+                                                        
+                    let Event = entity as! BackendlessTopHack
+                                                        
+                    print("PersonOrEvent: \(Event.objectId!), PersonOrEvent: \(Event.name), photoUrl: \"\(Event.photoUrl!)")
+                },
+                                                    
+            error: { (fault: Fault?) -> Void in
+                    print("PersonOrEvent failed to save: \(fault)")
             }
+            )  */
+
             
-            
-            //then load backendless into currrent tableView
-        }
+        
         // MARK: Problem starts here
         
         //backendless != nil so load backendless
-        BackendlessManager.sharedInstance.loadEvents(completion: { _ in Backendless.sharedInstance().persistenceService.of(BackendlessTopHack.ofClass())
-            
-            // It was saved to the database!
-            
-            
-            //self.meal?.replacePhoto = false // Reset this just in case we did a photo replacement.
-            
-            //send back to event VC
-            print("Prob maybe NewEventSegueBack 2")
-          //  self.performSegue(withIdentifier: "NewEventSegueBack", sender: self)
-            } /*  ,
-            
-            error: {
+        BackendlessManager.sharedInstance.loadEvents(
+            completion: {
+                _ in Backendless.sharedInstance().persistenceService.of(BackendlessTopHack.ofClass())
                 
-                // It was NOT loaded from the database! - tell the user and DON'T call performSegue.
-                self.spinner.stopAnimating()
-                
-                let alertController = UIAlertController(title: "Load Error",
-                                                        message: "Oops! We couldn't Load your Events at this time.",
-                                                        preferredStyle: .alert)
-                
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alertController.addAction(okAction)
-                
-                self.present(alertController, animated: true, completion: nil)
-                
-                self.saveButton.isEnabled = true
-                
-        }  */     )
-        
-       // Backendless.sharedInstance().data.load
-        
+            }
+        )
         // Add support for pull-to-refresh on the table view.(not really needed though)
         //self.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: UIControlEvents.valueChanged)
-    }
+        }//end of is user logged in
+    }//end of function
     
     func refresh(sender: AnyObject) {
         
 //        //if BackendlessManager.sharedInstance.isUserLoggedIn() {
 //            
-//          //  BackendlessManager.sharedInstance.loadMeals(
+//          //  BackendlessManager.sharedInstance.loadEvents(
 //                
 //                completion: { mealData in
 //                    
@@ -190,7 +173,9 @@ class HomeViewController: UIViewController, UITableViewDataSource {
             cell.rankingLabel.text = ""
         }
         
+        //loading picture/logo
         if EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].logo != nil {
+         //   loadImageFromUrl(cell: TopCell(), thumbnailUrl: backEndlessUltraTopHack[indexPath.row].thumbnailUrl!)
         cell.IncAccHackPic.image = UIImage(named: EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].logo!)
         } else {
             cell.IncAccHackPic.image = UIImage(named: "defaultLogo1")

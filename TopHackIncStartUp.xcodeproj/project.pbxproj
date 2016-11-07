@@ -28,6 +28,7 @@
 		372C38081DA33C0E00882ACC /* AddNewPOIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C38071DA33C0E00882ACC /* AddNewPOIViewController.swift */; };
 		372C38361DA42AA000882ACC /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C38351DA42A9F00882ACC /* SettingsData.swift */; };
 		372C38391DA44A4500882ACC /* WWCalendarTimeSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 372C38381DA44A4500882ACC /* WWCalendarTimeSelector.storyboard */; };
+		373852C91DD0444900756BA5 /* JSONParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373852C81DD0444900756BA5 /* JSONParse.swift */; };
 		37F72F621D7BF6D00059FCD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F72F611D7BF6D00059FCD2 /* AppDelegate.swift */; };
 		37F72F641D7BF6D00059FCD2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F72F631D7BF6D00059FCD2 /* HomeViewController.swift */; };
 		37F72F671D7BF6D00059FCD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37F72F651D7BF6D00059FCD2 /* Main.storyboard */; };
@@ -64,6 +65,7 @@
 		372C38351DA42A9F00882ACC /* SettingsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
 		372C38381DA44A4500882ACC /* WWCalendarTimeSelector.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WWCalendarTimeSelector.storyboard; sourceTree = "<group>"; };
 		372C38681DA55FF800882ACC /* TopHackIncStartUp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TopHackIncStartUp.entitlements; sourceTree = "<group>"; };
+		373852C81DD0444900756BA5 /* JSONParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParse.swift; sourceTree = "<group>"; };
 		37F72F5E1D7BF6D00059FCD2 /* TopHackIncStartUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopHackIncStartUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F72F611D7BF6D00059FCD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37F72F631D7BF6D00059FCD2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				372C37D31D9B21EB00882ACC /* Utility.swift */,
 				372C37DA1D9B221700882ACC /* BackendlessTopHack.swift */,
 				372C37CF1D9B21EB00882ACC /* BackendlessManager.swift */,
+				373852C81DD0444900756BA5 /* JSONParse.swift */,
 				37F72F651D7BF6D00059FCD2 /* Main.storyboard */,
 				372C38381DA44A4500882ACC /* WWCalendarTimeSelector.storyboard */,
 				37F72F681D7BF6D00059FCD2 /* Assets.xcassets */,
@@ -350,6 +353,7 @@
 				372C37FC1DA30A0300882ACC /* NSCalendar+Timepiece.swift in Sources */,
 				372C37FB1DA30A0300882ACC /* Int+Timepiece.swift in Sources */,
 				372C37D71D9B21EB00882ACC /* RegisterViewController.swift in Sources */,
+				373852C91DD0444900756BA5 /* JSONParse.swift in Sources */,
 				372C38061DA33BAC00882ACC /* SettingsTableViewCell.swift in Sources */,
 				372C38001DA30A0300882ACC /* WWCalendarTimeSelector.swift in Sources */,
 				37F74B101DA9957D00669764 /* EventData.swift in Sources */,

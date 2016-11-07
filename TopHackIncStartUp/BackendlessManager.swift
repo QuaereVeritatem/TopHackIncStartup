@@ -41,8 +41,9 @@ class BackendlessManager {
     
     func isUserLoggedIn() -> Bool {
         
+        //crashes here when logged out and starting app up
         let isValidUser = backendless.userService.isValidUserToken()
-        
+        print("The isValidUser variable is currently set to... \(isValidUser)")
         if isValidUser != nil && isValidUser != 0 {
             return true
         } else {

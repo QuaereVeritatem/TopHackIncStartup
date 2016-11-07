@@ -27,7 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if BackendlessManager.sharedInstance.isUserLoggedIn() {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
-            self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "tabBarController")        }
+            self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "tabBarController")
+        }
 
         
         return true
