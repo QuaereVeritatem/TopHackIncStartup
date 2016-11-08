@@ -126,11 +126,14 @@ class POIViewController: UIViewController , UITableViewDelegate, UITableViewData
                 
                 // Find the EventData(old MealData) in the data source that we wish to delete.
                 // let mealToRemove = meals[indexPath.row]
-                var PTR = [BackendlessTopHack]()
-                let personToRemove = PTR[indexPath.row]
+               // var PTR = [BackendlessTopHack]()
+              //  let personToRemove = PTR[indexPath.row]
+                
+                PersonData.sharedInstance.arrayPersonsOfInterest.remove(at: (indexPath as NSIndexPath).row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
                 
                 //this has to be of type BackendlessTopHack(persontoremove)
-                BackendlessManager.sharedInstance.removeEvent(EventToRemove: personToRemove,
+          /*      BackendlessManager.sharedInstance.removeEvent(EventToRemove: personToRemove,
                                                                       
                                                                       completion: {
                                                                         
@@ -151,7 +154,7 @@ class POIViewController: UIViewController , UITableViewDelegate, UITableViewData
                                                                         
                                                                         self.present(alertController, animated: true, completion: nil)
                     }
-                ) //end of parameter
+                ) //end of parameter */
                 
             } else{
                 

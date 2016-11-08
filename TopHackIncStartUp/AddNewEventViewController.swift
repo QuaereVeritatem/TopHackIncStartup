@@ -238,7 +238,8 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
     
         return 1
     }
-     
+    
+     // MARK : Problem here pickerview 1st choice not registering 
      func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         var count = 1
@@ -255,8 +256,9 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
         return count
      }
     
+    // MARK : Problem here pickerview 1st choice not registering
      func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
+        //1st choice not registering
         var arrayP = "empty"
         
         if self.activeField?.tag == 1 {
@@ -269,7 +271,8 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
         
         return arrayP
      }
-     
+    
+     // MARK : Problem here pickerview 1st choice not registering
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 
         if self.activeField?.tag == 1 {

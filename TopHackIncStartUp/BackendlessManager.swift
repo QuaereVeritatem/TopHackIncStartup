@@ -41,7 +41,7 @@ class BackendlessManager {
     
     func isUserLoggedIn() -> Bool {
         
-        //crashes here when logged out and starting app up
+        // MARK : Problem here, 1st crashes here when logged out and starting app up
         let isValidUser = backendless.userService.isValidUserToken()
         print("The isValidUser variable is currently set to... \(isValidUser)")
         if isValidUser != nil && isValidUser != 0 {
@@ -110,7 +110,7 @@ class BackendlessManager {
     
     func loginViaTwitter(completion: @escaping () -> (), error: @escaping (String) -> ()) {
         
-        backendless.userService.easyLogin(withTwitterFieldsMapping: ["email":"email"],
+        backendless.userService.easyLogin(withTwitterFieldsMapping: ["email":"email"], 
                                           
             response: {(result : NSNumber?) -> () in
                 print ("Result: \(result)")

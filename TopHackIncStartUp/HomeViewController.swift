@@ -53,7 +53,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
                 var index = 0
                 for i in backEndlessUltraHackEvent {
                 
-                    BackTopHack.EventName = i.name
+                    BackTopHack.EventName = i.name 
                     print("Event name is \(BackTopHack.EventName)")
                     BackTopHack.EventProgramType = i.progType.map { $0.rawValue }
                     BackTopHack.Website = i.progUrl
@@ -72,7 +72,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
                     backEndlessUltraTopHack.append(BackTopHack)
                     index = index + 1
                 }//end of for loop
-            }//end of is backendlesstophack empty
+            }//end of is backendlessTopHack empty
             
             // MARK : Problem here - JSON not serializing
            // JSONParse.sharedInstance.makeJSON(array: backEndlessUltraTopHack)
@@ -141,7 +141,9 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("numberOfRowsInSection, the count is \(EventData.sharedInstance.besthackIncEvent.count)")
+       // print("numberOfRowsInSection, the count is \(EventData.sharedInstance.besthackIncEvent.count)")
+        //return EventData.sharedInstance.besthackIncEvent.count
+        print("numberOfRowsInSection, the new count is \(backEndlessUltraTopHack.count)")
         return EventData.sharedInstance.besthackIncEvent.count
     }
     
@@ -151,6 +153,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         
         let row = (indexPath as NSIndexPath).row
         cell.nameLabel.text = EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].name
+       // cell.nameLabel.text = backEndlessUltraTopHack[(indexPath as NSIndexPath).row].EventName
         
         //the rest of these are optionals (check for nil)
         //program type portion of cell needs data from besthackIncEvent..data is of weird types for these 3
@@ -221,13 +224,17 @@ class HomeViewController: UIViewController, UITableViewDataSource {
      
                 // Find the EventData(old MealData) in the data source that we wish to delete.
                 // let mealToRemove = meals[indexPath.row]
-                var ETR = [BackendlessTopHack]()
+              //  var ETR = [BackendlessTopHack]()
                 
                 // MARK : Crashes to here when deleting events *******
-                let EventToRemove = ETR[indexPath.row]
+               // let EventToRemove = ETR[indexPath.row]
+                
+                EventData.sharedInstance.besthackIncEvent.remove(at: (indexPath as NSIndexPath).row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+
      
                 //this has to be of type BackendlessTopHack(persontoremove)
-                BackendlessManager.sharedInstance.removeEvent(EventToRemove: EventToRemove,
+        /*        BackendlessManager.sharedInstance.removeEvent(EventToRemove: EventToRemove,
      
                     completion: {
      
@@ -250,7 +257,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
                         
                         self.present(alertController, animated: true, completion: nil)
                     }
-                ) //end of parameter
+                ) //end of parameter  */
 
             } else{
                 
