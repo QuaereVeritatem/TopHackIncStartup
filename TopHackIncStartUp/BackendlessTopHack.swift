@@ -9,7 +9,7 @@
 import Foundation
 
 // (use to be based off of BackendlessMeal) data specifically for database categories
-class BackendlessTopHack: NSObject {
+class BackendlessTopHack: NSObject, JSONSerializable {
     
     var objectId: String?
     var name: String? //this is for the user

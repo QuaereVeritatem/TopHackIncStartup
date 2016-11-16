@@ -10,7 +10,7 @@ import UIKit
 
 //This is class is equivalent to Meal (classifications for user-side stuff)
 //data for EventsVC and POIVC
-class HackIncStartUp: NSObject, NSCoding {
+class HackIncStartUp: NSObject, NSCoding, JSONSerializable {
     
     // MARK: Common Properties Shared by Archiver and Backendless
     

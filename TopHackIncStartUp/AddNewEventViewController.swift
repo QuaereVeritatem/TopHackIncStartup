@@ -125,6 +125,10 @@ class AddNewEventViewController: UIViewController,UITextFieldDelegate, UIImagePi
 
         let dualFormatEvent: (BackendlessTopHack,HackIncStartUp) = (backendlessTH, hackIS)
         
+        //change new data added to jSON
+        if let json = backendlessTH.toJSON() {
+            print("The json thats been serialized from BackTopHack is \(json)") }
+        
         //saving to backendless part
         spinner.startAnimating()
         

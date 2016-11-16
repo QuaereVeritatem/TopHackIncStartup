@@ -6,6 +6,7 @@
 //  Copyright © 2016 Robert Martin. All rights reserved.
 //
 //this class has functions to turn arrays into JSON and functions to change JSON back to arrays
+//this function WILL NOT WORK..it will only work if all data in structs/classes are of NS types and not naturals(ints,strings,arrays etc.) we created other files to serialize
 
 import Foundation
 
@@ -15,8 +16,8 @@ class JSONParse {
     
     
     
-    //change entire array to JSON in one go
-    func makeJSON(array: [BackendlessTopHack]){
+    //change entire array to JSON in one go (changed so not an array passed in)
+    func makeJSON(array: BackendlessTopHack){
         
         //this isnt working so lets try other way
       /*  let array = [ "one", "two" ]
@@ -31,7 +32,7 @@ class JSONParse {
             print(error.localizedDescription)
          }
        // } else {
-            //append the arry (after updates)
+            //append the array (after updates)
             //how??
             
         //}

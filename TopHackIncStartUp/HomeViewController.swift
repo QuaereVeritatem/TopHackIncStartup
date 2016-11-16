@@ -23,6 +23,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     var backEndlessUltraTopHack: [BackendlessTopHack] = [] // an array of a class
     var BackTopHack: BackendlessTopHack = BackendlessTopHack()
     var backEndlessUltraHackEvent = EventData.sharedInstance.besthackIncEvent //an array of hackIncEvent
+    //var whereThePhotosAt: HackIncStartUp = HackIncStartUp()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -74,7 +75,15 @@ class HomeViewController: UIViewController, UITableViewDataSource {
                 }//end of for loop
             }//end of is backendlessTopHack empty
             
-            // MARK : Problem here - JSON not serializing
+            // MARK : Problem here - JSON not serializing //trying NEW WAY NOW
+            
+            if let json = BackTopHack.toJSON() {
+                print("The json thats been serialized from BackTopHack is \(json)")
+            }
+
+            
+            
+            
            // JSONParse.sharedInstance.makeJSON(array: backEndlessUltraTopHack)
             //now save it to backendless persistent save spot
     /*        Backendless.sharedInstance().data.save( backEndlessUltraTopHack,
@@ -178,16 +187,23 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         
         //loading picture/logo
         if EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].logo != nil {
-         //   loadImageFromUrl(cell: TopCell(), thumbnailUrl: backEndlessUltraTopHack[indexPath.row].thumbnailUrl!)
-        cell.IncAccHackPic.image = UIImage(named: EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].logo!)
+            
+            if backEndlessUltraTopHack[indexPath.row].thumbnailUrl != nil {
+                
+        // MARK:  This line needs to call HackIncStartUp for thumbnail image with name..backEndlessUltraTopHack[indexPath.row].thumbnailUrl!   (and notsaving thumbnails??)
+                loadImageFromUrl(cell: TopCell(), thumbnailUrl: backEndlessUltraTopHack[indexPath.row].thumbnailUrl!)
+                print("loadImageFromUrl backendless top hack is \(backEndlessUltraTopHack[indexPath.row].thumbnailUrl!)")
+        } else {
+            cell.IncAccHackPic.image = UIImage(named: EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].logo!)}
         } else {
             cell.IncAccHackPic.image = UIImage(named: "defaultLogo1")
         }
         
-        var shortUrl: String = ""
-        //test for nil ***if now https is entered by user, website isnt shown on cell-FIX!
+        var shortUrl: String = EventData.sharedInstance.besthackIncEvent[row].progUrl!
+        // MARK : Problem website not showing is here
+        //test for nil ***if NO https/http is entered by user, website isnt shown on cell-FIX!
         if EventData.sharedInstance.besthackIncEvent[row].progUrl != nil {
-            var fullUrl = EventData.sharedInstance.besthackIncEvent[row].progUrl
+            let fullUrl = EventData.sharedInstance.besthackIncEvent[row].progUrl
             cell.websiteUrl = fullUrl
             // If the URL has "http://" or "https://" in it - remove it!
             if fullUrl!.lowercased().range(of: "http://") != nil {
@@ -197,11 +213,12 @@ class HomeViewController: UIViewController, UITableViewDataSource {
             }
         }   else {
             //website entered is nil
-                var fullUrl = ""
+                let fullUrl = EventData.sharedInstance.besthackIncEvent[row].progUrl
             cell.websiteUrl = fullUrl
+            shortUrl = ""
         }
         
-        
+        //if shortUrl == fullUrl then dont show text as a hyperlink!!!! *******
         
         cell.websiteBtn.setTitle(shortUrl, for: UIControlState())
         

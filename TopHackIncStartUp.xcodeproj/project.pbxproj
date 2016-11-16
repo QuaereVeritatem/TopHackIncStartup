@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		370AEDF01DDBB7CF00B8B395 /* JSONRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370AEDEE1DDBB7CF00B8B395 /* JSONRepresentable.swift */; };
+		370AEDF11DDBB7CF00B8B395 /* JSONSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370AEDEF1DDBB7CF00B8B395 /* JSONSerializable.swift */; };
 		372C37D41D9B21EB00882ACC /* BackendlessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37CF1D9B21EB00882ACC /* BackendlessManager.swift */; };
 		372C37D51D9B21EB00882ACC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37D01D9B21EB00882ACC /* LoginViewController.swift */; };
 		372C37D71D9B21EB00882ACC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C37D21D9B21EB00882ACC /* RegisterViewController.swift */; };
@@ -43,6 +45,8 @@
 
 /* Begin PBXFileReference section */
 		2338D68D71C8869AD95DA8E4 /* Pods-TopHackIncStartUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopHackIncStartUp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TopHackIncStartUp/Pods-TopHackIncStartUp.debug.xcconfig"; sourceTree = "<group>"; };
+		370AEDEE1DDBB7CF00B8B395 /* JSONRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONRepresentable.swift; path = ../../JSONConvertSwiftStructTutorial/JSONConvertSwiftStructTutorial/JSONRepresentable.swift; sourceTree = "<group>"; };
+		370AEDEF1DDBB7CF00B8B395 /* JSONSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONSerializable.swift; path = ../../JSONConvertSwiftStructTutorial/JSONConvertSwiftStructTutorial/JSONSerializable.swift; sourceTree = "<group>"; };
 		372C37CF1D9B21EB00882ACC /* BackendlessManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendlessManager.swift; sourceTree = "<group>"; };
 		372C37D01D9B21EB00882ACC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		372C37D21D9B21EB00882ACC /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +171,8 @@
 				372C37D31D9B21EB00882ACC /* Utility.swift */,
 				372C37DA1D9B221700882ACC /* BackendlessTopHack.swift */,
 				372C37CF1D9B21EB00882ACC /* BackendlessManager.swift */,
+				370AEDEE1DDBB7CF00B8B395 /* JSONRepresentable.swift */,
+				370AEDEF1DDBB7CF00B8B395 /* JSONSerializable.swift */,
 				373852C81DD0444900756BA5 /* JSONParse.swift */,
 				37F72F651D7BF6D00059FCD2 /* Main.storyboard */,
 				372C38381DA44A4500882ACC /* WWCalendarTimeSelector.storyboard */,
@@ -365,7 +371,9 @@
 				372C37D51D9B21EB00882ACC /* LoginViewController.swift in Sources */,
 				372C37FD1DA30A0300882ACC /* NSDate+Timepiece.swift in Sources */,
 				37F72FD61D7E40B70059FCD2 /* TopCell.swift in Sources */,
+				370AEDF01DDBB7CF00B8B395 /* JSONRepresentable.swift in Sources */,
 				372C37E71D9C186800882ACC /* AddNewEventViewController.swift in Sources */,
+				370AEDF11DDBB7CF00B8B395 /* JSONSerializable.swift in Sources */,
 				37F74BA01DAD6F4300669764 /* PersonData.swift in Sources */,
 				372C37E01D9B221700882ACC /* BackendlessTopHack.swift in Sources */,
 			);

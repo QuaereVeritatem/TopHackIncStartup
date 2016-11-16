@@ -8,11 +8,11 @@
 
 import Foundation
 
-class EventData {
+class EventData{
     
     static let sharedInstance = EventData()
 
-struct hackIncEvent {
+    struct hackIncEvent: JSONSerializable {
     
     var name: String //program name
     var progUrl: String? //website...should be an optional
@@ -23,7 +23,7 @@ struct hackIncEvent {
 }
 
 
-    enum ProgTypes: String {
+    enum ProgTypes: String, JSONSerializable {
     case accelerator = "accelerator"
     case hackathon = "hackathon"
     case bootcamp = "bootcamp"
@@ -33,7 +33,7 @@ struct hackIncEvent {
     
 }
 
-    enum AreaLoc: String {
+    enum AreaLoc: String, JSONSerializable {
     case Worldwide = "Worldwide"
     case Dallas = "Dallas"
     case Nationwide = "Nationwide"
@@ -44,7 +44,7 @@ struct hackIncEvent {
     
 }
 
-    enum TimeFrame: String {
+    enum TimeFrame: String, JSONSerializable {
     case yearly = "yearly"
     case monthly = "monthly"
     case weekly = "weekly"

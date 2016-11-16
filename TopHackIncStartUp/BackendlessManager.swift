@@ -298,16 +298,16 @@ class BackendlessManager {
                         Event.photoUrl = EventToSaveBE.photoUrl
                         Event.thumbnailUrl = EventToSaveBE.thumbnailUrl
                         
-                        // Save the updated personOrEvent.
+                        // Save the updated Event.
                         self.backendless.data.save( Event,
                                                     
                         response: { (entity: Any?) -> Void in
                             
                             let Event = entity as! BackendlessTopHack
                             
-                            print("personOrEvent: \(Event.objectId!), name: \(Event.name), photoUrl: \"\(Event.photoUrl!)\"")
+                            print("Event: \(Event.objectId!), name: \(Event.name), photoUrl: \"\(Event.photoUrl!)\"")
                             
-                            // Update the personOrEventData used by the UI with the new URLS!
+                            // Update the EventData used by the UI with the new URLS!
                             newEventData.0.photoUrl = Event.photoUrl
                             newEventData.0.thumbnailUrl = Event.thumbnailUrl
                             
