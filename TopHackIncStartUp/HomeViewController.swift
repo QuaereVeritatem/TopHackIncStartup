@@ -186,18 +186,19 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         }
         
         //loading picture/logo
-        if EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].logo != nil {
-            
-            if backEndlessUltraTopHack[indexPath.row].thumbnailUrl != nil {
+       // if EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].logo != nil {
+           if indexPath.row > 10 {  //gonna grab first 11 from eventdata, the other pics from loadImage
+           // if backEndlessUltraTopHack[indexPath.row].thumbnailUrl != nil {
                 
         // MARK:  This line needs to call HackIncStartUp for thumbnail image with name..backEndlessUltraTopHack[indexPath.row].thumbnailUrl!   (and notsaving thumbnails??)
-                loadImageFromUrl(cell: TopCell(), thumbnailUrl: backEndlessUltraTopHack[indexPath.row].thumbnailUrl!)
-                print("loadImageFromUrl backendless top hack is \(backEndlessUltraTopHack[indexPath.row].thumbnailUrl!)")
+               // loadImageFromUrl(cell: TopCell(), thumbnailUrl: backEndlessUltraTopHack[indexPath.row].thumbnailUrl!)
+            loadImageFromUrl(cell: TopCell(), thumbnailUrl: "https://api.backendless.com/c28e4e1c-8c05-7a6b-ff1f-47592cafb000/v1/files/photos/046E5C21-7271-21E1-FFDB-4970E6A83B00/thumb_3FBFE09F-A344-45ED-B1D0-7F9C72868DF8.jpg")
+                //print("loadImageFromUrl backendless top hack is \(backEndlessUltraTopHack[indexPath.row].thumbnailUrl!)")
         } else {
             cell.IncAccHackPic.image = UIImage(named: EventData.sharedInstance.besthackIncEvent[(indexPath as NSIndexPath).row].logo!)}
-        } else {
+      /*  } else {
             cell.IncAccHackPic.image = UIImage(named: "defaultLogo1")
-        }
+        } */
         
         var shortUrl: String = EventData.sharedInstance.besthackIncEvent[row].progUrl!
         // MARK : Problem website not showing is here

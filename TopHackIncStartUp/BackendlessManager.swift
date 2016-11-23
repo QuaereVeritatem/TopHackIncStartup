@@ -292,11 +292,13 @@ class BackendlessManager {
                         // Cache old URLs for removal!
                         let oldPhotoUrl = Event.photoUrl!
                         let oldthumbnailUrl = Event.thumbnailUrl!
+                        print("The oldthumbNailUrl = \(oldthumbnailUrl)")
                         
                         // Update the personOrEvent with the new data.
                         Event.name = newEventData.0.name
                         Event.photoUrl = EventToSaveBE.photoUrl
                         Event.thumbnailUrl = EventToSaveBE.thumbnailUrl
+                        print("The new thumbnail, Event.thumbnailUrl = \(EventToSaveBE.thumbnailUrl)")
                         
                         // Save the updated Event.
                         self.backendless.data.save( Event,
